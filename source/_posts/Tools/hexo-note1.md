@@ -68,15 +68,15 @@ v1.0.3错误还在。
 1. 修改_config.yml
 ```
     deploy:
-      #- type: git
-      # repo: https://github.com/<username>/<username>.github.io.git
-      # branch: master
+      - type: git
+        repo: https://github.com/<username>/<username>.github.io.git
+        branch: master
       - type: git
         repo: https://github.com/<username>/<username>.github.io.git
         branch: source
-        extend_dirs: /source
+        extend_dirs: source
         #ignore_pattern: ^[0-9]{4}|archives|categories|css|fancybox|font|img|js|page|tags|index.html
-        ignore_pattern: {'public':'.*','/source':'tags'}
+        ignore_pattern: {'public':'.*','source':'tags'}
 ```
   通常保留一个type块即可，如想把source发布到另外的地方，可以再加一个type块。
   默认发布public目录下的所有文件，通过extend_dirs可以指定public以外的目录。这样会同时发布public目录和extend_dirs指定的目录，如想过滤掉pulic目录，可以通过ignore_pattern来指定要过滤的对象。
