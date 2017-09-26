@@ -76,10 +76,18 @@ v1.0.3错误还在。
         branch: source
         extend_dirs: source
         #ignore_pattern: ^[0-9]{4}|archives|categories|css|fancybox|font|img|js|page|tags|index.html
-        ignore_pattern: {'public':'.*','source':'tags'}
+        ignore_pattern: {'public':'.*','source':''}
 ```
   通常保留一个type块即可，如想把source发布到另外的地方，可以再加一个type块。
   默认发布public目录下的所有文件，通过extend_dirs可以指定public以外的目录。这样会同时发布public目录和extend_dirs指定的目录，如想过滤掉pulic目录，可以通过ignore_pattern来指定要过滤的对象。
-  ignore_pattern支持对
+  ignore_pattern支持对public目录和extend_dirs目录分别设置过滤器，也可以统一设置一个过滤器。
 
 1. 运行 <code>hexo d</code>发布到github。
+
+# 评论系统
+disqus
+来必力
+友言
+搜狐畅言，要求所使用的站点完成备案
+多说，2017年6月1日停止服务
+网易云跟贴，2017年8月1日停止服务
