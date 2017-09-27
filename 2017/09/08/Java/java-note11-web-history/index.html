@@ -19,7 +19,7 @@
 <meta property="og:site_name" content="lvshifu">
 <meta property="og:description" content="HTML与WWW">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2017-09-21T09:41:29.208Z">
+<meta property="og:updated_time" content="2017-09-26T09:00:08.843Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Java笔记11--WEB开发发展历程梳理">
 <meta name="twitter:description" content="HTML与WWW">
@@ -55,6 +55,8 @@
 						<li><a href="/">主页</a></li>
 					
 						<li><a href="/archives">归档</a></li>
+					
+						<li><a href="/tags">标签</a></li>
 					
 						<li><a href="/about">关于</a></li>
 					
@@ -93,7 +95,7 @@
 		<div id="toc" class="toc-article">
 			<strong class="toc-title">文章目录</strong>
 		
-			<ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#HTML与WWW"><span class="toc-number">1.</span> <span class="toc-text">HTML与WWW</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#静态网页阶段"><span class="toc-number">2.</span> <span class="toc-text">静态网页阶段</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#CGI动态网页阶段"><span class="toc-number">3.</span> <span class="toc-text">CGI动态网页阶段</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#PHP-ASP-JSP动态脚本阶段"><span class="toc-number">4.</span> <span class="toc-text">PHP/ASP/JSP动态脚本阶段</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#MVC框架阶段"><span class="toc-number">5.</span> <span class="toc-text">MVC框架阶段</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#AJAX技术发展"><span class="toc-number">6.</span> <span class="toc-text">AJAX技术发展</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#MVC前端框架阶段"><span class="toc-number">7.</span> <span class="toc-text">MVC前端框架阶段</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#未来"><span class="toc-number">8.</span> <span class="toc-text">未来</span></a></li></ol>
+			<ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#HTML与WWW"><span class="toc-number">1.</span> <span class="toc-text">HTML与WWW</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#静态网页阶段"><span class="toc-number">2.</span> <span class="toc-text">静态网页阶段</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#CGI动态网页阶段"><span class="toc-number">3.</span> <span class="toc-text">CGI动态网页阶段</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#PHP-ASP-JSP动态脚本阶段"><span class="toc-number">4.</span> <span class="toc-text">PHP/ASP/JSP动态脚本阶段</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#MVC框架阶段"><span class="toc-number">5.</span> <span class="toc-text">MVC框架阶段</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#AJAX技术发展"><span class="toc-number">6.</span> <span class="toc-text">AJAX技术发展</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#MVC前端框架阶段"><span class="toc-number">7.</span> <span class="toc-text">MVC前端框架阶段</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#后记"><span class="toc-number">8.</span> <span class="toc-text">后记</span></a></li></ol>
 		
 		</div>
 		
@@ -133,23 +135,23 @@ HTML 5——2014年10月28日，W3C推荐标准
 <h1 id="AJAX技术发展"><a href="#AJAX技术发展" class="headerlink" title="AJAX技术发展"></a>AJAX技术发展</h1><p>1995年,NetScape公司设计了JavaScript，在浏览器上运行脚本语言为网页增加动态性。<br>AJAX（Asynchronous JavaScript and XML）基于JavaScript的XmlHttpRequest，用于创建交互性更强​的Web应用。<br>随着Google在自家产品中的应用而迅速得到推广。</p>
 <p>AJAX之前，浏览器向服务器发送请求，服务器返回一个响应页面，然而连续的多个请求返回的页面中，可能大部分内容是一样的，这样就产生了很大的流量和带宽的浪费。而AJAX请求从服务器得到的数据仅包含要变动的部分，通过JavaScript把变动的部分更新到页面上，大大减少了浏览器和服务器之间交互的内容。</p>
 <h1 id="MVC前端框架阶段"><a href="#MVC前端框架阶段" class="headerlink" title="MVC前端框架阶段"></a>MVC前端框架阶段</h1><p>Backbone, Angular, Knockout, Ionic</p>
-<h1 id="未来"><a href="#未来" class="headerlink" title="未来"></a>未来</h1><ol>
+<h1 id="后记"><a href="#后记" class="headerlink" title="后记"></a>后记</h1><ol>
 <li>CGI并不是一个多么不好的技术，在FastCGI、SimpleCGI等基础上，有一些非常好的实现，也可以达到高性能、高并发的需求。在Python、PHP的世界多有应用。</li>
 <li>WEB服务器和Servlet容器以及应用服务器要区分开来，通常开发过程中只用Tomcat，这时Tomcat实际上担当了读个角色。<br><script src="https://cdnjs.cloudflare.com/ajax/libs/webfont/1.6.27/webfontloader.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/snap.svg/0.4.1/snap.svg-min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.8.3/underscore-min.js"></script><script src="https://bramp.github.io/js-sequence-diagrams/js/sequence-diagram-min.js"></script><textarea id="sequence-0-code" style="display: none">浏览器->WEB服务器: 你好，我要查看/aaa/bbb.html.
 Note right of WEB服务器: 在服务器主目录下查找/aaa/bbb.html.
-WEB服务器->浏览器: 返回/aaa/bbb.html!</textarea><textarea id="sequence-0-options" style="display: none">{"scale":1,"line-width":2,"line-length":50,"text-margin":10,"font-size":12,"theme":"hand"}</textarea><script>  var code = document.getElementById("sequence-0-code").value;  var options = JSON.parse(decodeURIComponent(document.getElementById("sequence-0-options").value));  var diagram = Diagram.parse(code);  diagram.drawSVG("sequence-0", options);</script><textarea id="sequence-1-code" style="display: none">浏览器->WEB服务器: 你好，我要查看/news/id=123.
+WEB服务器->浏览器: 返回/aaa/bbb.html!</textarea><textarea id="sequence-0-options" style="display: none">{"theme":"hand","scale":1,"line-width":2,"line-length":50,"text-margin":10,"font-size":12}</textarea><script>  var code = document.getElementById("sequence-0-code").value;  var options = JSON.parse(decodeURIComponent(document.getElementById("sequence-0-options").value));  var diagram = Diagram.parse(code);  diagram.drawSVG("sequence-0", options);</script><textarea id="sequence-1-code" style="display: none">浏览器->WEB服务器: 你好，我要查看/news/id=123.
 WEB服务器-->CGI: 转发请求.
 CGI-->外部程序: 要求生成id为123的news页面.
 Note right of 外部程序: 生成id为123的news页面.
 外部程序-->CGI: 返回id为123的news页面.
 CGI-->WEB服务器: 转发结果.
-WEB服务器->浏览器: 返回id为123的news页面.</textarea><textarea id="sequence-1-options" style="display: none">{"scale":1,"line-width":2,"line-length":50,"text-margin":10,"font-size":12,"theme":"hand"}</textarea><script>  var code = document.getElementById("sequence-1-code").value;  var options = JSON.parse(decodeURIComponent(document.getElementById("sequence-1-options").value));  var diagram = Diagram.parse(code);  diagram.drawSVG("sequence-1", options);</script><textarea id="sequence-2-code" style="display: none">浏览器->WEB服务器: 我要查看2012年的销售报表（/salesreport/id=2012）.
+WEB服务器->浏览器: 返回id为123的news页面.</textarea><textarea id="sequence-1-options" style="display: none">{"theme":"hand","scale":1,"line-width":2,"line-length":50,"text-margin":10,"font-size":12}</textarea><script>  var code = document.getElementById("sequence-1-code").value;  var options = JSON.parse(decodeURIComponent(document.getElementById("sequence-1-options").value));  var diagram = Diagram.parse(code);  diagram.drawSVG("sequence-1", options);</script><textarea id="sequence-2-code" style="display: none">浏览器->WEB服务器: 我要查看2012年的销售报表（/salesreport/id=2012）.
 WEB服务器-->Servlet容器: 转发请求.
 Servlet容器-->数据库:
 Note right of Servlet容器: 生成2012年的销售报表页面.
 数据库-->Servlet容器:
 Servlet容器-->WEB服务器: 返回2012年的销售报表页面.
-WEB服务器->浏览器: 返回2012年的销售报表页面.</textarea><textarea id="sequence-2-options" style="display: none">{"scale":1,"line-width":2,"line-length":50,"text-margin":10,"font-size":12,"theme":"hand"}</textarea><script>  var code = document.getElementById("sequence-2-code").value;  var options = JSON.parse(decodeURIComponent(document.getElementById("sequence-2-options").value));  var diagram = Diagram.parse(code);  diagram.drawSVG("sequence-2", options);</script><textarea id="sequence-3-code" style="display: none">WEB服务器->Servlet容器: 转发请求.
+WEB服务器->浏览器: 返回2012年的销售报表页面.</textarea><textarea id="sequence-2-options" style="display: none">{"theme":"hand","scale":1,"line-width":2,"line-length":50,"text-margin":10,"font-size":12}</textarea><script>  var code = document.getElementById("sequence-2-code").value;  var options = JSON.parse(decodeURIComponent(document.getElementById("sequence-2-options").value));  var diagram = Diagram.parse(code);  diagram.drawSVG("sequence-2", options);</script><textarea id="sequence-3-code" style="display: none">WEB服务器->Servlet容器: 转发请求.
 Servlet容器-->Action Servlet:
 Note right of Action Servlet: Action,Form,config.xml(Controller)
 Action Servlet-->Model Beans:
@@ -158,7 +160,7 @@ Note right of Model Beans: ORM(Model)
 Database-->Model Beans:
 Model Beans-->Action Servlet:
 Action Servlet-->Servlet容器: 返回JSP(View)
-Servlet容器->WEB服务器: 返回结果.</textarea><textarea id="sequence-3-options" style="display: none">{"scale":1,"line-width":2,"line-length":50,"text-margin":10,"font-size":12,"theme":"hand"}</textarea><script>  var code = document.getElementById("sequence-3-code").value;  var options = JSON.parse(decodeURIComponent(document.getElementById("sequence-3-options").value));  var diagram = Diagram.parse(code);  diagram.drawSVG("sequence-3", options);</script></li>
+Servlet容器->WEB服务器: 返回结果.</textarea><textarea id="sequence-3-options" style="display: none">{"theme":"hand","scale":1,"line-width":2,"line-length":50,"text-margin":10,"font-size":12}</textarea><script>  var code = document.getElementById("sequence-3-code").value;  var options = JSON.parse(decodeURIComponent(document.getElementById("sequence-3-options").value));  var diagram = Diagram.parse(code);  diagram.drawSVG("sequence-3", options);</script></li>
 </ol>
   
 	</div>
@@ -224,7 +226,7 @@ Servlet容器->WEB服务器: 返回结果.</textarea><textarea id="sequence-3-op
   <div id="toc" class="toc-aside">
   <strong class="toc-title">文章目录</strong>
  
- <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#HTML与WWW"><span class="toc-number">1.</span> <span class="toc-text">HTML与WWW</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#静态网页阶段"><span class="toc-number">2.</span> <span class="toc-text">静态网页阶段</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#CGI动态网页阶段"><span class="toc-number">3.</span> <span class="toc-text">CGI动态网页阶段</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#PHP-ASP-JSP动态脚本阶段"><span class="toc-number">4.</span> <span class="toc-text">PHP/ASP/JSP动态脚本阶段</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#MVC框架阶段"><span class="toc-number">5.</span> <span class="toc-text">MVC框架阶段</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#AJAX技术发展"><span class="toc-number">6.</span> <span class="toc-text">AJAX技术发展</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#MVC前端框架阶段"><span class="toc-number">7.</span> <span class="toc-text">MVC前端框架阶段</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#未来"><span class="toc-number">8.</span> <span class="toc-text">未来</span></a></li></ol>
+ <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#HTML与WWW"><span class="toc-number">1.</span> <span class="toc-text">HTML与WWW</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#静态网页阶段"><span class="toc-number">2.</span> <span class="toc-text">静态网页阶段</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#CGI动态网页阶段"><span class="toc-number">3.</span> <span class="toc-text">CGI动态网页阶段</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#PHP-ASP-JSP动态脚本阶段"><span class="toc-number">4.</span> <span class="toc-text">PHP/ASP/JSP动态脚本阶段</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#MVC框架阶段"><span class="toc-number">5.</span> <span class="toc-text">MVC框架阶段</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#AJAX技术发展"><span class="toc-number">6.</span> <span class="toc-text">AJAX技术发展</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#MVC前端框架阶段"><span class="toc-number">7.</span> <span class="toc-text">MVC前端框架阶段</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#后记"><span class="toc-number">8.</span> <span class="toc-text">后记</span></a></li></ol>
  
   </div>
 
@@ -257,15 +259,7 @@ Servlet容器->WEB服务器: 返回结果.</textarea><textarea id="sequence-3-op
 			
 		
 			
-				<li><a href="/tags/Ionic/" title="Ionic">Ionic<sup>2</sup></a></li>
-			
-		
-			
 				<li><a href="/tags/SSH-Tunnel/" title="SSH Tunnel">SSH Tunnel<sup>2</sup></a></li>
-			
-		
-			
-				<li><a href="/tags/Solr/" title="Solr">Solr<sup>1</sup></a></li>
 			
 		
 			
@@ -281,11 +275,15 @@ Servlet容器->WEB服务器: 返回结果.</textarea><textarea id="sequence-3-op
 			
 		
 			
-				<li><a href="/tags/Tomcat/" title="Tomcat">Tomcat<sup>1</sup></a></li>
+				<li><a href="/tags/Ionic/" title="Ionic">Ionic<sup>1</sup></a></li>
 			
 		
 			
-				<li><a href="/tags/IDEA/" title="IDEA">IDEA<sup>1</sup></a></li>
+				<li><a href="/tags/Guava/" title="Guava">Guava<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/Tomcat/" title="Tomcat">Tomcat<sup>1</sup></a></li>
 			
 		
 			
@@ -293,23 +291,7 @@ Servlet容器->WEB服务器: 返回结果.</textarea><textarea id="sequence-3-op
 			
 		
 			
-				<li><a href="/tags/JRebel/" title="JRebel">JRebel<sup>1</sup></a></li>
-			
-		
-			
-				<li><a href="/tags/Spring/" title="Spring">Spring<sup>1</sup></a></li>
-			
-		
-			
-				<li><a href="/tags/SSH/" title="SSH">SSH<sup>1</sup></a></li>
-			
-		
-			
-				<li><a href="/tags/SSL/" title="SSL">SSL<sup>1</sup></a></li>
-			
-		
-			
-				<li><a href="/tags/Hexo/" title="Hexo">Hexo<sup>1</sup></a></li>
+				<li><a href="/tags/IDEA/" title="IDEA">IDEA<sup>1</sup></a></li>
 			
 		
 			
@@ -317,7 +299,27 @@ Servlet容器->WEB服务器: 返回结果.</textarea><textarea id="sequence-3-op
 			
 		
 			
-				<li><a href="/tags/Guava/" title="Guava">Guava<sup>1</sup></a></li>
+				<li><a href="/tags/Solr/" title="Solr">Solr<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/SSH/" title="SSH">SSH<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/Hexo/" title="Hexo">Hexo<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/SSL/" title="SSL">SSL<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/Lantern/" title="Lantern">Lantern<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/JRebel/" title="JRebel">JRebel<sup>1</sup></a></li>
 			
 		
 		</ul>
@@ -328,7 +330,7 @@ Servlet容器->WEB服务器: 返回结果.</textarea><textarea id="sequence-3-op
   <div class="tagcloudlist">
     <p class="asidetitle">标签云</p>
     <div class="tagcloudlist clearfix">
-       <a href="/tags/Apache/" style="font-size: 10px;">Apache</a> <a href="/tags/Coding-Rule/" style="font-size: 10px;">Coding Rule</a> <a href="/tags/Guava/" style="font-size: 10px;">Guava</a> <a href="/tags/Hexo/" style="font-size: 10px;">Hexo</a> <a href="/tags/IDEA/" style="font-size: 10px;">IDEA</a> <a href="/tags/Ionic/" style="font-size: 12.5px;">Ionic</a> <a href="/tags/JRebel/" style="font-size: 10px;">JRebel</a> <a href="/tags/Java/" style="font-size: 20px;">Java</a> <a href="/tags/Lantern/" style="font-size: 10px;">Lantern</a> <a href="/tags/Nginx/" style="font-size: 10px;">Nginx</a> <a href="/tags/Node/" style="font-size: 10px;">Node</a> <a href="/tags/Openshift/" style="font-size: 10px;">Openshift</a> <a href="/tags/SSH/" style="font-size: 10px;">SSH</a> <a href="/tags/SSH-Tunnel/" style="font-size: 12.5px;">SSH Tunnel</a> <a href="/tags/SSL/" style="font-size: 10px;">SSL</a> <a href="/tags/Shadowsocks/" style="font-size: 10px;">Shadowsocks</a> <a href="/tags/Solr/" style="font-size: 10px;">Solr</a> <a href="/tags/Spring/" style="font-size: 10px;">Spring</a> <a href="/tags/Tomcat/" style="font-size: 10px;">Tomcat</a> <a href="/tags/WEB开发/" style="font-size: 12.5px;">WEB开发</a> <a href="/tags/dozer/" style="font-size: 10px;">dozer</a> <a href="/tags/plink/" style="font-size: 10px;">plink</a> <a href="/tags/tor/" style="font-size: 10px;">tor</a> <a href="/tags/影梭/" style="font-size: 10px;">影梭</a> <a href="/tags/日语/" style="font-size: 15px;">日语</a> <a href="/tags/科学上网/" style="font-size: 17.5px;">科学上网</a> <a href="/tags/蓝灯/" style="font-size: 10px;">蓝灯</a>
+       <a href="/tags/Apache/" style="font-size: 10px;">Apache</a> <a href="/tags/Coding-Rule/" style="font-size: 10px;">Coding Rule</a> <a href="/tags/Guava/" style="font-size: 10px;">Guava</a> <a href="/tags/Hexo/" style="font-size: 10px;">Hexo</a> <a href="/tags/IDEA/" style="font-size: 10px;">IDEA</a> <a href="/tags/Ionic/" style="font-size: 10px;">Ionic</a> <a href="/tags/JRebel/" style="font-size: 10px;">JRebel</a> <a href="/tags/Java/" style="font-size: 20px;">Java</a> <a href="/tags/Lantern/" style="font-size: 10px;">Lantern</a> <a href="/tags/Nginx/" style="font-size: 10px;">Nginx</a> <a href="/tags/Node/" style="font-size: 10px;">Node</a> <a href="/tags/Openshift/" style="font-size: 10px;">Openshift</a> <a href="/tags/SSH/" style="font-size: 10px;">SSH</a> <a href="/tags/SSH-Tunnel/" style="font-size: 12.5px;">SSH Tunnel</a> <a href="/tags/SSL/" style="font-size: 10px;">SSL</a> <a href="/tags/Shadowsocks/" style="font-size: 10px;">Shadowsocks</a> <a href="/tags/Solr/" style="font-size: 10px;">Solr</a> <a href="/tags/Spring/" style="font-size: 10px;">Spring</a> <a href="/tags/Tomcat/" style="font-size: 10px;">Tomcat</a> <a href="/tags/WEB开发/" style="font-size: 12.5px;">WEB开发</a> <a href="/tags/dozer/" style="font-size: 10px;">dozer</a> <a href="/tags/plink/" style="font-size: 10px;">plink</a> <a href="/tags/tor/" style="font-size: 10px;">tor</a> <a href="/tags/影梭/" style="font-size: 10px;">影梭</a> <a href="/tags/日语/" style="font-size: 15px;">日语</a> <a href="/tags/科学上网/" style="font-size: 17.5px;">科学上网</a> <a href="/tags/蓝灯/" style="font-size: 10px;">蓝灯</a>
     </div>
   </div>
 
@@ -336,7 +338,7 @@ Servlet容器->WEB服务器: 返回结果.</textarea><textarea id="sequence-3-op
   
   <div class="archiveslist">
     <p class="asidetitle"><a href="/archives">归档</a></p>
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/10/">十月 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/09/">九月 2017</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/08/">八月 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/07/">七月 2017</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/06/">六月 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/05/">五月 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/04/">四月 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">三月 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/02/">二月 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/01/">一月 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/10/">十月 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/09/">九月 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/08/">八月 2016</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/07/">七月 2015</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/08/">八月 2014</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/11/">十一月 2013</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2011/05/">五月 2011</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2010/03/">三月 2010</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2009/10/">十月 2009</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2008/09/">九月 2008</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2006/10/">十月 2006</a><span class="archive-list-count">4</span></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/09/">九月 2017</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/08/">八月 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/07/">七月 2017</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/06/">六月 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/05/">五月 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/04/">四月 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">三月 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/02/">二月 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/01/">一月 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/10/">十月 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/09/">九月 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/08/">八月 2016</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/07/">七月 2015</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/08/">八月 2014</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/11/">十一月 2013</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2011/05/">五月 2011</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2010/03/">三月 2010</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2009/10/">十月 2009</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2008/09/">九月 2008</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2006/10/">十月 2006</a><span class="archive-list-count">4</span></li></ul>
   </div>
 
 
@@ -354,16 +356,6 @@ Servlet容器->WEB服务器: 返回结果.</textarea><textarea id="sequence-3-op
 </div>
 
   
-
-
-  <div class="rsspart">
-	<a href="/atom.xml" target="_blank" title="rss">RSS 订阅</a>
-</div>
-
-  <div class="weiboshow">
-  <p class="asidetitle">新浪微博</p>
-    <iframe width="100%" height="119" class="share_self"  frameborder="0" scrolling="no" src="http://widget.weibo.com/weiboshow/index.php?language=&width=0&height=119&fansRow=2&ptype=1&speed=0&skin=9&isTitle=1&noborder=1&isWeibo=0&isFans=0&uid=&verifier=&dpc=1"></iframe>
-</div>
 
 
 </aside>
