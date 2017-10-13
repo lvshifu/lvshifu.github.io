@@ -1,0 +1,562 @@
+
+ <!DOCTYPE HTML>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  
+    <title>Solr Word全文索引 | lvshifu</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=no">
+    
+    <meta name="author" content="lvshifu">
+    
+
+    
+    <meta name="description" content="Solr Word全文索引本文使用的Solr为4.9.1版。 Solr使用apache Tika实现富文本提取，可以实现WORD、Excel、PDF等格式的处理。">
+<meta name="keywords" content="Java,Solr">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Solr Word全文索引">
+<meta property="og:url" content="https://lvshifu.github.io/2017/05/13/Java/java-solr/index.html">
+<meta property="og:site_name" content="lvshifu">
+<meta property="og:description" content="Solr Word全文索引本文使用的Solr为4.9.1版。 Solr使用apache Tika实现富文本提取，可以实现WORD、Excel、PDF等格式的处理。">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2017-10-01T05:33:39.485Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Solr Word全文索引">
+<meta name="twitter:description" content="Solr Word全文索引本文使用的Solr为4.9.1版。 Solr使用apache Tika实现富文本提取，可以实现WORD、Excel、PDF等格式的处理。">
+
+    
+    <link rel="alternative" href="/atom.xml" title="lvshifu" type="application/atom+xml">
+    
+    
+    <link rel="icon" href="/img/smile.png">
+    
+    
+    <link rel="apple-touch-icon" href="/img/jacman.jpg">
+    <link rel="apple-touch-icon-precomposed" href="/img/jacman.jpg">
+    
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+
+  <body>
+    <header>
+      
+<div>
+		
+			<div id="textlogo">
+				<h1 class="site-name"><a href="/" title="lvshifu">lvshifu</a></h1>
+				<h2 class="blog-motto"></h2>
+			</div>
+			<div class="navbar"><a class="navbutton navmobile" href="#" title="菜单">
+			</a></div>
+			<nav class="animated">
+				<ul>
+					<ul>
+					 
+						<li><a href="/">主页</a></li>
+					
+						<li><a href="/archives">归档</a></li>
+					
+						<li><a href="/tags">标签</a></li>
+					
+						<li><a href="/about">关于</a></li>
+					
+					<li>
+ 					
+					<form class="search" action="/search/index.html" method="get" accept-charset="utf-8">
+						<label>Search</label>
+						<input type="search" id="search" autocomplete="off" name="q" maxlength="20" placeholder="搜索" />
+					</form>
+					
+					</li>
+				</ul>
+			</nav>			
+</div>
+    </header>
+    <div id="container">
+      <div id="main" class="post" itemscope itemprop="blogPost">
+  
+	<article itemprop="articleBody"> 
+		<header class="article-info clearfix">
+  <h1 itemprop="name">
+    
+      <a href="/2017/05/13/Java/java-solr/" title="Solr Word全文索引" itemprop="url">Solr Word全文索引</a>
+  </h1>
+  <p class="article-author">By
+       
+		<a href="/about" title="lvshifu" target="_blank" itemprop="author">lvshifu</a>
+		
+  <p class="article-time">
+    <time datetime="2017-05-13T08:24:03.000Z" itemprop="datePublished"> 发表于 2017-05-13</time>
+    
+  </p>
+</header>
+	<div class="article-content">
+		
+		<div id="toc" class="toc-article">
+			<strong class="toc-title">文章目录</strong>
+		
+		<ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Solr-Word全文索引"><span class="toc-text">Solr Word全文索引</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#1，Solr安装配置"><span class="toc-text">1，Solr安装配置</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#2，新建CELL"><span class="toc-text">2，新建CELL</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#2，配置CELL"><span class="toc-text">2，配置CELL</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#3，富文本提取"><span class="toc-text">3，富文本提取</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#4，索引完成后即可查看效果"><span class="toc-text">4，索引完成后即可查看效果</span></a></li></ol>
+		
+		</div>
+		
+		<h1 id="Solr-Word全文索引"><a href="#Solr-Word全文索引" class="headerlink" title="Solr Word全文索引"></a>Solr Word全文索引</h1><p>本文使用的Solr为4.9.1版。</p>
+<p>Solr使用apache Tika实现富文本提取，可以实现WORD、Excel、PDF等格式的处理。<br><a id="more"></a><br>步骤：</p>
+<h1 id="1，Solr安装配置"><a href="#1，Solr安装配置" class="headerlink" title="1，Solr安装配置"></a>1，Solr安装配置</h1><p>网上下载solr-4.9.1.war，放入Tomcat的webapps目录下即可，启动Tomcat后，war包自动解压。</p>
+<p>添加下列Jar文件到解包的文件夹中</p>
+<pre><code>jcl-over-slf4j-1.7.6.jar
+jul-to-slf4j-1.7.6.jar
+log4j-1.2.17.jar
+slf4j-api-1.7.6.jar
+slf4j-log4j12-1.7.6.jar
+</code></pre><h1 id="2，新建CELL"><a href="#2，新建CELL" class="headerlink" title="2，新建CELL"></a>2，新建CELL</h1><p>创建solrhome。Solrhome是存放solr服务器所有配置文件的目录。<br>修改web.xml，配置solrhome的位置。</p>
+<pre><code>&lt;env-entry&gt;
+   &lt;env-entry-name&gt;solr/home&lt;/env-entry-name&gt;
+   &lt;env-entry-value&gt;D:\apache-tomcat-7.0.42\webapps\solr\solrhome&lt;/env-entry-value&gt;
+   &lt;env-entry-type&gt;java.lang.String&lt;/env-entry-type&gt;
+&lt;/env-entry&gt;
+</code></pre><h1 id="2，配置CELL"><a href="#2，配置CELL" class="headerlink" title="2，配置CELL"></a>2，配置CELL</h1><h1 id="3，富文本提取"><a href="#3，富文本提取" class="headerlink" title="3，富文本提取"></a>3，富文本提取</h1><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div><div class="line">79</div><div class="line">80</div><div class="line">81</div><div class="line">82</div><div class="line">83</div><div class="line">84</div><div class="line">85</div><div class="line">86</div><div class="line">87</div><div class="line">88</div><div class="line">89</div><div class="line">90</div><div class="line">91</div><div class="line">92</div><div class="line">93</div><div class="line">94</div><div class="line">95</div><div class="line">96</div><div class="line">97</div><div class="line">98</div><div class="line">99</div><div class="line">100</div><div class="line">101</div><div class="line">102</div><div class="line">103</div><div class="line">104</div><div class="line">105</div><div class="line">106</div><div class="line">107</div><div class="line">108</div><div class="line">109</div><div class="line">110</div><div class="line">111</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> java.io.File;</div><div class="line"><span class="keyword">import</span> java.io.IOException;</div><div class="line"><span class="keyword">import</span> java.lang.reflect.InvocationTargetException;</div><div class="line"><span class="keyword">import</span> java.util.HashMap;</div><div class="line"><span class="keyword">import</span> java.util.Map;</div><div class="line"></div><div class="line"><span class="keyword">import</span> org.apache.commons.beanutils.BeanUtils;</div><div class="line"><span class="keyword">import</span> org.apache.solr.client.solrj.SolrQuery;</div><div class="line"><span class="keyword">import</span> org.apache.solr.client.solrj.SolrServer;</div><div class="line"><span class="keyword">import</span> org.apache.solr.client.solrj.SolrServerException;</div><div class="line"><span class="keyword">import</span> org.apache.solr.client.solrj.impl.HttpSolrServer;</div><div class="line"><span class="keyword">import</span> org.apache.solr.client.solrj.request.AbstractUpdateRequest;</div><div class="line"><span class="keyword">import</span> org.apache.solr.client.solrj.request.ContentStreamUpdateRequest;</div><div class="line"><span class="keyword">import</span> org.apache.solr.client.solrj.response.QueryResponse;</div><div class="line"><span class="keyword">import</span> org.dozer.DozerBeanMapper;</div><div class="line"><span class="keyword">import</span> org.dozer.Mapper;</div><div class="line"></div><div class="line"><span class="keyword">import</span> com.ces.analysis.caseinfo.entity.CaseInfo;  </div><div class="line"></div><div class="line"><span class="comment">/**</span></div><div class="line"><span class="comment"> * 从Word创建索引</span></div><div class="line"><span class="comment"> */</span>  </div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">SolrExampleTests</span>  </span></div><div class="line"><span class="class"></span>&#123;  </div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span>  </span></div><div class="line"><span class="function">    </span>&#123;  </div><div class="line">        String filePath = <span class="string">"D:\\Projects\\20170509"</span>;   </div><div class="line">        File root = <span class="keyword">new</span> File(filePath);</div><div class="line">        File[] files = root.listFiles();</div><div class="line">        <span class="keyword">for</span>(File dir:files)&#123;     </div><div class="line">            <span class="keyword">if</span>(dir.isDirectory())&#123;</div><div class="line">                File[] wenshues = dir.listFiles();</div><div class="line">                    <span class="keyword">for</span>(File wenshu:wenshues)&#123;     </div><div class="line">                        <span class="keyword">if</span>(wenshu.isDirectory())&#123;</div><div class="line">                            System.out.println(<span class="string">"file error : "</span> + wenshu.getAbsolutePath());</div><div class="line">                        &#125; <span class="keyword">else</span> &#123;</div><div class="line">                            System.out.println(wenshu.getAbsolutePath());</div><div class="line">                            System.out.println(dir.getName());</div><div class="line">                            <span class="keyword">try</span>  </div><div class="line">                            &#123;</div><div class="line">                                <span class="comment">// 创建索引</span></div><div class="line">                                indexFilesSolrCell(wenshu.getAbsolutePath(), dir.getName());</div><div class="line">                            &#125;  </div><div class="line">                            <span class="keyword">catch</span> (IOException e)  </div><div class="line">                            &#123;  </div><div class="line">                                e.printStackTrace();  </div><div class="line">                            &#125;  </div><div class="line">                            <span class="keyword">catch</span> (SolrServerException e)  </div><div class="line">                            &#123;  </div><div class="line">                                e.printStackTrace();  </div><div class="line">                            &#125;</div><div class="line">                        &#125;</div><div class="line">                    &#125;</div><div class="line">            &#125; <span class="keyword">else</span> &#123;</div><div class="line">                System.out.println(<span class="string">"file error : "</span> + dir.getAbsolutePath());</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line"></div><div class="line">        String urlString = <span class="string">"http://180.168.156.212:2113/solr/core1"</span>;  </div><div class="line">        SolrServer solr = <span class="keyword">new</span> HttpSolrServer(urlString);  </div><div class="line"></div><div class="line">        <span class="keyword">try</span> &#123;</div><div class="line">            String key = <span class="string">"text:黄酒 AND (啤酒 OR 黑啤 OR 白啤)"</span>;</div><div class="line">            <span class="comment">// 返回最多20000个结果</span></div><div class="line">            QueryResponse rsp = solr.query(<span class="keyword">new</span> SolrQuery(key).setRows(<span class="number">20000</span>));</div><div class="line">            SolrDocumentList list = rsp.getResults();</div><div class="line">            System.out.println(<span class="string">"返回："</span> + list.getNumFound() + <span class="string">"条记录\t耗时："</span> + rsp.getElapsedTime() + <span class="string">"毫秒"</span>);</div><div class="line">            <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; list.size(); i++) &#123;</div><div class="line">                SolrDocument doc = (SolrDocument)list.get(i);</div><div class="line">                String objectId = doc.get(<span class="string">"id"</span>).toString();</div><div class="line">                <span class="comment">//String title = doc.get("webTitle").toString();</span></div><div class="line">                <span class="comment">//String content = doc.get("webContent").toString();</span></div><div class="line">                System.out.println(objectId);                </div><div class="line">            &#125;</div><div class="line">        &#125; <span class="keyword">catch</span> (Exception e) &#123;</div><div class="line">            e.printStackTrace();</div><div class="line">        &#125;</div><div class="line"></div><div class="line">        System.out.println(<span class="string">"#######################################"</span>);</div><div class="line">    &#125;  </div><div class="line"></div><div class="line">    <span class="comment">/** 从文件创建索引</span></div><div class="line"><span class="comment">     * <span class="doctag">@param</span> fileName</span></div><div class="line"><span class="comment">     * <span class="doctag">@param</span> solrId</span></div><div class="line"><span class="comment">     */</span>  </div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">indexFilesSolrCell</span><span class="params">(String fileName, String solrId)</span>   </span></div><div class="line"><span class="function">        <span class="keyword">throws</span> IOException, SolrServerException  </span></div><div class="line"><span class="function">    </span>&#123;  </div><div class="line">        <span class="comment">// Solr服务器地址+CELL名</span></div><div class="line">        String urlString = <span class="string">"http://localhost:8080/solr/core1"</span>;  </div><div class="line">        SolrServer solr = <span class="keyword">new</span> HttpSolrServer(urlString);  </div><div class="line">        ContentStreamUpdateRequest up = <span class="keyword">new</span> ContentStreamUpdateRequest(<span class="string">"/update/extract"</span>);  </div><div class="line"></div><div class="line">        <span class="comment">// doc文件</span></div><div class="line">        String contentType=<span class="string">"application/msword"</span>;</div><div class="line">        <span class="comment">// docx文件</span></div><div class="line">        <span class="comment">//String contentType="application/vnd.openxmlformats-officedocument.wordprocessingml.document";</span></div><div class="line">        up.addFile(<span class="keyword">new</span> File(fileName), contentType);  </div><div class="line">        up.setParam(<span class="string">"literal.id"</span>, solrId);  </div><div class="line">        up.setParam(<span class="string">"uprefix"</span>, <span class="string">"attr_"</span>);  </div><div class="line">        up.setParam(<span class="string">"fmap.content"</span>, <span class="string">"text"</span>);  </div><div class="line">        up.setAction(AbstractUpdateRequest.ACTION.COMMIT, <span class="keyword">true</span>, <span class="keyword">true</span>);  </div><div class="line"></div><div class="line">        solr.request(up);  </div><div class="line"></div><div class="line">        QueryResponse rsp = solr.query(<span class="keyword">new</span> SolrQuery(<span class="string">"*:*"</span>));  </div><div class="line">        System.out.println(rsp);  </div><div class="line">    &#125;  </div><div class="line"></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h1 id="4，索引完成后即可查看效果"><a href="#4，索引完成后即可查看效果" class="headerlink" title="4，索引完成后即可查看效果"></a>4，索引完成后即可查看效果</h1>  
+	</div>
+		<footer class="article-footer clearfix">
+<div class="article-catetags">
+
+
+  <div class="article-tags">
+  
+  <span></span> <a href="/tags/Java/">Java</a><a href="/tags/Solr/">Solr</a>
+  </div>
+
+</div>
+
+
+
+	<div class="article-share" id="share">
+	
+	  <div data-url="https://lvshifu.github.io/2017/05/13/Java/java-solr/" data-title="Solr Word全文索引 | lvshifu" data-tsina="" class="share clearfix">
+	  </div>
+	
+	</div>
+
+
+</footer>
+
+   	       
+	</article>
+	
+<nav class="article-nav clearfix">
+ 
+ <div class="prev" >
+ <a href="/2017/06/07/Java/java-jrebel/" title="好用的Tomcat免重启调试插件JRebel">
+  <strong>上一篇：</strong><br/>
+  <span>
+  好用的Tomcat免重启调试插件JRebel</span>
+</a>
+</div>
+
+
+<div class="next">
+<a href="/2017/04/05/Ionic/ionic-note1/"  title="Node介绍">
+ <strong>下一篇：</strong><br/> 
+ <span>Node介绍
+</span>
+</a>
+</div>
+
+</nav>
+
+	
+
+<section id="comments" class="comment">
+  <div id="disqus_thread">
+    <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+  </div>
+</section>
+
+
+</div>  
+      <div class="openaside"><a class="navbutton" href="#" title="显示侧边栏"></a></div>
+
+  <div id="toc" class="toc-aside">
+  <strong class="toc-title">文章目录</strong>
+ 
+ <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Solr-Word全文索引"><span class="toc-text">Solr Word全文索引</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#1，Solr安装配置"><span class="toc-text">1，Solr安装配置</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#2，新建CELL"><span class="toc-text">2，新建CELL</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#2，配置CELL"><span class="toc-text">2，配置CELL</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#3，富文本提取"><span class="toc-text">3，富文本提取</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#4，索引完成后即可查看效果"><span class="toc-text">4，索引完成后即可查看效果</span></a></li></ol>
+ 
+  </div>
+
+<div id="asidepart">
+<div class="closeaside"><a class="closebutton" href="#" title="隐藏侧边栏"></a></div>
+<aside class="clearfix">
+
+  
+
+
+  
+<div class="tagslist">
+	<p class="asidetitle">标签</p>
+		<ul class="clearfix">
+		
+			
+				<li><a href="/tags/Java/" title="Java">Java<sup>14</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/日语/" title="日语">日语<sup>9</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/其他/" title="其他">其他<sup>9</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/科学上网/" title="科学上网">科学上网<sup>5</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/工具/" title="工具">工具<sup>3</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/Ionic/" title="Ionic">Ionic<sup>2</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/WEB开发/" title="WEB开发">WEB开发<sup>2</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/SSH-Tunnel/" title="SSH Tunnel">SSH Tunnel<sup>2</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/dozer/" title="dozer">dozer<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/IDEA/" title="IDEA">IDEA<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/JRebel/" title="JRebel">JRebel<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/Apache/" title="Apache">Apache<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/Nginx/" title="Nginx">Nginx<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/Solr/" title="Solr">Solr<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/Tomcat/" title="Tomcat">Tomcat<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/SSL/" title="SSL">SSL<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/大数据/" title="大数据">大数据<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/BigData/" title="BigData">BigData<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/Excel/" title="Excel">Excel<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/Shadowsocks/" title="Shadowsocks">Shadowsocks<sup>1</sup></a></li>
+			
+		
+		</ul>
+</div>
+
+
+  
+  <div class="tagcloudlist">
+    <p class="asidetitle">标签云</p>
+    <div class="tagcloudlist clearfix">
+       <a href="/tags/Apache/" style="font-size: 10px;">Apache</a> <a href="/tags/BigData/" style="font-size: 10px;">BigData</a> <a href="/tags/Coding-Rule/" style="font-size: 10px;">Coding Rule</a> <a href="/tags/Excel/" style="font-size: 10px;">Excel</a> <a href="/tags/Guava/" style="font-size: 10px;">Guava</a> <a href="/tags/Hexo/" style="font-size: 10px;">Hexo</a> <a href="/tags/IDEA/" style="font-size: 10px;">IDEA</a> <a href="/tags/Ionic/" style="font-size: 12px;">Ionic</a> <a href="/tags/JRebel/" style="font-size: 10px;">JRebel</a> <a href="/tags/Java/" style="font-size: 20px;">Java</a> <a href="/tags/Lantern/" style="font-size: 10px;">Lantern</a> <a href="/tags/Nginx/" style="font-size: 10px;">Nginx</a> <a href="/tags/Node/" style="font-size: 10px;">Node</a> <a href="/tags/Openshift/" style="font-size: 10px;">Openshift</a> <a href="/tags/SSH/" style="font-size: 10px;">SSH</a> <a href="/tags/SSH-Tunnel/" style="font-size: 12px;">SSH Tunnel</a> <a href="/tags/SSL/" style="font-size: 10px;">SSL</a> <a href="/tags/Shadowsocks/" style="font-size: 10px;">Shadowsocks</a> <a href="/tags/Solr/" style="font-size: 10px;">Solr</a> <a href="/tags/Spring/" style="font-size: 10px;">Spring</a> <a href="/tags/Tomcat/" style="font-size: 10px;">Tomcat</a> <a href="/tags/WEB开发/" style="font-size: 12px;">WEB开发</a> <a href="/tags/dozer/" style="font-size: 10px;">dozer</a> <a href="/tags/plink/" style="font-size: 10px;">plink</a> <a href="/tags/tor/" style="font-size: 10px;">tor</a> <a href="/tags/其他/" style="font-size: 18px;">其他</a> <a href="/tags/大数据/" style="font-size: 10px;">大数据</a> <a href="/tags/工具/" style="font-size: 14px;">工具</a> <a href="/tags/影梭/" style="font-size: 10px;">影梭</a> <a href="/tags/日语/" style="font-size: 18px;">日语</a> <a href="/tags/科学上网/" style="font-size: 16px;">科学上网</a> <a href="/tags/蓝灯/" style="font-size: 10px;">蓝灯</a>
+    </div>
+  </div>
+
+
+  
+  <div class="archiveslist">
+    <p class="asidetitle"><a href="/archives">归档</a></p>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/10/">十月 2017</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/09/">九月 2017</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/08/">八月 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/07/">七月 2017</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/06/">六月 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/05/">五月 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/04/">四月 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">三月 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/02/">二月 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/01/">一月 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/10/">十月 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/09/">九月 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/08/">八月 2016</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/07/">七月 2015</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/08/">八月 2014</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/11/">十一月 2013</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2011/05/">五月 2011</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2011/02/">二月 2011</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2011/01/">一月 2011</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2010/03/">三月 2010</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2009/10/">十月 2009</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2009/04/">四月 2009</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2009/01/">一月 2009</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2008/10/">十月 2008</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2008/09/">九月 2008</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2007/09/">九月 2007</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2007/06/">六月 2007</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2006/10/">十月 2006</a><span class="archive-list-count">4</span></li></ul>
+  </div>
+
+
+  <div class="linkslist">
+  <p class="asidetitle">友情链接</p>
+    <ul>
+        
+          <li>
+            
+            	<a href="https://ricardo-cheng.github.io" target="_blank" title="Cheng&#39;s Blog">Cheng&#39;s Blog</a>
+            
+          </li>
+        
+          <li>
+            
+            	<a href="http://wuchong.me" target="_blank" title="Jark&#39;s Blog">Jark&#39;s Blog</a>
+            
+          </li>
+        
+    </ul>
+</div>
+
+  
+
+
+</aside>
+</div>
+    </div>
+    <footer><div id="footer" >
+	
+	
+	<section class="info">
+		<p> Hello ,I&#39;m lvshifu. <br/>
+			</p>
+	</section>
+	 
+	<div class="social-font" class="clearfix">
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+	</div>
+			
+		
+
+		<p class="copyright">
+		Powered by <a href="http://hexo.io" target="_blank" title="hexo">hexo</a> and Theme by <a href="https://github.com/wuchong/jacman" target="_blank" title="Jacman">Jacman</a> © 2017 
+		
+		<a href="/about" target="_blank" title="lvshifu">lvshifu</a>
+		
+		
+		</p>
+</div>
+</footer>
+    <script src="/js/jquery-2.0.3.min.js"></script>
+<script src="/js/jquery.imagesloaded.min.js"></script>
+<script src="/js/gallery.js"></script>
+<script src="/js/jquery.qrcode-0.12.0.min.js"></script>
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  $('.navbar').click(function(){
+    $('header nav').toggleClass('shownav');
+  });
+  var myWidth = 0;
+  function getSize(){
+    if( typeof( window.innerWidth ) == 'number' ) {
+      myWidth = window.innerWidth;
+    } else if( document.documentElement && document.documentElement.clientWidth) {
+      myWidth = document.documentElement.clientWidth;
+    };
+  };
+  var m = $('#main'),
+      a = $('#asidepart'),
+      c = $('.closeaside'),
+      o = $('.openaside');
+  c.click(function(){
+    a.addClass('fadeOut').css('display', 'none');
+    o.css('display', 'block').addClass('fadeIn');
+    m.addClass('moveMain');
+  });
+  o.click(function(){
+    o.css('display', 'none').removeClass('beforeFadeIn');
+    a.css('display', 'block').removeClass('fadeOut').addClass('fadeIn');      
+    m.removeClass('moveMain');
+  });
+  $(window).scroll(function(){
+    o.css("top",Math.max(80,260-$(this).scrollTop()));
+  });
+  
+  $(window).resize(function(){
+    getSize(); 
+    if (myWidth >= 1024) {
+      $('header nav').removeClass('shownav');
+    }else{
+      m.removeClass('moveMain');
+      a.css('display', 'block').removeClass('fadeOut');
+      o.css('display', 'none');
+      
+      $('#toc.toc-aside').css('display', 'none');
+        
+    }
+  });
+});
+</script>
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var ai = $('.article-content>iframe'),
+      ae = $('.article-content>embed'),
+      t  = $('#toc'),
+      ta = $('#toc.toc-aside'),
+      o  = $('.openaside'),
+      c  = $('.closeaside');
+  if(ai.length>0){
+    ai.wrap('<div class="video-container" />');
+  };
+  if(ae.length>0){
+   ae.wrap('<div class="video-container" />');
+  };
+  c.click(function(){
+    ta.css('display', 'block').addClass('fadeIn');
+  });
+  o.click(function(){
+    ta.css('display', 'none');
+  });
+  $(window).scroll(function(){
+    ta.css("top",Math.max(140,320-$(this).scrollTop()));
+  });
+});
+</script>
+
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var $this = $('.share'),
+      url = $this.attr('data-url'),
+      encodedUrl = encodeURIComponent(url),
+      title = $this.attr('data-title'),
+      tsina = $this.attr('data-tsina'),
+      description = $this.attr('description');
+  var html = [
+  '<div class="hoverqrcode clearfix"></div>',
+  '<a class="overlay" id="qrcode"></a>',
+  '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="article-share-facebook" target="_blank" title="Facebook"></a>',
+  '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="article-share-twitter" target="_blank" title="Twitter"></a>',
+  '<a href="#qrcode" class="article-share-qrcode" title="微信"></a>',
+  '<a href="http://widget.renren.com/dialog/share?resourceUrl=' + encodedUrl + '&srcUrl=' + encodedUrl + '&title=' + title +'" class="article-share-renren" target="_blank" title="人人"></a>',
+  '<a href="http://service.weibo.com/share/share.php?title='+title+'&url='+encodedUrl +'&ralateUid='+ tsina +'&searchPic=true&style=number' +'" class="article-share-weibo" target="_blank" title="微博"></a>',
+  '<span title="Share to"></span>'
+  ].join('');
+  $this.append(html);
+
+  $('.hoverqrcode').hide();
+
+  var myWidth = 0;
+  function updatehoverqrcode(){
+    if( typeof( window.innerWidth ) == 'number' ) {
+      myWidth = window.innerWidth;
+    } else if( document.documentElement && document.documentElement.clientWidth) {
+      myWidth = document.documentElement.clientWidth;
+    };
+    var qrsize = myWidth > 1024 ? 200:100;
+    var options = {render: 'image', size: qrsize, fill: '#2ca6cb', text: url, radius: 0.5, quiet: 1};
+    var p = $('.article-share-qrcode').position();
+    $('.hoverqrcode').empty().css('width', qrsize).css('height', qrsize)
+                          .css('left', p.left-qrsize/2+20).css('top', p.top-qrsize-10)
+                          .qrcode(options);
+  };
+  $(window).resize(function(){
+    $('.hoverqrcode').hide();
+  });
+  $('.article-share-qrcode').click(function(){
+    updatehoverqrcode();
+    $('.hoverqrcode').toggle();
+  });
+  $('.article-share-qrcode').hover(function(){}, function(){
+      $('.hoverqrcode').hide();
+  });
+});   
+</script>
+
+
+
+
+<script type="text/javascript">
+
+var disqus_shortname = 'lvshifu-github-io';
+
+(function(){
+  var dsq = document.createElement('script');
+  dsq.type = 'text/javascript';
+  dsq.async = true;
+  dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+  (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+}());
+(function(){
+  var dsq = document.createElement('script');
+  dsq.type = 'text/javascript';
+  dsq.async = true;
+  dsq.src = '//' + disqus_shortname + '.disqus.com/count.js';
+  (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+}());
+</script>
+
+
+
+
+
+
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css" media="screen" type="text/css">
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+$(document).ready(function(){ 
+  $('.article-content').each(function(i){
+    $(this).find('img').each(function(){
+      if ($(this).parent().hasClass('fancybox')) return;
+      var alt = this.alt;
+      if (alt) $(this).after('<span class="caption">' + alt + '</span>');
+      $(this).wrap('<a href="' + this.src + '" title="' + alt + '" class="fancybox"></a>');
+    });
+    $(this).find('.fancybox').each(function(){
+      $(this).attr('rel', 'article' + i);
+    });
+  });
+  if($.fancybox){
+    $('.fancybox').fancybox();
+  }
+}); 
+</script>
+
+
+
+<!-- Analytics Begin -->
+
+
+
+
+
+<!-- Analytics End -->
+
+<!-- Totop Begin -->
+
+	<div id="totop">
+	<a title="返回顶部"><img src="/img/scrollup.png"/></a>
+	</div>
+	<script src="/js/totop.js"></script>
+
+<!-- Totop End -->
+
+<!-- MathJax Begin -->
+<!-- mathjax config similar to math.stackexchange -->
+
+
+<!-- MathJax End -->
+
+<!-- Tiny_search Begin -->
+
+<!-- Tiny_search End -->
+
+  </body>
+</html>
