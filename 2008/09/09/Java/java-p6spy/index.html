@@ -1,122 +1,234 @@
-
- <!DOCTYPE HTML>
-<html lang="zh-CN">
+<!DOCTYPE html>
+<html>
 <head>
-  <meta charset="UTF-8">
-  
-    <title>p6spy | lvshifu</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=no">
-    
-    <meta name="author" content="lvshifu">
+    <meta charset="utf-8" />
+
     
 
+    
+    <title>p6spy | lvshifu</title>
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="keywords" content="Java" />
     
     <meta name="description" content="集成p6spy到spring中">
-<meta name="keywords" content="Java">
 <meta property="og:type" content="article">
 <meta property="og:title" content="p6spy">
-<meta property="og:url" content="https://lvshifu.github.io/2008/09/09/Java/java-p6spy/index.html">
+<meta property="og:url" content="http://example.com/2008/09/09/Java/java-p6spy/index.html">
 <meta property="og:site_name" content="lvshifu">
 <meta property="og:description" content="集成p6spy到spring中">
-<meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2020-04-13T04:17:54.714Z">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2008-09-09T13:18:02.000Z">
+<meta property="article:modified_time" content="2020-04-13T04:17:54.714Z">
+<meta property="article:author" content="lvshifu">
+<meta property="article:tag" content="Java">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="p6spy">
-<meta name="twitter:description" content="集成p6spy到spring中">
+    
 
     
-    <link rel="alternative" href="/atom.xml" title="lvshifu" type="application/atom+xml">
-    
-    
-    <link rel="icon" href="/img/smile.png">
-    
-    
-    <link rel="apple-touch-icon" href="/img/jacman.jpg">
-    <link rel="apple-touch-icon-precomposed" href="/img/jacman.jpg">
-    
-    <link rel="stylesheet" href="/css/style.css">
-</head>
 
-  <body>
-    <header>
-      
-<div>
-		
-			<div id="textlogo">
-				<h1 class="site-name"><a href="/" title="lvshifu">lvshifu</a></h1>
-				<h2 class="blog-motto"></h2>
-			</div>
-			<div class="navbar"><a class="navbutton navmobile" href="#" title="菜单">
-			</a></div>
-			<nav class="animated">
-				<ul>
-					<ul>
-					 
-						<li><a href="/">主页</a></li>
-					
-						<li><a href="/archives">归档</a></li>
-					
-						<li><a href="/tags">标签</a></li>
-					
-						<li><a href="/about">关于</a></li>
-					
-					<li>
- 					
-					<form class="search" action="/search/index.html" method="get" accept-charset="utf-8">
-						<label>Search</label>
-						<input type="search" id="search" autocomplete="off" name="q" maxlength="20" placeholder="搜索" />
-					</form>
-					
-					</li>
-				</ul>
-			</nav>			
+    
+
+    
+<link rel="stylesheet" href="/libs/font-awesome/css/font-awesome.min.css">
+
+    
+<link rel="stylesheet" href="/libs/titillium-web/styles.css">
+
+    
+<link rel="stylesheet" href="/libs/source-code-pro/styles.css">
+
+
+    
+<link rel="stylesheet" href="/css/style.css">
+
+
+    
+<script src="/libs/jquery/3.5.0/jquery.min.js"></script>
+
+    
+    
+        
+<link rel="stylesheet" href="/libs/lightgallery/css/lightgallery.min.css">
+
+    
+    
+        
+<link rel="stylesheet" href="/libs/justified-gallery/justifiedGallery.min.css">
+
+    
+    
+    
+    
+
+
+<meta name="generator" content="Hexo 5.3.0"></head>
+
+<body>
+    <div id="wrap">
+        <header id="header">
+    <div id="header-outer" class="outer">
+        <div class="container">
+            <div class="container-inner">
+                <div id="header-title">
+                    <h1 class="logo-wrap">
+                        <a href="/" class="logo"></a>
+                    </h1>
+                    
+                </div>
+                <div id="header-inner" class="nav-container">
+                    <a id="main-nav-toggle" class="nav-icon fa fa-bars"></a>
+                    <div class="nav-container-inner">
+                        <ul id="main-nav">
+                            
+                                <li class="main-nav-list-item" >
+                                    <a class="main-nav-list-link" href="/">主页</a>
+                                </li>
+                            
+                                    <ul class="main-nav-list"><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/Java/">Java</a></li></ul>
+                                
+                                <li class="main-nav-list-item" >
+                                    <a class="main-nav-list-link" href="/archives">归档</a>
+                                </li>
+                            
+                                <li class="main-nav-list-item" >
+                                    <a class="main-nav-list-link" href="/about/index.html">关于</a>
+                                </li>
+                            
+                        </ul>
+                        <nav id="sub-nav">
+                            <div id="search-form-wrap">
+
+    <form class="search-form">
+        <input type="text" class="ins-search-input search-form-input" placeholder="搜索" />
+        <button type="submit" class="search-form-submit"></button>
+    </form>
+    <div class="ins-search">
+    <div class="ins-search-mask"></div>
+    <div class="ins-search-container">
+        <div class="ins-input-wrapper">
+            <input type="text" class="ins-search-input" placeholder="想要查找什么..." />
+            <span class="ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
 </div>
-    </header>
-    <div id="container">
-      <div id="main" class="post" itemscope itemprop="blogPost">
-  
-	<article itemprop="articleBody"> 
-		<header class="article-info clearfix">
-  <h1 itemprop="name">
-    
-      <a href="/2008/09/09/Java/java-p6spy/" title="p6spy" itemprop="url">p6spy</a>
-  </h1>
-  <p class="article-author">By
-       
-		<a href="/about" title="lvshifu" target="_blank" itemprop="author">lvshifu</a>
-		
-  <p class="article-time">
-    <time datetime="2008-09-09T13:18:02.000Z" itemprop="datePublished"> 发表于 2008-09-09</time>
-    
-  </p>
+<script>
+(function (window) {
+    var INSIGHT_CONFIG = {
+        TRANSLATION: {
+            POSTS: '文章',
+            PAGES: '页面',
+            CATEGORIES: '分类',
+            TAGS: '标签',
+            UNTITLED: '(未命名)',
+        },
+        ROOT_URL: '/',
+        CONTENT_URL: '/content.json',
+    };
+    window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+})(window);
+</script>
+
+<script src="/js/insight.js"></script>
+
+
+</div>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 </header>
-	<div class="article-content">
-		
-		<div id="toc" class="toc-article">
-			<strong class="toc-title">文章目录</strong>
-		
-			<ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#集成p6spy到spring中"><span class="toc-number">1.</span> <span class="toc-text">集成p6spy到spring中</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Integrate-P6Spy-with-Spring"><span class="toc-number">2.</span> <span class="toc-text">Integrate P6Spy with Spring</span></a></li></ol>
-		
-		</div>
-		
-		<h1 id="集成p6spy到spring中"><a href="#集成p6spy到spring中" class="headerlink" title="集成p6spy到spring中"></a>集成p6spy到spring中</h1><a id="more"></a>
-<p>转自<a href="http://cnzhchch.blog.163.com/blog/static/69165727200881103957992/" target="_blank" rel="external">http://cnzhchch.blog.163.com/blog/static/69165727200881103957992/</a></p>
+
+        <div class="container">
+            <div class="main-body container-inner">
+                <div class="main-body-inner">
+                    <section id="main">
+                        <div class="main-body-header">
+    <h1 class="header">
+    
+    未分类
+    </h1>
+</div>
+
+                        <div class="main-body-content">
+                            <article id="post-Java/java-p6spy" class="article article-single article-type-post" itemscope itemprop="blogPost">
+    <div class="article-inner">
+        
+            <header class="article-header">
+                
+    
+        <h1 class="article-title" itemprop="name">
+        p6spy
+        </h1>
+    
+
+            </header>
+        
+        
+            <div class="article-meta">
+                
+  <div class="article-date">
+    <i class="fa fa-calendar"></i>
+    <a href="/2008/09/09/Java/java-p6spy/" class="article-date">
+       <time datetime="2008-09-09T13:18:02.000Z" itemprop="datePublished">2008-09-09</time>
+    </a>
+  </div>
+
+
+<div class="article-date">
+  <i class="fa fa-calendar-plus-o"></i>
+  <a href="/2008/09/09/Java/java-p6spy/" class="article-date">
+     <time datetime="2020-04-13T04:17:54.714Z" itemprop="dateModified">2020-04-13</time>
+  </a>
+</div>
+
+
+                
+
+                
+    <div class="article-tag">
+        <i class="fa fa-tag"></i>
+        <a class="tag-link-link" href="/tags/Java/" rel="tag">Java</a>
+    </div>
+
+                
+
+                
+
+            </div>
+        
+        
+        <div class="article-entry" itemprop="articleBody">
+            
+
+            
+
+            
+
+            <h1 id="集成p6spy到spring中"><a href="#集成p6spy到spring中" class="headerlink" title="集成p6spy到spring中"></a>集成p6spy到spring中</h1><a id="more"></a>
+<p>转自<a target="_blank" rel="noopener" href="http://cnzhchch.blog.163.com/blog/static/69165727200881103957992/">http://cnzhchch.blog.163.com/blog/static/69165727200881103957992/</a></p>
 <p>网上好多帖子都是说，修改原有 JDBC Driver为：com.p6spy.engine.spy.P6SpyDriver<br>然后修改spy.properties 中的 realdriver值为原有的JDBC Driver<br>如果在spring开发环境中使用org.springframework.jdbc.datasource.DriverManagerDataSource来模拟dataSource是不会生效的，</p>
-<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line">&lt;bean id=<span class="string">"dataSource"</span> <span class="class"><span class="keyword">class</span></span>=<span class="string">"org.springframework.jdbc.datasource.DriverManagerDataSource"</span>&gt;</div><div class="line">	&lt;property  name=<span class="string">"driverClassName"</span>&gt;</div><div class="line">	&lt;value&gt;com.sybase.jdbc2.jdbc.SybDriver&lt;/value&gt;</div><div class="line">	&lt;/property&gt;</div><div class="line">	&lt;property  name=<span class="string">"url"</span>&gt;</div><div class="line">	&lt;value&gt;jdbc:sybase:Tds:192.168.0.2:6100/db&lt;/value&gt;</div><div class="line">	&lt;/property&gt;</div><div class="line">	&lt;property  name=<span class="string">"username"</span>&gt;</div><div class="line">	&lt;value&gt;usr&lt;/value&gt;</div><div class="line">	&lt;/property&gt;</div><div class="line">	&lt;property  name=<span class="string">"password"</span>&gt;</div><div class="line">	&lt;value&gt;pwd&lt;/value&gt;</div><div class="line">	&lt;/property&gt;</div><div class="line">&lt;/bean&gt;</div></pre></td></tr></table></figure>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">&lt;bean id=<span class="string">&quot;dataSource&quot;</span> <span class="class"><span class="keyword">class</span></span>=<span class="string">&quot;org.springframework.jdbc.datasource.DriverManagerDataSource&quot;</span>&gt;</span><br><span class="line">	&lt;property  name=<span class="string">&quot;driverClassName&quot;</span>&gt;</span><br><span class="line">	&lt;value&gt;com.sybase.jdbc2.jdbc.SybDriver&lt;/value&gt;</span><br><span class="line">	&lt;/property&gt;</span><br><span class="line">	&lt;property  name=<span class="string">&quot;url&quot;</span>&gt;</span><br><span class="line">	&lt;value&gt;jdbc:sybase:Tds:192.168.0.2:6100/db&lt;/value&gt;</span><br><span class="line">	&lt;/property&gt;</span><br><span class="line">	&lt;property  name=<span class="string">&quot;username&quot;</span>&gt;</span><br><span class="line">	&lt;value&gt;usr&lt;/value&gt;</span><br><span class="line">	&lt;/property&gt;</span><br><span class="line">	&lt;property  name=<span class="string">&quot;password&quot;</span>&gt;</span><br><span class="line">	&lt;value&gt;pwd&lt;/value&gt;</span><br><span class="line">	&lt;/property&gt;</span><br><span class="line">&lt;/bean&gt;</span><br></pre></td></tr></table></figure>
 <p>因为在spring加载时我们无法控制先加载哪个，spring会报错不能使用com.p6spy.engine.spy.P6SpyDriver连接到数据库，<br>其实p6spy只是想做jdbc的代理，而不是真正想连数据库，而spring却不知道这些，所以应该采用另外一种方式来集成p6spy</p>
-<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div></pre></td><td class="code"><pre><div class="line">&lt;bean id=<span class="string">"dataSourceTarget"</span> <span class="class"><span class="keyword">class</span></span>=<span class="string">"org.springframework.jdbc.datasource.DriverManagerDataSource"</span>&gt;</div><div class="line">	&lt;property  name=<span class="string">"driverClassName"</span>&gt;</div><div class="line">	&lt;value&gt;com.sybase.jdbc2.jdbc.SybDriver&lt;/value&gt;</div><div class="line">	&lt;/property&gt;</div><div class="line">	&lt;property  name=<span class="string">"url"</span>&gt;</div><div class="line">	&lt;value&gt;jdbc:sybase:Tds:192.168.0.2:6100/db&lt;/value&gt;</div><div class="line">	&lt;/property&gt;</div><div class="line">	&lt;property  name=<span class="string">"username"</span>&gt;</div><div class="line">	&lt;value&gt;usr&lt;/value&gt;</div><div class="line">	&lt;/property&gt;</div><div class="line">	&lt;property  name=<span class="string">"password"</span>&gt;</div><div class="line">	&lt;value&gt;pwd&lt;/value&gt;</div><div class="line">	&lt;/property&gt;</div><div class="line">&lt;/bean&gt;</div><div class="line">&lt;bean id=<span class="string">"dataSource"</span> <span class="class"><span class="keyword">class</span></span>=<span class="string">"com.p6spy.engine.spy.P6DataSource"</span></div><div class="line">                                 destroy-method=<span class="string">"close"</span>&gt;</div><div class="line">       &lt;constructor-arg&gt;</div><div class="line">           &lt;ref local=<span class="string">"dataSourceTarget"</span>/&gt;</div><div class="line">       &lt;/constructor-arg&gt;</div><div class="line">&lt;/bean&gt;</div></pre></td></tr></table></figure>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">&lt;bean id=<span class="string">&quot;dataSourceTarget&quot;</span> <span class="class"><span class="keyword">class</span></span>=<span class="string">&quot;org.springframework.jdbc.datasource.DriverManagerDataSource&quot;</span>&gt;</span><br><span class="line">	&lt;property  name=<span class="string">&quot;driverClassName&quot;</span>&gt;</span><br><span class="line">	&lt;value&gt;com.sybase.jdbc2.jdbc.SybDriver&lt;/value&gt;</span><br><span class="line">	&lt;/property&gt;</span><br><span class="line">	&lt;property  name=<span class="string">&quot;url&quot;</span>&gt;</span><br><span class="line">	&lt;value&gt;jdbc:sybase:Tds:192.168.0.2:6100/db&lt;/value&gt;</span><br><span class="line">	&lt;/property&gt;</span><br><span class="line">	&lt;property  name=<span class="string">&quot;username&quot;</span>&gt;</span><br><span class="line">	&lt;value&gt;usr&lt;/value&gt;</span><br><span class="line">	&lt;/property&gt;</span><br><span class="line">	&lt;property  name=<span class="string">&quot;password&quot;</span>&gt;</span><br><span class="line">	&lt;value&gt;pwd&lt;/value&gt;</span><br><span class="line">	&lt;/property&gt;</span><br><span class="line">&lt;/bean&gt;</span><br><span class="line">&lt;bean id=<span class="string">&quot;dataSource&quot;</span> <span class="class"><span class="keyword">class</span></span>=<span class="string">&quot;com.p6spy.engine.spy.P6DataSource&quot;</span></span><br><span class="line">                                 destroy-method=<span class="string">&quot;close&quot;</span>&gt;</span><br><span class="line">       &lt;constructor-arg&gt;</span><br><span class="line">           &lt;ref local=<span class="string">&quot;dataSourceTarget&quot;</span>/&gt;</span><br><span class="line">       &lt;/constructor-arg&gt;</span><br><span class="line">&lt;/bean&gt;</span><br></pre></td></tr></table></figure>
 <p>这样就可以把p6spy集成到spring中去了。<br>令：网上好多文章都介绍使用sqlprofiler和p6spy配合，但是IronTrackSQL感觉更好一些！</p>
 <p>关于如何使用sqlprofiler，IronTrackSQL，配置很简单</p>
 <p>对于sqlprofiler只要把sqlprofiler自带的spy.properties放到classpath下就可以了，然后java -jar sqlprofiler.jar</p>
 <p>对于IronTrackSQL，还要把irontracksql.jar也放到classpath下，然后java -jar irontracksql.jar</p>
-<h1 id="Integrate-P6Spy-with-Spring"><a href="#Integrate-P6Spy-with-Spring" class="headerlink" title="Integrate P6Spy with Spring"></a>Integrate P6Spy with Spring</h1><p>转自<a href="http://forum.spring.io/forum/spring-projects/data/34406-cannot-create-jdbc-driver-of-class-p6spydriver" target="_blank" rel="external">http://forum.spring.io/forum/spring-projects/data/34406-cannot-create-jdbc-driver-of-class-p6spydriver</a></p>
+<h1 id="Integrate-P6Spy-with-Spring"><a href="#Integrate-P6Spy-with-Spring" class="headerlink" title="Integrate P6Spy with Spring"></a>Integrate P6Spy with Spring</h1><p>转自<a target="_blank" rel="noopener" href="http://forum.spring.io/forum/spring-projects/data/34406-cannot-create-jdbc-driver-of-class-p6spydriver">http://forum.spring.io/forum/spring-projects/data/34406-cannot-create-jdbc-driver-of-class-p6spydriver</a></p>
 <p>P6Spy is a tool to debug JDBC interaction with a database. It’s a wrapper<br>of all JDBC elements ( Connection, PreparedStatement, ResultSet… ) and<br>it has a powerful feature in order to log all informations about those<br>interactions.</p>
 <p>JDBC wrapper is described in the “Java Performance Tuning” book of Jack Shirazi ( O’Reilly) in the chapter 16.</p>
 <p>All elements wrappers have a constructor with the element to wrap. We can use it but<br>there is another mode for datasource. This last mode must be used to wrap a datasource<br>defined in an application server for example.</p>
 <p>However since we can manage our objects ( beans ) in Spring ( and datasources<br>too ), it’s possible to add a P6Spy datasource and link it with the real datasource<br>with constructor injection.</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div></pre></td><td class="code"><pre><div class="line">&lt;?xml version=&quot;1.0&quot; encoding=&quot;ISO-8859-1&quot;?&gt;</div><div class="line">&lt;!DOCTYPE beans PUBLIC &quot;-//SPRING//DTD BEAN//EN&quot;</div><div class="line">               &quot;http://www.springframework.org/dtd/spring-beans.dtd&quot;&gt;</div><div class="line">&lt;beans&gt;</div><div class="line">&lt;bean id=&quot;myDataSourceTarget&quot;</div><div class="line">      class=&quot;org.apache.commons.dbcp.BasicDataSource&quot;</div><div class="line">      destroy-method=&quot;close&quot;&gt;</div><div class="line">    &lt;property name=&quot;driverClassName&quot;&gt;</div><div class="line">        &lt;value&gt;org.hsqldb.jdbcDriver&lt;/value&gt;</div><div class="line">    &lt;/property&gt;</div><div class="line">    &lt;property name=&quot;url&quot;&gt;</div><div class="line">        &lt;value&gt;jdbc:hsqldb:hsql://localhost:9001&lt;/value&gt;</div><div class="line">    &lt;/property&gt;</div><div class="line">    &lt;property name=&quot;username&quot;&gt;&lt;value&gt;sa&lt;/value&gt;&lt;/property&gt;</div><div class="line">    &lt;property name=&quot;password&quot;&gt;&lt;value&gt;&lt;/value&gt;&lt;/property&gt;</div><div class="line">&lt;/bean&gt;</div><div class="line">&lt;bean id=&quot;myDataSource&quot; class=&quot;com.p6spy.engine.spy.P6DataSource&quot;</div><div class="line">                                             destroy-method=&quot;close&quot;&gt;</div><div class="line">    &lt;constructor-arg&gt;</div><div class="line">        &lt;ref local=&quot;myDataSourceTarget&quot;/&gt;</div><div class="line">    &lt;/constructor-arg&gt;</div><div class="line">&lt;/bean&gt;</div><div class="line">&lt;/beans&gt;</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">&lt;?xml version&#x3D;&quot;1.0&quot; encoding&#x3D;&quot;ISO-8859-1&quot;?&gt;</span><br><span class="line">&lt;!DOCTYPE beans PUBLIC &quot;-&#x2F;&#x2F;SPRING&#x2F;&#x2F;DTD BEAN&#x2F;&#x2F;EN&quot;</span><br><span class="line">               &quot;http:&#x2F;&#x2F;www.springframework.org&#x2F;dtd&#x2F;spring-beans.dtd&quot;&gt;</span><br><span class="line">&lt;beans&gt;</span><br><span class="line">&lt;bean id&#x3D;&quot;myDataSourceTarget&quot;</span><br><span class="line">      class&#x3D;&quot;org.apache.commons.dbcp.BasicDataSource&quot;</span><br><span class="line">      destroy-method&#x3D;&quot;close&quot;&gt;</span><br><span class="line">    &lt;property name&#x3D;&quot;driverClassName&quot;&gt;</span><br><span class="line">        &lt;value&gt;org.hsqldb.jdbcDriver&lt;&#x2F;value&gt;</span><br><span class="line">    &lt;&#x2F;property&gt;</span><br><span class="line">    &lt;property name&#x3D;&quot;url&quot;&gt;</span><br><span class="line">        &lt;value&gt;jdbc:hsqldb:hsql:&#x2F;&#x2F;localhost:9001&lt;&#x2F;value&gt;</span><br><span class="line">    &lt;&#x2F;property&gt;</span><br><span class="line">    &lt;property name&#x3D;&quot;username&quot;&gt;&lt;value&gt;sa&lt;&#x2F;value&gt;&lt;&#x2F;property&gt;</span><br><span class="line">    &lt;property name&#x3D;&quot;password&quot;&gt;&lt;value&gt;&lt;&#x2F;value&gt;&lt;&#x2F;property&gt;</span><br><span class="line">&lt;&#x2F;bean&gt;</span><br><span class="line">&lt;bean id&#x3D;&quot;myDataSource&quot; class&#x3D;&quot;com.p6spy.engine.spy.P6DataSource&quot;</span><br><span class="line">                                             destroy-method&#x3D;&quot;close&quot;&gt;</span><br><span class="line">    &lt;constructor-arg&gt;</span><br><span class="line">        &lt;ref local&#x3D;&quot;myDataSourceTarget&quot;&#x2F;&gt;</span><br><span class="line">    &lt;&#x2F;constructor-arg&gt;</span><br><span class="line">&lt;&#x2F;bean&gt;</span><br><span class="line">&lt;&#x2F;beans&gt;</span><br></pre></td></tr></table></figure>
 <p>Moreover a p6spy.log file must be add to the classpath of the application<br>to specify the location of the log file.</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div></pre></td><td class="code"><pre><div class="line">module.log=com.p6spy.engine.logging.P6LogFactory</div><div class="line">executionthreshold=</div><div class="line">outagedetection=false</div><div class="line">outagedetectioninterval=</div><div class="line">filter=false</div><div class="line">include     =</div><div class="line">exclude     =</div><div class="line">sqlexpression =</div><div class="line">autoflush   = true</div><div class="line">dateformat=</div><div class="line">includecategories=</div><div class="line">excludecategories=info,debug,result,batch</div><div class="line">stringmatcher=</div><div class="line">stacktraceclass=</div><div class="line">reloadproperties=false</div><div class="line">reloadpropertiesinterval=60</div><div class="line">useprefix=false</div><div class="line">appender=com.p6spy.engine.logging.appender.FileLogger</div><div class="line">logfile     = c:/spy.log</div><div class="line">append=true</div><div class="line">log4j.appender.STDOUT=org.apache.log4j.ConsoleAppender</div><div class="line">log4j.appender.STDOUT.layout=org.apache.log4j.PatternLayout</div><div class="line">log4j.appender.STDOUT.layout.ConversionPattern=p6spy - %m%n</div><div class="line">log4j.logger.p6spy=INFO,STDOUT</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">module.log&#x3D;com.p6spy.engine.logging.P6LogFactory</span><br><span class="line">executionthreshold&#x3D;</span><br><span class="line">outagedetection&#x3D;false</span><br><span class="line">outagedetectioninterval&#x3D;</span><br><span class="line">filter&#x3D;false</span><br><span class="line">include     &#x3D;</span><br><span class="line">exclude     &#x3D;</span><br><span class="line">sqlexpression &#x3D;</span><br><span class="line">autoflush   &#x3D; true</span><br><span class="line">dateformat&#x3D;</span><br><span class="line">includecategories&#x3D;</span><br><span class="line">excludecategories&#x3D;info,debug,result,batch</span><br><span class="line">stringmatcher&#x3D;</span><br><span class="line">stacktraceclass&#x3D;</span><br><span class="line">reloadproperties&#x3D;false</span><br><span class="line">reloadpropertiesinterval&#x3D;60</span><br><span class="line">useprefix&#x3D;false</span><br><span class="line">appender&#x3D;com.p6spy.engine.logging.appender.FileLogger</span><br><span class="line">logfile     &#x3D; c:&#x2F;spy.log</span><br><span class="line">append&#x3D;true</span><br><span class="line">log4j.appender.STDOUT&#x3D;org.apache.log4j.ConsoleAppender</span><br><span class="line">log4j.appender.STDOUT.layout&#x3D;org.apache.log4j.PatternLayout</span><br><span class="line">log4j.appender.STDOUT.layout.ConversionPattern&#x3D;p6spy - %m%n</span><br><span class="line">log4j.logger.p6spy&#x3D;INFO,STDOUT</span><br></pre></td></tr></table></figure>
 <p>The output can be graphically view with a tool like Iron Track SQL.</p>
 <p>Advantages of this solution are the following:</p>
 <ul>
@@ -125,448 +237,422 @@
 <li><p>The use of P6Spy is much easier. No deep knowledge of the format<br>of the P6Spy configuration file is required ( only specify the location<br>of log file ).</p>
 </li>
 </ul>
-  
-	</div>
-		<footer class="article-footer clearfix">
-<div class="article-catetags">
 
-
-  <div class="article-tags">
-  
-  <span></span> <a href="/tags/Java/">Java</a>
-  </div>
-
-</div>
+        </div>
+        <footer class="article-footer">
+            
 
 
 
-	<div class="article-share" id="share">
-	
-	  <div data-url="https://lvshifu.github.io/2008/09/09/Java/java-p6spy/" data-title="p6spy | lvshifu" data-tsina="" class="share clearfix">
-	  </div>
-	
-	</div>
+    <a data-url="http://example.com/2008/09/09/Java/java-p6spy/" data-id="ckj3uw1nt001adc7b9tqe882m" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
+<script>
+    (function ($) {
+        $('body').on('click', function() {
+            $('.article-share-box.on').removeClass('on');
+        }).on('click', '.article-share-link', function(e) {
+            e.stopPropagation();
+
+            var $this = $(this),
+                url = $this.attr('data-url'),
+                encodedUrl = encodeURIComponent(url),
+                id = 'article-share-box-' + $this.attr('data-id'),
+                offset = $this.offset(),
+                box;
+
+            if ($('#' + id).length) {
+                box = $('#' + id);
+
+                if (box.hasClass('on')){
+                    box.removeClass('on');
+                    return;
+                }
+            } else {
+                var html = [
+                    '<div id="' + id + '" class="article-share-box">',
+                        '<input class="article-share-input" value="' + url + '">',
+                        '<div class="article-share-links">',
+                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="article-share-twitter" target="_blank" title="Twitter"></a>',
+                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="article-share-facebook" target="_blank" title="Facebook"></a>',
+                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="article-share-pinterest" target="_blank" title="Pinterest"></a>',
+                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="article-share-google" target="_blank" title="Google+"></a>',
+                        '</div>',
+                    '</div>'
+                ].join('');
+
+              box = $(html);
+
+              $('body').append(box);
+            }
+
+            $('.article-share-box.on').hide();
+
+            box.css({
+                top: offset.top + 25,
+                left: offset.left
+            }).addClass('on');
+
+        }).on('click', '.article-share-box', function (e) {
+            e.stopPropagation();
+        }).on('click', '.article-share-box-input', function () {
+            $(this).select();
+        }).on('click', '.article-share-box-link', function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+
+            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
+        });
+    })(jQuery);
+</script>
+
+        </footer>
+    </div>
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "BlogPosting",
+        "author": {
+            "@type": "Person",
+            "name": "lvshifu"
+        },
+        "headline": "p6spy",
+        "image": "http://example.com",
+        "keywords": "Java",
+        "genre": "",
+        "datePublished": "2008-09-09",
+        "dateCreated": "2008-09-09",
+        "dateModified": "2020-04-13",
+        "url": "http://example.com/2008/09/09/Java/java-p6spy/",
+        "description": "集成p6spy到spring中",
+        "wordCount": 668
+    }
+</script>
+
+</article>
+
+    <section id="comments">
+    
+        
+    <div id="disqus_thread">
+        <noscript>Please enable JavaScript to view the <a target="_blank" rel="noopener" href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+    </div>
 
 
-</footer>
-
-   	       
-	</article>
-	
-<nav class="article-nav clearfix">
- 
- <div class="prev" >
- <a href="/2008/09/10/Japanese/nihongo-note8/" title="生活实用短语2">
-  <strong>上一篇：</strong><br/>
-  <span>
-  生活实用短语2</span>
-</a>
-</div>
+    
+    </section>
 
 
-<div class="next">
-<a href="/2008/09/09/Japanese/nihongo-note7/"  title="「の」「と」的类型和用法">
- <strong>下一篇：</strong><br/> 
- <span>「の」「と」的类型和用法
-</span>
-</a>
-</div>
 
+                        </div>
+                    </section>
+                    <aside id="sidebar">
+    <a class="sidebar-toggle" title="Expand Sidebar"><i class="toggle icon"></i></a>
+    <div class="sidebar-top">
+        <p>关注我 :</p>
+        <ul class="social-links">
+            
+                
+                <li>
+                    <a class="social-tooltip" title="github" href="https://github.com/lvshifu" target="_blank" rel="noopener">
+                        <i class="icon fa fa-github"></i>
+                    </a>
+                </li>
+                
+            
+        </ul>
+    </div>
+    
+        
+<nav id="article-nav">
+    
+        <a href="/2008/09/10/Japanese/nihongo-note8/" id="article-nav-newer" class="article-nav-link-wrap">
+        <strong class="article-nav-caption">下一篇</strong>
+        <p class="article-nav-title">
+        
+            生活实用短语2
+        
+        </p>
+        <i class="icon fa fa-chevron-right" id="icon-chevron-right"></i>
+    </a>
+    
+    
+        <a href="/2008/09/09/Japanese/nihongo-note7/" id="article-nav-older" class="article-nav-link-wrap">
+        <strong class="article-nav-caption">上一篇</strong>
+        <p class="article-nav-title">「の」「と」的类型和用法</p>
+        <i class="icon fa fa-chevron-left" id="icon-chevron-left"></i>
+        </a>
+    
 </nav>
 
-	
+    
+    <div class="widgets-container">
+        
+            
+                
 
-<section id="comments" class="comment">
-  <div id="disqus_thread">
-    <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
-  </div>
-</section>
+            
+                
+    <div class="widget-wrap">
+        <h3 class="widget-title">最新文章</h3>
+        <div class="widget">
+            <ul id="recent-post" class="">
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2020/11/02/Python/python-relative-imports/" class="thumbnail">
+    
+    
+        <span class="thumbnail-image thumbnail-none"></span>
+    
+    
+</a>
 
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"></p>
+                            <p class="item-title"><a href="/2020/11/02/Python/python-relative-imports/" class="title">Python reletive imports</a></p>
+                            <p class="item-date"><time datetime="2020-11-02T14:00:00.000Z" itemprop="datePublished">2020-11-02</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2020/10/02/Python/python-param-m/" class="thumbnail">
+    
+    
+        <span class="thumbnail-image thumbnail-none"></span>
+    
+    
+</a>
 
-</div>  
-      <div class="openaside"><a class="navbutton" href="#" title="显示侧边栏"></a></div>
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"></p>
+                            <p class="item-title"><a href="/2020/10/02/Python/python-param-m/" class="title">Python -m 参数</a></p>
+                            <p class="item-date"><time datetime="2020-10-02T14:00:00.000Z" itemprop="datePublished">2020-10-02</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2019/04/16/Tools/tools-file-share/" class="thumbnail">
+    
+    
+        <span class="thumbnail-image thumbnail-none"></span>
+    
+    
+</a>
 
-  <div id="toc" class="toc-aside">
-  <strong class="toc-title">文章目录</strong>
- 
- <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#集成p6spy到spring中"><span class="toc-number">1.</span> <span class="toc-text">集成p6spy到spring中</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Integrate-P6Spy-with-Spring"><span class="toc-number">2.</span> <span class="toc-text">Integrate P6Spy with Spring</span></a></li></ol>
- 
-  </div>
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"></p>
+                            <p class="item-title"><a href="/2019/04/16/Tools/tools-file-share/" class="title">实用工具介绍 文件分享</a></p>
+                            <p class="item-date"><time datetime="2019-04-16T06:38:00.000Z" itemprop="datePublished">2019-04-16</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2019/02/21/Docker/wsl-docker-problem/" class="thumbnail">
+    
+    
+        <span class="thumbnail-image thumbnail-none"></span>
+    
+    
+</a>
 
-<div id="asidepart">
-<div class="closeaside"><a class="closebutton" href="#" title="隐藏侧边栏"></a></div>
-<aside class="clearfix">
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"></p>
+                            <p class="item-title"><a href="/2019/02/21/Docker/wsl-docker-problem/" class="title">Windows上安装Docker</a></p>
+                            <p class="item-date"><time datetime="2019-02-21T08:20:00.000Z" itemprop="datePublished">2019-02-21</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2019/02/20/Docker/wsl-is-what/" class="thumbnail">
+    
+    
+        <span class="thumbnail-image thumbnail-none"></span>
+    
+    
+</a>
 
-  
-
-
-  
-<div class="tagslist">
-	<p class="asidetitle">标签</p>
-		<ul class="clearfix">
-		
-			
-				<li><a href="/tags/Java/" title="Java">Java<sup>14</sup></a></li>
-			
-		
-			
-				<li><a href="/tags/其他/" title="其他">其他<sup>11</sup></a></li>
-			
-		
-			
-				<li><a href="/tags/日语/" title="日语">日语<sup>9</sup></a></li>
-			
-		
-			
-				<li><a href="/tags/工具/" title="工具">工具<sup>5</sup></a></li>
-			
-		
-			
-				<li><a href="/tags/科学上网/" title="科学上网">科学上网<sup>5</sup></a></li>
-			
-		
-			
-				<li><a href="/tags/WSL/" title="WSL">WSL<sup>2</sup></a></li>
-			
-		
-			
-				<li><a href="/tags/Ionic/" title="Ionic">Ionic<sup>2</sup></a></li>
-			
-		
-			
-				<li><a href="/tags/WEB开发/" title="WEB开发">WEB开发<sup>2</sup></a></li>
-			
-		
-			
-				<li><a href="/tags/SSH-Tunnel/" title="SSH Tunnel">SSH Tunnel<sup>2</sup></a></li>
-			
-		
-			
-				<li><a href="/tags/Python/" title="Python">Python<sup>2</sup></a></li>
-			
-		
-			
-				<li><a href="/tags/Docker/" title="Docker">Docker<sup>1</sup></a></li>
-			
-		
-			
-				<li><a href="/tags/大数据/" title="大数据">大数据<sup>1</sup></a></li>
-			
-		
-			
-				<li><a href="/tags/BigData/" title="BigData">BigData<sup>1</sup></a></li>
-			
-		
-			
-				<li><a href="/tags/Excel/" title="Excel">Excel<sup>1</sup></a></li>
-			
-		
-			
-				<li><a href="/tags/Node/" title="Node">Node<sup>1</sup></a></li>
-			
-		
-			
-				<li><a href="/tags/Coding-Rule/" title="Coding Rule">Coding Rule<sup>1</sup></a></li>
-			
-		
-			
-				<li><a href="/tags/dozer/" title="dozer">dozer<sup>1</sup></a></li>
-			
-		
-			
-				<li><a href="/tags/Guava/" title="Guava">Guava<sup>1</sup></a></li>
-			
-		
-			
-				<li><a href="/tags/IDEA/" title="IDEA">IDEA<sup>1</sup></a></li>
-			
-		
-			
-				<li><a href="/tags/JRebel/" title="JRebel">JRebel<sup>1</sup></a></li>
-			
-		
-		</ul>
-</div>
-
-
-  
-  <div class="tagcloudlist">
-    <p class="asidetitle">标签云</p>
-    <div class="tagcloudlist clearfix">
-       <a href="/tags/Apache/" style="font-size: 10px;">Apache</a> <a href="/tags/BigData/" style="font-size: 10px;">BigData</a> <a href="/tags/Coding-Rule/" style="font-size: 10px;">Coding Rule</a> <a href="/tags/Docker/" style="font-size: 10px;">Docker</a> <a href="/tags/Excel/" style="font-size: 10px;">Excel</a> <a href="/tags/Guava/" style="font-size: 10px;">Guava</a> <a href="/tags/Hexo/" style="font-size: 10px;">Hexo</a> <a href="/tags/IDEA/" style="font-size: 10px;">IDEA</a> <a href="/tags/Ionic/" style="font-size: 12px;">Ionic</a> <a href="/tags/JRebel/" style="font-size: 10px;">JRebel</a> <a href="/tags/Java/" style="font-size: 20px;">Java</a> <a href="/tags/Lantern/" style="font-size: 10px;">Lantern</a> <a href="/tags/Nginx/" style="font-size: 10px;">Nginx</a> <a href="/tags/Node/" style="font-size: 10px;">Node</a> <a href="/tags/Openshift/" style="font-size: 10px;">Openshift</a> <a href="/tags/Python/" style="font-size: 12px;">Python</a> <a href="/tags/SSH/" style="font-size: 10px;">SSH</a> <a href="/tags/SSH-Tunnel/" style="font-size: 12px;">SSH Tunnel</a> <a href="/tags/SSL/" style="font-size: 10px;">SSL</a> <a href="/tags/Shadowsocks/" style="font-size: 10px;">Shadowsocks</a> <a href="/tags/Solr/" style="font-size: 10px;">Solr</a> <a href="/tags/Spring/" style="font-size: 10px;">Spring</a> <a href="/tags/Tomcat/" style="font-size: 10px;">Tomcat</a> <a href="/tags/WEB开发/" style="font-size: 12px;">WEB开发</a> <a href="/tags/WSL/" style="font-size: 12px;">WSL</a> <a href="/tags/dozer/" style="font-size: 10px;">dozer</a> <a href="/tags/plink/" style="font-size: 10px;">plink</a> <a href="/tags/tor/" style="font-size: 10px;">tor</a> <a href="/tags/其他/" style="font-size: 18px;">其他</a> <a href="/tags/内网穿透/" style="font-size: 10px;">内网穿透</a> <a href="/tags/大数据/" style="font-size: 10px;">大数据</a> <a href="/tags/工具/" style="font-size: 14px;">工具</a> <a href="/tags/影梭/" style="font-size: 10px;">影梭</a> <a href="/tags/日语/" style="font-size: 16px;">日语</a> <a href="/tags/科学上网/" style="font-size: 14px;">科学上网</a> <a href="/tags/蓝灯/" style="font-size: 10px;">蓝灯</a>
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"></p>
+                            <p class="item-title"><a href="/2019/02/20/Docker/wsl-is-what/" class="title">WSL是什么</a></p>
+                            <p class="item-date"><time datetime="2019-02-20T08:20:00.000Z" itemprop="datePublished">2019-02-20</time></p>
+                        </div>
+                    </li>
+                
+            </ul>
+        </div>
     </div>
-  </div>
+
+            
+                
+    <div class="widget-wrap widget-list">
+        <h3 class="widget-title">分类</h3>
+        <div class="widget">
+            <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Java/">Java</a><span class="category-list-count">1</span></li></ul>
+        </div>
+    </div>
 
 
-  
-  <div class="archiveslist">
-    <p class="asidetitle"><a href="/archives">归档</a></p>
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/11/">十一月 2020</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/10/">十月 2020</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/04/">四月 2019</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/02/">二月 2019</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/12/">十二月 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/11/">十一月 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/09/">九月 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/10/">十月 2017</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/09/">九月 2017</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/08/">八月 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/07/">七月 2017</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/06/">六月 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/05/">五月 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/04/">四月 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">三月 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/02/">二月 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/01/">一月 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/10/">十月 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/09/">九月 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/08/">八月 2016</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/07/">七月 2015</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/08/">八月 2014</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/11/">十一月 2013</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2011/05/">五月 2011</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2011/02/">二月 2011</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2011/01/">一月 2011</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2010/03/">三月 2010</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2009/10/">十月 2009</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2009/04/">四月 2009</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2009/01/">一月 2009</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2008/10/">十月 2008</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2008/09/">九月 2008</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2007/09/">九月 2007</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2007/06/">六月 2007</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2006/10/">十月 2006</a><span class="archive-list-count">4</span></li></ul>
-  </div>
+            
+                
+    <div class="widget-wrap widget-float">
+        <h3 class="widget-title">标签云</h3>
+        <div class="widget tagcloud">
+            <a href="/tags/Apache/" style="font-size: 10px;">Apache</a> <a href="/tags/BigData/" style="font-size: 10px;">BigData</a> <a href="/tags/Coding-Rule/" style="font-size: 10px;">Coding Rule</a> <a href="/tags/Docker/" style="font-size: 10px;">Docker</a> <a href="/tags/Excel/" style="font-size: 10px;">Excel</a> <a href="/tags/Guava/" style="font-size: 10px;">Guava</a> <a href="/tags/Hexo/" style="font-size: 10px;">Hexo</a> <a href="/tags/IDEA/" style="font-size: 10px;">IDEA</a> <a href="/tags/Ionic/" style="font-size: 12px;">Ionic</a> <a href="/tags/JRebel/" style="font-size: 10px;">JRebel</a> <a href="/tags/Java/" style="font-size: 20px;">Java</a> <a href="/tags/Lantern/" style="font-size: 10px;">Lantern</a> <a href="/tags/Nginx/" style="font-size: 10px;">Nginx</a> <a href="/tags/Node/" style="font-size: 10px;">Node</a> <a href="/tags/Openshift/" style="font-size: 10px;">Openshift</a> <a href="/tags/Python/" style="font-size: 12px;">Python</a> <a href="/tags/SSH/" style="font-size: 10px;">SSH</a> <a href="/tags/SSH-Tunnel/" style="font-size: 12px;">SSH Tunnel</a> <a href="/tags/SSL/" style="font-size: 10px;">SSL</a> <a href="/tags/Shadowsocks/" style="font-size: 10px;">Shadowsocks</a> <a href="/tags/Solr/" style="font-size: 10px;">Solr</a> <a href="/tags/Spring/" style="font-size: 10px;">Spring</a> <a href="/tags/Tomcat/" style="font-size: 10px;">Tomcat</a> <a href="/tags/WEB%E5%BC%80%E5%8F%91/" style="font-size: 12px;">WEB开发</a> <a href="/tags/WSL/" style="font-size: 12px;">WSL</a> <a href="/tags/dozer/" style="font-size: 10px;">dozer</a> <a href="/tags/plink/" style="font-size: 10px;">plink</a> <a href="/tags/tor/" style="font-size: 10px;">tor</a> <a href="/tags/%E5%85%B6%E4%BB%96/" style="font-size: 18px;">其他</a> <a href="/tags/%E5%86%85%E7%BD%91%E7%A9%BF%E9%80%8F/" style="font-size: 10px;">内网穿透</a> <a href="/tags/%E5%A4%A7%E6%95%B0%E6%8D%AE/" style="font-size: 10px;">大数据</a> <a href="/tags/%E5%B7%A5%E5%85%B7/" style="font-size: 14px;">工具</a> <a href="/tags/%E5%BD%B1%E6%A2%AD/" style="font-size: 10px;">影梭</a> <a href="/tags/%E6%97%A5%E8%AF%AD/" style="font-size: 16px;">日语</a> <a href="/tags/%E7%A7%91%E5%AD%A6%E4%B8%8A%E7%BD%91/" style="font-size: 14px;">科学上网</a> <a href="/tags/%E8%93%9D%E7%81%AF/" style="font-size: 10px;">蓝灯</a>
+        </div>
+    </div>
 
 
-  <div class="linkslist">
-  <p class="asidetitle">友情链接</p>
-    <ul>
+            
+                
+    <div class="widget-wrap widget-list">
+        <h3 class="widget-title">归档</h3>
+        <div class="widget">
+            <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/11/">十一月 2020</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/10/">十月 2020</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/04/">四月 2019</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/02/">二月 2019</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/12/">十二月 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/11/">十一月 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/09/">九月 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/10/">十月 2017</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/09/">九月 2017</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/08/">八月 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/07/">七月 2017</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/06/">六月 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/05/">五月 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/04/">四月 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">三月 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/02/">二月 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/01/">一月 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/10/">十月 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/09/">九月 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/08/">八月 2016</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/07/">七月 2015</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/08/">八月 2014</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/11/">十一月 2013</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2011/05/">五月 2011</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2011/02/">二月 2011</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2011/01/">一月 2011</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2010/03/">三月 2010</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2009/10/">十月 2009</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2009/04/">四月 2009</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2009/01/">一月 2009</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2008/10/">十月 2008</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2008/09/">九月 2008</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2007/09/">九月 2007</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2007/06/">六月 2007</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2006/10/">十月 2006</a><span class="archive-list-count">4</span></li></ul>
+        </div>
+    </div>
+
+
+            
+                
+    <div class="widget-wrap widget-list">
+        <h3 class="widget-title">链接</h3>
+        <div class="widget">
+            <ul>
+                
+                    <li>
+                        <a target="_blank" rel="noopener" href="http://hexo.io">Hexo</a>
+                    </li>
+                
+                    <li>
+                        <a target="_blank" rel="noopener" href="https://ricardo-cheng.github.io">Cheng&#39;s Blog</a>
+                    </li>
+                
+                    <li>
+                        <a target="_blank" rel="noopener" href="http://wuchong.me">Jark&#39;s Blog</a>
+                    </li>
+                
+            </ul>
+        </div>
+    </div>
+
+
+            
         
-          <li>
-            
-            	<a href="https://ricardo-cheng.github.io" target="_blank" title="Cheng&#39;s Blog">Cheng&#39;s Blog</a>
-            
-          </li>
-        
-          <li>
-            
-            	<a href="http://wuchong.me" target="_blank" title="Jark&#39;s Blog">Jark&#39;s Blog</a>
-            
-          </li>
-        
-    </ul>
-</div>
-
-  
-
-
+    </div>
 </aside>
-</div>
+
+                </div>
+            </div>
+        </div>
+        <footer id="footer">
+    <div class="container">
+        <div class="container-inner">
+            <a id="back-to-top" href="javascript:;"><i class="icon fa fa-angle-up"></i></a>
+            <div class="credit">
+                <h1 class="logo-wrap">
+                    <a href="/" class="logo"></a>
+                </h1>
+                <p>&copy; 2020 lvshifu</p>
+                
+                <p>Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>. Theme by <a href="https://github.com/ppoffice" target="_blank">PPOffice</a></p>
+                
+            </div>
+            <div class="footer-plugins">
+              
+    
+
+
+            </div>
+        </div>
     </div>
-    <footer><div id="footer" >
-	
-	
-	<section class="info">
-		<p> Hello ,I&#39;m lvshifu. <br/>
-			</p>
-	</section>
-	 
-	<div class="social-font" class="clearfix">
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-	</div>
-			
-		
-
-		<p class="copyright">
-		Powered by <a href="http://hexo.io" target="_blank" title="hexo">hexo</a> and Theme by <a href="https://github.com/wuchong/jacman" target="_blank" title="Jacman">Jacman</a> © 2020 
-		
-		<a href="/about" target="_blank" title="lvshifu">lvshifu</a>
-		
-		
-		</p>
-</div>
 </footer>
-    <script src="/js/jquery-2.0.3.min.js"></script>
-<script src="/js/jquery.imagesloaded.min.js"></script>
-<script src="/js/gallery.js"></script>
-<script src="/js/jquery.qrcode-0.12.0.min.js"></script>
 
-<script type="text/javascript">
-$(document).ready(function(){ 
-  $('.navbar').click(function(){
-    $('header nav').toggleClass('shownav');
-  });
-  var myWidth = 0;
-  function getSize(){
-    if( typeof( window.innerWidth ) == 'number' ) {
-      myWidth = window.innerWidth;
-    } else if( document.documentElement && document.documentElement.clientWidth) {
-      myWidth = document.documentElement.clientWidth;
-    };
-  };
-  var m = $('#main'),
-      a = $('#asidepart'),
-      c = $('.closeaside'),
-      o = $('.openaside');
-  c.click(function(){
-    a.addClass('fadeOut').css('display', 'none');
-    o.css('display', 'block').addClass('fadeIn');
-    m.addClass('moveMain');
-  });
-  o.click(function(){
-    o.css('display', 'none').removeClass('beforeFadeIn');
-    a.css('display', 'block').removeClass('fadeOut').addClass('fadeIn');      
-    m.removeClass('moveMain');
-  });
-  $(window).scroll(function(){
-    o.css("top",Math.max(80,260-$(this).scrollTop()));
-  });
-  
-  $(window).resize(function(){
-    getSize(); 
-    if (myWidth >= 1024) {
-      $('header nav').removeClass('shownav');
-    }else{
-      m.removeClass('moveMain');
-      a.css('display', 'block').removeClass('fadeOut');
-      o.css('display', 'none');
-      
-      $('#toc.toc-aside').css('display', 'none');
+    </div>
+    
+    
+    <script>
+    var disqus_shortname = 'lvshifu-github-io';
+    
+    
+    var disqus_url = 'http://example.com/2008/09/09/Java/java-p6spy/';
+    
+    (function() {
+    var dsq = document.createElement('script');
+    dsq.type = 'text/javascript';
+    dsq.async = true;
+    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+    </script>
+
+
+
+
+
+    
         
-    }
-  });
-});
-</script>
+<script src="/libs/lightgallery/js/lightgallery.min.js"></script>
 
-<script type="text/javascript">
-$(document).ready(function(){ 
-  var ai = $('.article-content>iframe'),
-      ae = $('.article-content>embed'),
-      t  = $('#toc'),
-      ta = $('#toc.toc-aside'),
-      o  = $('.openaside'),
-      c  = $('.closeaside');
-  if(ai.length>0){
-    ai.wrap('<div class="video-container" />');
-  };
-  if(ae.length>0){
-   ae.wrap('<div class="video-container" />');
-  };
-  c.click(function(){
-    ta.css('display', 'block').addClass('fadeIn');
-  });
-  o.click(function(){
-    ta.css('display', 'none');
-  });
-  $(window).scroll(function(){
-    ta.css("top",Math.max(140,320-$(this).scrollTop()));
-  });
-});
-</script>
+        
+<script src="/libs/lightgallery/js/lg-thumbnail.min.js"></script>
 
+        
+<script src="/libs/lightgallery/js/lg-pager.min.js"></script>
 
-<script type="text/javascript">
-$(document).ready(function(){ 
-  var $this = $('.share'),
-      url = $this.attr('data-url'),
-      encodedUrl = encodeURIComponent(url),
-      title = $this.attr('data-title'),
-      tsina = $this.attr('data-tsina'),
-      description = $this.attr('description');
-  var html = [
-  '<div class="hoverqrcode clearfix"></div>',
-  '<a class="overlay" id="qrcode"></a>',
-  '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="article-share-facebook" target="_blank" title="Facebook"></a>',
-  '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="article-share-twitter" target="_blank" title="Twitter"></a>',
-  '<a href="#qrcode" class="article-share-qrcode" title="微信"></a>',
-  '<a href="http://widget.renren.com/dialog/share?resourceUrl=' + encodedUrl + '&srcUrl=' + encodedUrl + '&title=' + title +'" class="article-share-renren" target="_blank" title="人人"></a>',
-  '<a href="http://service.weibo.com/share/share.php?title='+title+'&url='+encodedUrl +'&ralateUid='+ tsina +'&searchPic=true&style=number' +'" class="article-share-weibo" target="_blank" title="微博"></a>',
-  '<span title="Share to"></span>'
-  ].join('');
-  $this.append(html);
+        
+<script src="/libs/lightgallery/js/lg-autoplay.min.js"></script>
 
-  $('.hoverqrcode').hide();
+        
+<script src="/libs/lightgallery/js/lg-fullscreen.min.js"></script>
 
-  var myWidth = 0;
-  function updatehoverqrcode(){
-    if( typeof( window.innerWidth ) == 'number' ) {
-      myWidth = window.innerWidth;
-    } else if( document.documentElement && document.documentElement.clientWidth) {
-      myWidth = document.documentElement.clientWidth;
-    };
-    var qrsize = myWidth > 1024 ? 200:100;
-    var options = {render: 'image', size: qrsize, fill: '#2ca6cb', text: url, radius: 0.5, quiet: 1};
-    var p = $('.article-share-qrcode').position();
-    $('.hoverqrcode').empty().css('width', qrsize).css('height', qrsize)
-                          .css('left', p.left-qrsize/2+20).css('top', p.top-qrsize-10)
-                          .qrcode(options);
-  };
-  $(window).resize(function(){
-    $('.hoverqrcode').hide();
-  });
-  $('.article-share-qrcode').click(function(){
-    updatehoverqrcode();
-    $('.hoverqrcode').toggle();
-  });
-  $('.article-share-qrcode').hover(function(){}, function(){
-      $('.hoverqrcode').hide();
-  });
-});   
-</script>
+        
+<script src="/libs/lightgallery/js/lg-zoom.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-hash.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-share.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-video.min.js"></script>
+
+    
+    
+        
+<script src="/libs/justified-gallery/jquery.justifiedGallery.min.js"></script>
+
+    
+    
+
+    
+    
+    
 
 
 
+<!-- Custom Scripts -->
 
-<script type="text/javascript">
-
-var disqus_shortname = 'lvshifu-github-io';
-
-(function(){
-  var dsq = document.createElement('script');
-  dsq.type = 'text/javascript';
-  dsq.async = true;
-  dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
-  (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
-}());
-(function(){
-  var dsq = document.createElement('script');
-  dsq.type = 'text/javascript';
-  dsq.async = true;
-  dsq.src = '//' + disqus_shortname + '.disqus.com/count.js';
-  (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
-}());
-</script>
+<script src="/js/main.js"></script>
 
 
-
-
-
-
-<link rel="stylesheet" href="/fancybox/jquery.fancybox.css" media="screen" type="text/css">
-<script src="/fancybox/jquery.fancybox.pack.js"></script>
-<script type="text/javascript">
-$(document).ready(function(){ 
-  $('.article-content').each(function(i){
-    $(this).find('img').each(function(){
-      if ($(this).parent().hasClass('fancybox')) return;
-      var alt = this.alt;
-      if (alt) $(this).after('<span class="caption">' + alt + '</span>');
-      $(this).wrap('<a href="' + this.src + '" title="' + alt + '" class="fancybox"></a>');
-    });
-    $(this).find('.fancybox').each(function(){
-      $(this).attr('rel', 'article' + i);
-    });
-  });
-  if($.fancybox){
-    $('.fancybox').fancybox();
-  }
-}); 
-</script>
-
-
-
-<!-- Analytics Begin -->
-
-
-
-
-
-<!-- Analytics End -->
-
-<!-- Totop Begin -->
-
-	<div id="totop">
-	<a title="返回顶部"><img src="/img/scrollup.png"/></a>
-	</div>
-	<script src="/js/totop.js"></script>
-
-<!-- Totop End -->
-
-<!-- MathJax Begin -->
-<!-- mathjax config similar to math.stackexchange -->
-
-
-<!-- MathJax End -->
-
-<!-- Tiny_search Begin -->
-
-<!-- Tiny_search End -->
-
-  </body>
+</body>
 </html>

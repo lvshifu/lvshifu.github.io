@@ -1,107 +1,220 @@
-
- <!DOCTYPE HTML>
-<html lang="zh-CN">
+<!DOCTYPE html>
+<html>
 <head>
-  <meta charset="UTF-8">
-  
-    <title>SSH介绍 | lvshifu</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=no">
-    
-    <meta name="author" content="lvshifu">
+    <meta charset="utf-8" />
+
     
 
+    
+    <title>SSH介绍 | lvshifu</title>
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="keywords" content="SSH" />
     
     <meta name="description" content="SSH是什么SSH框架一般指的是Struts、Spring、Hibernate，后来Struts2代替了Struts。 SSM框架一般指的是Spring MVC、Spring、MyBatis。">
-<meta name="keywords" content="SSH">
 <meta property="og:type" content="article">
 <meta property="og:title" content="SSH介绍">
-<meta property="og:url" content="https://lvshifu.github.io/2017/07/28/SSH/ssh-note1/index.html">
+<meta property="og:url" content="http://example.com/2017/07/28/SSH/ssh-note1/index.html">
 <meta property="og:site_name" content="lvshifu">
 <meta property="og:description" content="SSH是什么SSH框架一般指的是Struts、Spring、Hibernate，后来Struts2代替了Struts。 SSM框架一般指的是Spring MVC、Spring、MyBatis。">
-<meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2020-04-13T04:17:54.773Z">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2017-07-28T07:18:02.000Z">
+<meta property="article:modified_time" content="2020-04-13T04:17:54.773Z">
+<meta property="article:author" content="lvshifu">
+<meta property="article:tag" content="SSH">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="SSH介绍">
-<meta name="twitter:description" content="SSH是什么SSH框架一般指的是Struts、Spring、Hibernate，后来Struts2代替了Struts。 SSM框架一般指的是Spring MVC、Spring、MyBatis。">
+    
 
     
-    <link rel="alternative" href="/atom.xml" title="lvshifu" type="application/atom+xml">
-    
-    
-    <link rel="icon" href="/img/smile.png">
-    
-    
-    <link rel="apple-touch-icon" href="/img/jacman.jpg">
-    <link rel="apple-touch-icon-precomposed" href="/img/jacman.jpg">
-    
-    <link rel="stylesheet" href="/css/style.css">
-</head>
 
-  <body>
-    <header>
-      
-<div>
-		
-			<div id="textlogo">
-				<h1 class="site-name"><a href="/" title="lvshifu">lvshifu</a></h1>
-				<h2 class="blog-motto"></h2>
-			</div>
-			<div class="navbar"><a class="navbutton navmobile" href="#" title="菜单">
-			</a></div>
-			<nav class="animated">
-				<ul>
-					<ul>
-					 
-						<li><a href="/">主页</a></li>
-					
-						<li><a href="/archives">归档</a></li>
-					
-						<li><a href="/tags">标签</a></li>
-					
-						<li><a href="/about">关于</a></li>
-					
-					<li>
- 					
-					<form class="search" action="/search/index.html" method="get" accept-charset="utf-8">
-						<label>Search</label>
-						<input type="search" id="search" autocomplete="off" name="q" maxlength="20" placeholder="搜索" />
-					</form>
-					
-					</li>
-				</ul>
-			</nav>			
+    
+
+    
+<link rel="stylesheet" href="/libs/font-awesome/css/font-awesome.min.css">
+
+    
+<link rel="stylesheet" href="/libs/titillium-web/styles.css">
+
+    
+<link rel="stylesheet" href="/libs/source-code-pro/styles.css">
+
+
+    
+<link rel="stylesheet" href="/css/style.css">
+
+
+    
+<script src="/libs/jquery/3.5.0/jquery.min.js"></script>
+
+    
+    
+        
+<link rel="stylesheet" href="/libs/lightgallery/css/lightgallery.min.css">
+
+    
+    
+        
+<link rel="stylesheet" href="/libs/justified-gallery/justifiedGallery.min.css">
+
+    
+    
+    
+    
+
+
+<meta name="generator" content="Hexo 5.3.0"></head>
+
+<body>
+    <div id="wrap">
+        <header id="header">
+    <div id="header-outer" class="outer">
+        <div class="container">
+            <div class="container-inner">
+                <div id="header-title">
+                    <h1 class="logo-wrap">
+                        <a href="/" class="logo"></a>
+                    </h1>
+                    
+                </div>
+                <div id="header-inner" class="nav-container">
+                    <a id="main-nav-toggle" class="nav-icon fa fa-bars"></a>
+                    <div class="nav-container-inner">
+                        <ul id="main-nav">
+                            
+                                <li class="main-nav-list-item" >
+                                    <a class="main-nav-list-link" href="/">主页</a>
+                                </li>
+                            
+                                    <ul class="main-nav-list"><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/Java/">Java</a></li></ul>
+                                
+                                <li class="main-nav-list-item" >
+                                    <a class="main-nav-list-link" href="/archives">归档</a>
+                                </li>
+                            
+                                <li class="main-nav-list-item" >
+                                    <a class="main-nav-list-link" href="/about/index.html">关于</a>
+                                </li>
+                            
+                        </ul>
+                        <nav id="sub-nav">
+                            <div id="search-form-wrap">
+
+    <form class="search-form">
+        <input type="text" class="ins-search-input search-form-input" placeholder="搜索" />
+        <button type="submit" class="search-form-submit"></button>
+    </form>
+    <div class="ins-search">
+    <div class="ins-search-mask"></div>
+    <div class="ins-search-container">
+        <div class="ins-input-wrapper">
+            <input type="text" class="ins-search-input" placeholder="想要查找什么..." />
+            <span class="ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
 </div>
-    </header>
-    <div id="container">
-      <div id="main" class="post" itemscope itemprop="blogPost">
-  
-	<article itemprop="articleBody"> 
-		<header class="article-info clearfix">
-  <h1 itemprop="name">
-    
-      <a href="/2017/07/28/SSH/ssh-note1/" title="SSH介绍" itemprop="url">SSH介绍</a>
-  </h1>
-  <p class="article-author">By
-       
-		<a href="/about" title="lvshifu" target="_blank" itemprop="author">lvshifu</a>
-		
-  <p class="article-time">
-    <time datetime="2017-07-28T07:18:02.000Z" itemprop="datePublished"> 发表于 2017-07-28</time>
-    
-  </p>
+<script>
+(function (window) {
+    var INSIGHT_CONFIG = {
+        TRANSLATION: {
+            POSTS: '文章',
+            PAGES: '页面',
+            CATEGORIES: '分类',
+            TAGS: '标签',
+            UNTITLED: '(未命名)',
+        },
+        ROOT_URL: '/',
+        CONTENT_URL: '/content.json',
+    };
+    window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+})(window);
+</script>
+
+<script src="/js/insight.js"></script>
+
+
+</div>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 </header>
-	<div class="article-content">
-		
-		<div id="toc" class="toc-article">
-			<strong class="toc-title">文章目录</strong>
-		
-			<ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#SSH是什么"><span class="toc-number">1.</span> <span class="toc-text">SSH是什么</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#标准SSH框架"><span class="toc-number">2.</span> <span class="toc-text">标准SSH框架</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#Struts"><span class="toc-number">2.1.</span> <span class="toc-text">Struts</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Spring"><span class="toc-number">2.2.</span> <span class="toc-text">Spring</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Hibernate"><span class="toc-number">2.3.</span> <span class="toc-text">Hibernate</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#SSH深入理解"><span class="toc-number">2.4.</span> <span class="toc-text">SSH深入理解</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#公司框架发展"><span class="toc-number">2.5.</span> <span class="toc-text">公司框架发展</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#海事框架"><span class="toc-number">3.</span> <span class="toc-text">海事框架</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#2013框架"><span class="toc-number">4.</span> <span class="toc-text">2013框架</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#海事框架-和-2013框架比较"><span class="toc-number">5.</span> <span class="toc-text">海事框架 和 2013框架比较</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#配置（struts-xml）"><span class="toc-number">5.1.</span> <span class="toc-text">配置（struts.xml）</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#海事框架-1"><span class="toc-number">5.1.1.</span> <span class="toc-text">海事框架</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2013采用免配置方案"><span class="toc-number">5.1.2.</span> <span class="toc-text">2013采用免配置方案</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#默认路由"><span class="toc-number">5.2.</span> <span class="toc-text">默认路由</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#分层"><span class="toc-number">5.3.</span> <span class="toc-text">分层</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#海事框架-2"><span class="toc-number">5.3.1.</span> <span class="toc-text">海事框架</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2013框架-1"><span class="toc-number">5.3.2.</span> <span class="toc-text">2013框架</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#ORM（Hibernate-VS-JPA）"><span class="toc-number">5.4.</span> <span class="toc-text">ORM（Hibernate VS JPA）</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#海事框架采用Hibernate"><span class="toc-number">5.4.1.</span> <span class="toc-text">海事框架采用Hibernate</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2013框架采用HibernateJPA"><span class="toc-number">5.4.2.</span> <span class="toc-text">2013框架采用HibernateJPA</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#事务"><span class="toc-number">5.5.</span> <span class="toc-text">事务</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#2013框架特色"><span class="toc-number">6.</span> <span class="toc-text">2013框架特色</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#页面参数"><span class="toc-number">6.1.</span> <span class="toc-text">页面参数</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Spring-security集成"><span class="toc-number">6.2.</span> <span class="toc-text">Spring security集成</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Sitemesh应用"><span class="toc-number">6.3.</span> <span class="toc-text">Sitemesh应用</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#使用2013框架建立项目步骤"><span class="toc-number">7.</span> <span class="toc-text">使用2013框架建立项目步骤</span></a></li></ol>
-		
-		</div>
-		
-		<h1 id="SSH是什么"><a href="#SSH是什么" class="headerlink" title="SSH是什么"></a>SSH是什么</h1><p>SSH框架一般指的是Struts、Spring、Hibernate，后来Struts2代替了Struts。</p>
+
+        <div class="container">
+            <div class="main-body container-inner">
+                <div class="main-body-inner">
+                    <section id="main">
+                        <div class="main-body-header">
+    <h1 class="header">
+    
+    未分类
+    </h1>
+</div>
+
+                        <div class="main-body-content">
+                            <article id="post-SSH/ssh-note1" class="article article-single article-type-post" itemscope itemprop="blogPost">
+    <div class="article-inner">
+        
+            <header class="article-header">
+                
+    
+        <h1 class="article-title" itemprop="name">
+        SSH介绍
+        </h1>
+    
+
+            </header>
+        
+        
+            <div class="article-meta">
+                
+  <div class="article-date">
+    <i class="fa fa-calendar"></i>
+    <a href="/2017/07/28/SSH/ssh-note1/" class="article-date">
+       <time datetime="2017-07-28T07:18:02.000Z" itemprop="datePublished">2017-07-28</time>
+    </a>
+  </div>
+
+
+<div class="article-date">
+  <i class="fa fa-calendar-plus-o"></i>
+  <a href="/2017/07/28/SSH/ssh-note1/" class="article-date">
+     <time datetime="2020-04-13T04:17:54.773Z" itemprop="dateModified">2020-04-13</time>
+  </a>
+</div>
+
+
+                
+
+                
+    <div class="article-tag">
+        <i class="fa fa-tag"></i>
+        <a class="tag-link-link" href="/tags/SSH/" rel="tag">SSH</a>
+    </div>
+
+                
+
+                
+
+            </div>
+        
+        
+        <div class="article-entry" itemprop="articleBody">
+            
+
+            
+
+            
+
+            <h1 id="SSH是什么"><a href="#SSH是什么" class="headerlink" title="SSH是什么"></a>SSH是什么</h1><p>SSH框架一般指的是Struts、Spring、Hibernate，后来Struts2代替了Struts。</p>
 <p>SSM框架一般指的是Spring MVC、Spring、MyBatis。</p>
 <a id="more"></a>
+
 <h1 id="标准SSH框架"><a href="#标准SSH框架" class="headerlink" title="标准SSH框架"></a>标准SSH框架</h1><h2 id="Struts"><a href="#Struts" class="headerlink" title="Struts"></a>Struts</h2><p>Struts1(2000年~2008年12月)，最后一个正式版（1.3.10）。<br>2013年4月5日，Struts开发组宣布终止了Struts 1的软件开发周期。</p>
 <p>Struts2(2007年2月~)<br>Struts2并不是Struts1的升级版，而是由WebWork 2.2变化而来。</p>
 <h2 id="Spring"><a href="#Spring" class="headerlink" title="Spring"></a>Spring</h2><ul>
@@ -121,9 +234,9 @@
 <li>2016年6月 Spring4.3发布。</li>
 </ul>
 <p>JDK 8+ for Spring Framework 5.x(SNAPSHOT)<br>JDK 6+ for Spring Framework 4.x<br>JDK 5+ for Spring Framework 3.x<br>JDK 1.4+ for Spring Framework 2.5<br>JDK 1.3+ for Spring Framework 2.0</p>
-<p><a href="https://github.com/spring-projects/spring-framework/wiki/What%27s-New-in-the-Spring-Framework" target="_blank" rel="external">What’s New in the Spring Framework</a></p>
-<p><a href="http://repo.spring.io/release/org/springframework/spring/" target="_blank" rel="external">Spring 各版本下载</a></p>
-<p>下面的Spring docs可以查看Spring所有版本的RELEASE NOTE。<br><a href="https://docs.spring.io/spring/docs/" target="_blank" rel="external">Spring docs</a></p>
+<p><a target="_blank" rel="noopener" href="https://github.com/spring-projects/spring-framework/wiki/What%27s-New-in-the-Spring-Framework">What’s New in the Spring Framework</a></p>
+<p><a target="_blank" rel="noopener" href="http://repo.spring.io/release/org/springframework/spring/">Spring 各版本下载</a></p>
+<p>下面的Spring docs可以查看Spring所有版本的RELEASE NOTE。<br><a target="_blank" rel="noopener" href="https://docs.spring.io/spring/docs/">Spring docs</a></p>
 <p>Spring核心功能：</p>
 <p>IoC(Inversion of Control)控制反转<br>DI(Dependency Injection)依赖注入<br>AOP(aspect-oriented programming)面向切面编程</p>
 <p>Spring 1.x 通过XML配置文件实现解耦<br>Spring 2.0 初步引入注解配置<br>Spring 2.5 @Autowired, 增加了component-scan, 大大减少了配置工作量<br>Spring 3.x 开始支持JavaConfig</p>
@@ -132,9 +245,9 @@
 2002年，已经有人开始关注和使用Hibernate了。
 2003年9月，Hibernate开发团队进入JBoss公司，开始全职开发Hibernate，从这个时候开始Hibernate得到了突飞猛进的普及和发展。
 2004年，整个Java社区开始从实体bean向Hibernate转移，特别是在Rod Johnson的著作《Expert One-on-One J2EE Development without EJB》出版后，由于这本书以扎实的理论、充分的论据和详实的论述否定了EJB，提出了轻量级敏捷开发理念之后，以Hibernate和Spring为代表的轻量级开源框架开始成为Java世界的主流和事实标准。在2004年Sun领导的J2EE5.0标准制定当中的持久化框架标准正式以Hibernate为蓝本。
-2006年，J2EE5.0标准正式发布以后，持久化框架标准Java Persistent API（简称JPA）基本上是参考Hibernate实现的，而Hibernate在3.2版本开始，已经完全兼容JPA标准。
-</code></pre><p>2015年08月 v5.0.0Final<br>2011年12月 v4.0.0Final<br>2005年03月 v3.0.0Final<br>2003年06月 v2.0.0Final<br>2002年07月 v1.0.0Final</p>
-<h2 id="SSH深入理解"><a href="#SSH深入理解" class="headerlink" title="SSH深入理解"></a>SSH深入理解</h2><p><a href="http://www.cnblogs.com/itao/archive/2011/08/22/2148844.html" target="_blank" rel="external">深入浅出的理解框架（Struts2、Hibernate、Spring）与 MVC 设计模式</a><br><a href="http://www.cnblogs.com/RunForLove/p/4641672.html" target="_blank" rel="external">Spring发展历程总结</a></p>
+2006年，J2EE5.0标准正式发布以后，持久化框架标准Java Persistent API（简称JPA）基本上是参考Hibernate实现的，而Hibernate在3.2版本开始，已经完全兼容JPA标准。</code></pre>
+<p>2015年08月 v5.0.0Final<br>2011年12月 v4.0.0Final<br>2005年03月 v3.0.0Final<br>2003年06月 v2.0.0Final<br>2002年07月 v1.0.0Final</p>
+<h2 id="SSH深入理解"><a href="#SSH深入理解" class="headerlink" title="SSH深入理解"></a>SSH深入理解</h2><p><a target="_blank" rel="noopener" href="http://www.cnblogs.com/itao/archive/2011/08/22/2148844.html">深入浅出的理解框架（Struts2、Hibernate、Spring）与 MVC 设计模式</a><br><a target="_blank" rel="noopener" href="http://www.cnblogs.com/RunForLove/p/4641672.html">Spring发展历程总结</a></p>
 <h2 id="公司框架发展"><a href="#公司框架发展" class="headerlink" title="公司框架发展"></a>公司框架发展</h2><ul>
 <li>2007 JDK1.4+Struts1.x+Hibernate2.x</li>
 <li>2008 JDK1.4+Struts1.x+Spring2.x+Hibernate2.x</li>
@@ -161,34 +274,34 @@
       &lt;result name=&quot;success&quot;&gt;/common/Success.jsp&lt;/result&gt;
       &lt;result name=&quot;json&quot;&gt;/common/JsonData.jsp&lt;/result&gt;
       &lt;result name=&quot;jsonFoAjax&quot;&gt;/common/JsonData2.jsp&lt;/result&gt;
-      &lt;result name=&quot;forward&quot;&gt;${forward}&lt;/result&gt;
+      &lt;result name=&quot;forward&quot;&gt;$&#123;forward&#125;&lt;/result&gt;
     &lt;/global-results&gt;
   &lt;/package&gt;
 
   &lt;package name=&quot;jcpt&quot; namespace=&quot;/jcpt&quot; extends=&quot;jcpt-global&quot;&gt;
-    &lt;action name=&quot;*@*&quot; method=&quot;{1}&quot; class=&quot;ces.jcpt.business.action.{2}&quot;&gt;
+    &lt;action name=&quot;*@*&quot; method=&quot;&#123;1&#125;&quot; class=&quot;ces.jcpt.business.action.&#123;2&#125;&quot;&gt;
       &lt;result name=&quot;input&quot;&gt;/common/Error.jsp&lt;/result&gt;
     &lt;/action&gt;
   &lt;/package&gt;
-&lt;/struts&gt;
-</code></pre><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">package</span> ces.jcpt.business.action;</div><div class="line"></div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">AnswerAction</span> </span>&#123;</div><div class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">addOrUpdate</span><span class="params">()</span> </span>&#123;</div><div class="line">        String forward = <span class="string">"/jcpt/website/zxsl/zxdb/answer.jsp"</span>;</div><div class="line">        setForward(forward);</div><div class="line">        <span class="keyword">return</span> <span class="string">"forward"</span>;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+&lt;/struts&gt;</code></pre>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> ces.jcpt.business.action;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">AnswerAction</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">addOrUpdate</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        String forward = <span class="string">&quot;/jcpt/website/zxsl/zxdb/answer.jsp&quot;</span>;</span><br><span class="line">        setForward(forward);</span><br><span class="line">        <span class="keyword">return</span> <span class="string">&quot;forward&quot;</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>对于上面的AnswerAction来说，对应的配置为</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">&lt;package name=&quot;jcpt&quot; namespace=&quot;/jcpt&quot; extends=&quot;jcpt-global&quot;&gt;</div><div class="line">  &lt;action name=&quot;addOrUpdate@AnswerAction&quot; method=&quot;addOrUpdate&quot; class=&quot;ces.jcpt.business.action.AnswerAction&quot;&gt;</div><div class="line">    &lt;result name=&quot;input&quot;&gt;/common/Error.jsp&lt;/result&gt;</div><div class="line">  &lt;/action&gt;</div><div class="line">&lt;/package&gt;</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&lt;package name&#x3D;&quot;jcpt&quot; namespace&#x3D;&quot;&#x2F;jcpt&quot; extends&#x3D;&quot;jcpt-global&quot;&gt;</span><br><span class="line">  &lt;action name&#x3D;&quot;addOrUpdate@AnswerAction&quot; method&#x3D;&quot;addOrUpdate&quot; class&#x3D;&quot;ces.jcpt.business.action.AnswerAction&quot;&gt;</span><br><span class="line">    &lt;result name&#x3D;&quot;input&quot;&gt;&#x2F;common&#x2F;Error.jsp&lt;&#x2F;result&gt;</span><br><span class="line">  &lt;&#x2F;action&gt;</span><br><span class="line">&lt;&#x2F;package&gt;</span><br></pre></td></tr></table></figure>
 <p>即访问URL为 <code>/jcpt/addOrUpdate@AnswerAction</code>。</p>
 <p>但是在<code>UserDefinedActionMapper</code>中，覆盖了<code>DefaultActionMapper</code>，所以<code>/jcpt/admin/xxxxx/addOrUpdate@AnswerAction</code> 这样的URL也可以正常处理。</p>
 <h3 id="2013采用免配置方案"><a href="#2013采用免配置方案" class="headerlink" title="2013采用免配置方案"></a>2013采用免配置方案</h3><p>struts2-convention-plugin-2.3.15.1.jar<br>convention-plugin采用”约定大于配置”的思想，实现零配置。</p>
-<p><a href="https://struts.apache.org/docs/convention-plugin.html" target="_blank" rel="external">https://struts.apache.org/docs/convention-plugin.html</a><br><a href="http://javeye.iteye.com/blog/358744" target="_blank" rel="external">http://javeye.iteye.com/blog/358744</a><br><a href="http://www.blogjava.net/fancydeepin/archive/2012/10/26/struts2_convention_plugin.html" target="_blank" rel="external">http://www.blogjava.net/fancydeepin/archive/2012/10/26/struts2_convention_plugin.html</a></p>
-<p>struts2-config-browser-plugin-2.3.15.1.jar<br>config-browser-plugin用于在运行时浏览项目中的载入Struts配置，包括所有action及其与jsp view的映射。<br>如果不清楚Action最终出来的url是啥，或者不清楚某个url最终会对应到哪个jsp文件，访问下面的URL即可。<br><a href="http://localhost:8080/{你的项目名称}/config-browser/" target="_blank" rel="external">http://localhost:8080/{你的项目名称}/config-browser/</a><br><a href="http://localhost:8080/{你的项目名称}/config-browser/actionNames.xhtml" target="_blank" rel="external">http://localhost:8080/{你的项目名称}/config-browser/actionNames.xhtml</a></p>
+<p><a target="_blank" rel="noopener" href="https://struts.apache.org/docs/convention-plugin.html">https://struts.apache.org/docs/convention-plugin.html</a><br><a target="_blank" rel="noopener" href="http://javeye.iteye.com/blog/358744">http://javeye.iteye.com/blog/358744</a><br><a target="_blank" rel="noopener" href="http://www.blogjava.net/fancydeepin/archive/2012/10/26/struts2_convention_plugin.html">http://www.blogjava.net/fancydeepin/archive/2012/10/26/struts2_convention_plugin.html</a></p>
+<p>struts2-config-browser-plugin-2.3.15.1.jar<br>config-browser-plugin用于在运行时浏览项目中的载入Struts配置，包括所有action及其与jsp view的映射。<br>如果不清楚Action最终出来的url是啥，或者不清楚某个url最终会对应到哪个jsp文件，访问下面的URL即可。<br><a target="_blank" rel="noopener" href="http://localhost:8080/%7B%E4%BD%A0%E7%9A%84%E9%A1%B9%E7%9B%AE%E5%90%8D%E7%A7%B0%7D/config-browser/">http://localhost:8080/{你的项目名称}/config-browser/</a><br><a target="_blank" rel="noopener" href="http://localhost:8080/%7B%E4%BD%A0%E7%9A%84%E9%A1%B9%E7%9B%AE%E5%90%8D%E7%A7%B0%7D/config-browser/actionNames.xhtml">http://localhost:8080/{你的项目名称}/config-browser/actionNames.xhtml</a></p>
 <p>convention-plugin使用后，所有Action不再继承自默认defaultStack对应的package</p>
-<p>struts2-rest-plugin-2.3.15.1.jar<br>rest-plugin用于让struts2支持REST风格。<br><a href="https://www.ibm.com/developerworks/cn/java/j-lo-struts2rest/" target="_blank" rel="external">https://www.ibm.com/developerworks/cn/java/j-lo-struts2rest/</a></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div></pre></td><td class="code"><pre><div class="line">&lt;struts&gt;</div><div class="line">  &lt;!--constant name=&quot;struts.devMode&quot; value=&quot;true&quot; /--&gt;</div><div class="line">  &lt;constant name=&quot;struts.mapper.alwaysSelectFullNamespace&quot; value=&quot;false&quot; /&gt;</div><div class="line">    &lt;!-- 取消Rest只有在出错或Get方式才返回数据限制 --&gt;</div><div class="line">  &lt;constant name=&quot;struts.rest.content.restrictToGET&quot; value=&quot;false&quot;/&gt;</div><div class="line"></div><div class="line">  &lt;constant name=&quot;struts.i18n.encoding&quot; value=&quot;UTF-8&quot;/&gt;</div><div class="line">    &lt;!-- Action的类名以Controller为后缀 --&gt;</div><div class="line">    &lt;constant name=&quot;struts.convention.action.suffix&quot; value=&quot;Controller&quot;/&gt;</div><div class="line">  &lt;!-- Action中没有@Action注解也创建映射 --&gt;</div><div class="line">    &lt;constant name=&quot;struts.convention.action.mapAllMatches&quot; value=&quot;true&quot;/&gt;</div><div class="line">    &lt;constant name=&quot;struts.convention.result.flatLayout&quot; value=&quot;false&quot;/&gt;</div><div class="line">    &lt;!-- Action默认REST风格，继承rest-default --&gt;</div><div class="line">    &lt;constant name=&quot;struts.convention.default.parent.package&quot; value=&quot;rest-default&quot;/&gt;</div><div class="line"></div><div class="line">  &lt;!-- Action类所在的包 --&gt;</div><div class="line">  &lt;!--constant name=&quot;struts.convention.action.packages&quot; value=&quot;com.ces.xarch.core.web&quot;/--&gt;</div><div class="line">  &lt;!-- 设置Convention插件文件协议类型 --&gt;</div><div class="line">    &lt;constant name=&quot;struts.convention.action.fileProtocols&quot; value=&quot;jar,zip,wsjar&quot; /&gt;</div><div class="line">  &lt;!-- 设置Convention插件需要搜索的jar包 --&gt;</div><div class="line">    &lt;constant name=&quot;struts.convention.action.includeJars&quot; value=&quot;.*?/xarch-\d+\.\d+\.\d+\.jar(!/)?,.*?/xarch-security-\d+\.\d+\.jar(!/)?,.*?/*-plugin-\d+\.\d+\.jar(!/)?,.*/xarch-project-*?jar(!/)?&quot; /&gt;</div><div class="line">  &lt;!-- 搜索以web为结尾的包 --&gt;</div><div class="line">    &lt;constant name=&quot;struts.convention.package.locators&quot; value=&quot;action,actions,struts,struts2,web&quot;/&gt;</div><div class="line">  &lt;!-- 不扫描的包 --&gt;</div><div class="line">  &lt;constant name=&quot;struts.convention.exclude.packages&quot; value=&quot;com.ces.xarch.core.web&quot; /&gt;</div><div class="line">    &lt;!-- 页面文件存放位置 --&gt;</div><div class="line">  &lt;constant name=&quot;struts.convention.result.path&quot; value=&quot;/WEB-INF/views&quot;/&gt;</div><div class="line">  &lt;!-- 设置不需要处理的资源，多个用“,”进行分隔 --&gt;</div><div class="line">  &lt;constant name=&quot;struts.action.excludePattern&quot; value=&quot;/services/.*,/res/.*,/views/.*&quot;/&gt;</div><div class="line"></div><div class="line">  &lt;!-- 指定允许上传的文件最大字节数。默认值是2097152(2M)，现修改为1G --&gt;</div><div class="line">    &lt;!--constant name=&quot;struts.multipart.maxSize&quot; value=&quot;1073741824&quot;/--&gt;</div><div class="line">    &lt;!-- 设置上传文件的临时文件夹,默认使用javax.servlet.context.tempdir --&gt;</div><div class="line">    &lt;!--constant name=&quot;struts.multipart.saveDir &quot; value=&quot;d:/tmp&quot; /--&gt;</div><div class="line"></div><div class="line">  &lt;!-- 注意，在最新的struts2版本中，要想在JSP中通过OGNL表达式访问静态方法，则必须配置如下constant： --&gt;</div><div class="line">  &lt;!--constant name=&quot;struts.ognl.allowStaticMethodAccess&quot; value=&quot;true&quot;/--&gt;</div><div class="line">&lt;/struts&gt;</div></pre></td></tr></table></figure>
+<p>struts2-rest-plugin-2.3.15.1.jar<br>rest-plugin用于让struts2支持REST风格。<br><a target="_blank" rel="noopener" href="https://www.ibm.com/developerworks/cn/java/j-lo-struts2rest/">https://www.ibm.com/developerworks/cn/java/j-lo-struts2rest/</a></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line">&lt;struts&gt;</span><br><span class="line">  &lt;!--constant name&#x3D;&quot;struts.devMode&quot; value&#x3D;&quot;true&quot; &#x2F;--&gt;</span><br><span class="line">  &lt;constant name&#x3D;&quot;struts.mapper.alwaysSelectFullNamespace&quot; value&#x3D;&quot;false&quot; &#x2F;&gt;</span><br><span class="line">    &lt;!-- 取消Rest只有在出错或Get方式才返回数据限制 --&gt;</span><br><span class="line">  &lt;constant name&#x3D;&quot;struts.rest.content.restrictToGET&quot; value&#x3D;&quot;false&quot;&#x2F;&gt;</span><br><span class="line"></span><br><span class="line">  &lt;constant name&#x3D;&quot;struts.i18n.encoding&quot; value&#x3D;&quot;UTF-8&quot;&#x2F;&gt;</span><br><span class="line">    &lt;!-- Action的类名以Controller为后缀 --&gt;</span><br><span class="line">    &lt;constant name&#x3D;&quot;struts.convention.action.suffix&quot; value&#x3D;&quot;Controller&quot;&#x2F;&gt;</span><br><span class="line">  &lt;!-- Action中没有@Action注解也创建映射 --&gt;</span><br><span class="line">    &lt;constant name&#x3D;&quot;struts.convention.action.mapAllMatches&quot; value&#x3D;&quot;true&quot;&#x2F;&gt;</span><br><span class="line">    &lt;constant name&#x3D;&quot;struts.convention.result.flatLayout&quot; value&#x3D;&quot;false&quot;&#x2F;&gt;</span><br><span class="line">    &lt;!-- Action默认REST风格，继承rest-default --&gt;</span><br><span class="line">    &lt;constant name&#x3D;&quot;struts.convention.default.parent.package&quot; value&#x3D;&quot;rest-default&quot;&#x2F;&gt;</span><br><span class="line"></span><br><span class="line">  &lt;!-- Action类所在的包 --&gt;</span><br><span class="line">  &lt;!--constant name&#x3D;&quot;struts.convention.action.packages&quot; value&#x3D;&quot;com.ces.xarch.core.web&quot;&#x2F;--&gt;</span><br><span class="line">  &lt;!-- 设置Convention插件文件协议类型 --&gt;</span><br><span class="line">    &lt;constant name&#x3D;&quot;struts.convention.action.fileProtocols&quot; value&#x3D;&quot;jar,zip,wsjar&quot; &#x2F;&gt;</span><br><span class="line">  &lt;!-- 设置Convention插件需要搜索的jar包 --&gt;</span><br><span class="line">    &lt;constant name&#x3D;&quot;struts.convention.action.includeJars&quot; value&#x3D;&quot;.*?&#x2F;xarch-\d+\.\d+\.\d+\.jar(!&#x2F;)?,.*?&#x2F;xarch-security-\d+\.\d+\.jar(!&#x2F;)?,.*?&#x2F;*-plugin-\d+\.\d+\.jar(!&#x2F;)?,.*&#x2F;xarch-project-*?jar(!&#x2F;)?&quot; &#x2F;&gt;</span><br><span class="line">  &lt;!-- 搜索以web为结尾的包 --&gt;</span><br><span class="line">    &lt;constant name&#x3D;&quot;struts.convention.package.locators&quot; value&#x3D;&quot;action,actions,struts,struts2,web&quot;&#x2F;&gt;</span><br><span class="line">  &lt;!-- 不扫描的包 --&gt;</span><br><span class="line">  &lt;constant name&#x3D;&quot;struts.convention.exclude.packages&quot; value&#x3D;&quot;com.ces.xarch.core.web&quot; &#x2F;&gt;</span><br><span class="line">    &lt;!-- 页面文件存放位置 --&gt;</span><br><span class="line">  &lt;constant name&#x3D;&quot;struts.convention.result.path&quot; value&#x3D;&quot;&#x2F;WEB-INF&#x2F;views&quot;&#x2F;&gt;</span><br><span class="line">  &lt;!-- 设置不需要处理的资源，多个用“,”进行分隔 --&gt;</span><br><span class="line">  &lt;constant name&#x3D;&quot;struts.action.excludePattern&quot; value&#x3D;&quot;&#x2F;services&#x2F;.*,&#x2F;res&#x2F;.*,&#x2F;views&#x2F;.*&quot;&#x2F;&gt;</span><br><span class="line"></span><br><span class="line">  &lt;!-- 指定允许上传的文件最大字节数。默认值是2097152(2M)，现修改为1G --&gt;</span><br><span class="line">    &lt;!--constant name&#x3D;&quot;struts.multipart.maxSize&quot; value&#x3D;&quot;1073741824&quot;&#x2F;--&gt;</span><br><span class="line">    &lt;!-- 设置上传文件的临时文件夹,默认使用javax.servlet.context.tempdir --&gt;</span><br><span class="line">    &lt;!--constant name&#x3D;&quot;struts.multipart.saveDir &quot; value&#x3D;&quot;d:&#x2F;tmp&quot; &#x2F;--&gt;</span><br><span class="line"></span><br><span class="line">  &lt;!-- 注意，在最新的struts2版本中，要想在JSP中通过OGNL表达式访问静态方法，则必须配置如下constant： --&gt;</span><br><span class="line">  &lt;!--constant name&#x3D;&quot;struts.ognl.allowStaticMethodAccess&quot; value&#x3D;&quot;true&quot;&#x2F;--&gt;</span><br><span class="line">&lt;&#x2F;struts&gt;</span><br></pre></td></tr></table></figure>
 <p>从上面的配置看，应用自动搜索以 <code>action,actions,struts,struts2,web</code> 结尾的包，查找以Controller结尾的类。<br>Convention默认去掉类名的后缀（此处为Controller）部分。然后将将每个分部的首字母转为小写，用’-’分割，来确定URL。<br>如：CaseInfoController.java -&gt; case-info, TaskController -&gt; task 。</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="meta">@Namespaces</span>(&#123;</div><div class="line">	<span class="meta">@Namespace</span>(<span class="string">"/voiture"</span>)</div><div class="line">&#125;)</div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">VoitureDispatchManageController</span></span>&#123;</div><div class="line">  	<span class="function"><span class="keyword">public</span> Object <span class="title">applyIndex</span><span class="params">()</span> </span>&#123;</div><div class="line">	    	<span class="keyword">return</span> <span class="keyword">new</span> DefaultHttpHeaders(<span class="string">"applyIndex"</span>).disableCaching();</div><div class="line">	  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Namespaces(&#123;</span></span><br><span class="line"><span class="meta">	@Namespace(&quot;/voiture&quot;)</span></span><br><span class="line"><span class="meta">&#125;)</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">VoitureDispatchManageController</span></span>&#123;</span><br><span class="line">  	<span class="function"><span class="keyword">public</span> Object <span class="title">applyIndex</span><span class="params">()</span> </span>&#123;</span><br><span class="line">	    	<span class="keyword">return</span> <span class="keyword">new</span> DefaultHttpHeaders(<span class="string">&quot;applyIndex&quot;</span>).disableCaching();</span><br><span class="line">	  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>上面的applyIndex对应的URL即为 /voiture/voiture-dispatch-manage!applyIndex<br>映射路径为 /WEB-INF/views/voiture/voiture-dispatch-manage/applyIndex.*</p>
 <pre><code>task!index         没有后缀：返回JSPX、VM、JSPF、JSP、FTL、HTML、HTM文件
 task!index.json    json：返回json字符串
-task!index.xml     xml：返回xml字符串
-</code></pre><h2 id="默认路由"><a href="#默认路由" class="headerlink" title="默认路由"></a>默认路由</h2><table>
+task!index.xml     xml：返回xml字符串</code></pre>
+<h2 id="默认路由"><a href="#默认路由" class="headerlink" title="默认路由"></a>默认路由</h2><table>
 <thead>
 <tr>
 <th>HTTP方法</th>
@@ -199,13 +312,13 @@ task!index.xml     xml：返回xml字符串
 <th>说明</th>
 </tr>
 </thead>
-<tbody>
-<tr>
+<tbody><tr>
 <td>GET</td>
 <td>/test</td>
 <td>index</td>
 <td></td>
 <td>test/index.*</td>
+<td></td>
 </tr>
 <tr>
 <td>GET</td>
@@ -229,6 +342,7 @@ task!index.xml     xml：返回xml字符串
 <td>editNew</td>
 <td></td>
 <td>test/index-new.*</td>
+<td></td>
 </tr>
 <tr>
 <td>POST</td>
@@ -236,6 +350,7 @@ task!index.xml     xml：返回xml字符串
 <td>create</td>
 <td></td>
 <td>success.jsp</td>
+<td></td>
 </tr>
 <tr>
 <td>PUT</td>
@@ -243,6 +358,7 @@ task!index.xml     xml：返回xml字符串
 <td>update</td>
 <td>id=2</td>
 <td>success.jsp</td>
+<td></td>
 </tr>
 <tr>
 <td>DELETE</td>
@@ -250,6 +366,7 @@ task!index.xml     xml：返回xml字符串
 <td>destroy</td>
 <td>id=2</td>
 <td>success.jsp</td>
+<td></td>
 </tr>
 <tr>
 <td>POST</td>
@@ -283,11 +400,10 @@ task!index.xml     xml：返回xml字符串
 <td></td>
 <td>工作流参数</td>
 </tr>
-</tbody>
-</table>
+</tbody></table>
 <h2 id="分层"><a href="#分层" class="headerlink" title="分层"></a>分层</h2><h3 id="海事框架-2"><a href="#海事框架-2" class="headerlink" title="海事框架"></a>海事框架</h3><p>Action  &lt;–&gt;  Bo  &lt;–&gt; HibernateDao  &lt;–&gt; Bean</p>
 <p>DAO层缩减为HibernateDao，Bo层通过Hibernate的DetachedCriteria进行复杂查询。<br>Bean对应单表。<br>Action中通过</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line">App.getHibernateTransactionTemplate().execute(<span class="keyword">new</span> TransactionCallback() &#123;</div><div class="line">	<span class="function"><span class="keyword">public</span> Object <span class="title">doInTransaction</span><span class="params">(TransactionStatus ts)</span> </span>&#123;</div><div class="line">		<span class="keyword">try</span> &#123;</div><div class="line">			trans.run();</div><div class="line">		&#125; <span class="keyword">catch</span> (Throwable e) &#123;</div><div class="line">			ts.setRollbackOnly();</div><div class="line">			trans.setTransactionException(<span class="keyword">new</span> TransactionException(e));</div><div class="line">		&#125;</div><div class="line">		<span class="keyword">return</span> <span class="keyword">null</span>;</div><div class="line">	&#125;</div><div class="line">&#125;);</div><div class="line">TransactionException e = trans.getTransctionException();</div><div class="line"><span class="keyword">if</span> (e != <span class="keyword">null</span>)</div><div class="line">	<span class="keyword">throw</span> e;</div></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">App.getHibernateTransactionTemplate().execute(<span class="keyword">new</span> TransactionCallback() &#123;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> Object <span class="title">doInTransaction</span><span class="params">(TransactionStatus ts)</span> </span>&#123;</span><br><span class="line">		<span class="keyword">try</span> &#123;</span><br><span class="line">			trans.run();</span><br><span class="line">		&#125; <span class="keyword">catch</span> (Throwable e) &#123;</span><br><span class="line">			ts.setRollbackOnly();</span><br><span class="line">			trans.setTransactionException(<span class="keyword">new</span> TransactionException(e));</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">return</span> <span class="keyword">null</span>;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;);</span><br><span class="line">TransactionException e = trans.getTransctionException();</span><br><span class="line"><span class="keyword">if</span> (e != <span class="keyword">null</span>)</span><br><span class="line">	<span class="keyword">throw</span> e;</span><br></pre></td></tr></table></figure>
 <pre><code>&lt;!--hiberate事务管理器--&gt;
 &lt;bean id=&quot;hibernateTransactionManager&quot; class=&quot;org.springframework.orm.hibernate3.HibernateTransactionManager&quot;&gt;
   &lt;property name=&quot;sessionFactory&quot;&gt;
@@ -299,15 +415,15 @@ task!index.xml     xml：返回xml字符串
   &lt;property name=&quot;transactionManager&quot;&gt;
     &lt;ref bean=&quot;hibernateTransactionManager&quot; /&gt;
   &lt;/property&gt;
-&lt;/bean&gt;
-</code></pre><p>的方式进行事务处理。</p>
+&lt;/bean&gt;</code></pre>
+<p>的方式进行事务处理。</p>
 <p><strong>Spring的编程式事务管理</strong></p>
 <h3 id="2013框架-1"><a href="#2013框架-1" class="headerlink" title="2013框架"></a>2013框架</h3><p>Controller  &lt;–&gt;  Service  &lt;–&gt; Dao  &lt;–&gt;  Entity</p>
 <p>Entity对应单表。<br>Dao使用JPA方式，定义接口，JPA自动实现，复杂查询采用nativeQuery方式。<br>Service层中通过@Transactional 标签处理事务。多表联合查询使用JdbcTemplate或者EntityManager实现。<br>Cntroller层调用Service完成业务处理。</p>
 <p><strong>Spring的声明式事务管理</strong></p>
 <h2 id="ORM（Hibernate-VS-JPA）"><a href="#ORM（Hibernate-VS-JPA）" class="headerlink" title="ORM（Hibernate VS JPA）"></a>ORM（Hibernate VS JPA）</h2><h3 id="海事框架采用Hibernate"><a href="#海事框架采用Hibernate" class="headerlink" title="海事框架采用Hibernate"></a>海事框架采用Hibernate</h3><p>支持使用Hibernate DetachedCriteria进行复杂查询。</p>
 <h3 id="2013框架采用HibernateJPA"><a href="#2013框架采用HibernateJPA" class="headerlink" title="2013框架采用HibernateJPA"></a>2013框架采用HibernateJPA</h3><h2 id="事务"><a href="#事务" class="headerlink" title="事务"></a>事务</h2><p>海事框架采用Spring的编程式事务管理<br>2013框架采用Spring的声明式事务管理</p>
-<h1 id="2013框架特色"><a href="#2013框架特色" class="headerlink" title="2013框架特色"></a>2013框架特色</h1><h2 id="页面参数"><a href="#页面参数" class="headerlink" title="页面参数"></a>页面参数</h2><p>查询数据主要绑定在数据模型中，每个查询设定其查询名称为Q<em>查询方式</em>查询属性。分页数据以P_形式进行设定；</p>
+<h1 id="2013框架特色"><a href="#2013框架特色" class="headerlink" title="2013框架特色"></a>2013框架特色</h1><h2 id="页面参数"><a href="#页面参数" class="headerlink" title="页面参数"></a>页面参数</h2><p>查询数据主要绑定在数据模型中，每个查询设定其查询名称为Q_查询方式_查询属性。分页数据以P_形式进行设定；</p>
 <table>
 <thead>
 <tr>
@@ -316,8 +432,7 @@ task!index.xml     xml：返回xml字符串
 <th>说明</th>
 </tr>
 </thead>
-<tbody>
-<tr>
+<tbody><tr>
 <td>查询</td>
 <td>Q_EQ_属性名</td>
 <td>等价于SQL中的“=”</td>
@@ -417,15 +532,14 @@ task!index.xml     xml：返回xml字符串
 <td>。。。</td>
 <td>更多参数请查看CoflowEntity实体</td>
 </tr>
-</tbody>
-</table>
+</tbody></table>
 <p>页面参数在调用默认search方法时，会自动调用processSearch(); 达到按照上面说明进行数据查询。<br>另外，可以通过向Controller的initParameters里面添加页面参数的形式，添加一些特殊的查询条件。<br>这时最前面的Q_不需要。</p>
-<pre><code>this.initParameters.put(&quot;EQ_unitId&quot;, unitId);
-</code></pre><h2 id="Spring-security集成"><a href="#Spring-security集成" class="headerlink" title="Spring security集成"></a>Spring security集成</h2><p>Spring security是一个网站安全框架。和Apache Shiro类似，可以把网站安全相关内容从业务代码中分离出来。开发时先进行业务开发，然后加入权限标签；或者分别由不同团队负责权限以及业务等。非常便于开发和后期维护。</p>
-<p><a href="https://www.ibm.com/developerworks/cn/java/j-lo-springsecurity/" target="_blank" rel="external">使用 Spring Security 保护 Web 应用的安全</a><br><a href="https://vincentmi.gitbooks.io/spring-security-reference-zh/content/1_introduction.html" target="_blank" rel="external">Spring Security参考手册</a></p>
+<pre><code>this.initParameters.put(&quot;EQ_unitId&quot;, unitId);</code></pre>
+<h2 id="Spring-security集成"><a href="#Spring-security集成" class="headerlink" title="Spring security集成"></a>Spring security集成</h2><p>Spring security是一个网站安全框架。和Apache Shiro类似，可以把网站安全相关内容从业务代码中分离出来。开发时先进行业务开发，然后加入权限标签；或者分别由不同团队负责权限以及业务等。非常便于开发和后期维护。</p>
+<p><a target="_blank" rel="noopener" href="https://www.ibm.com/developerworks/cn/java/j-lo-springsecurity/">使用 Spring Security 保护 Web 应用的安全</a><br><a target="_blank" rel="noopener" href="https://vincentmi.gitbooks.io/spring-security-reference-zh/content/1_introduction.html">Spring Security参考手册</a></p>
 <h2 id="Sitemesh应用"><a href="#Sitemesh应用" class="headerlink" title="Sitemesh应用"></a>Sitemesh应用</h2><p>应用Sitemesh进行页面布局。</p>
-<pre><code>SiteMesh is a web-page layout system that can be used to abstract common look and feel from the functionality of a web-application and to assemble large webpages from smaller components. Pages and components can have meta-data extracted from them (such as body, title and meta-tags) which can be used by decorators (skins) that are applied.
-</code></pre><ul>
+<pre><code>SiteMesh is a web-page layout system that can be used to abstract common look and feel from the functionality of a web-application and to assemble large webpages from smaller components. Pages and components can have meta-data extracted from them (such as body, title and meta-tags) which can be used by decorators (skins) that are applied.</code></pre>
+<ul>
 <li>是一个Web页面布局、装饰以及与现有Web应用集成的框架。有助于在由大量页面构成的项目中创建一致的页面布局和外观、一致的导航条、一致的布局方案等。</li>
 <li>截取对Web服务器的任何静态或动态页面的请求，解析页面，从内容中获得属性和数据，生成对原页面进行修改后的最终页面——基于装饰模式</li>
 <li>此外可以以面板（Panel）的形式，将完整的HTML页面包含在另一个页面中——类似于服务器端包含。使用此功能，可以非常快速和有效的创建门户网站类型的Web站点。这基于知名的组合模式。</li>
@@ -443,448 +557,423 @@ task!index.xml     xml：返回xml字符串
 <li>建立jsp文件</li>
 <li>测试是否正常显示</li>
 </ol>
-  
-	</div>
-		<footer class="article-footer clearfix">
-<div class="article-catetags">
 
-
-  <div class="article-tags">
-  
-  <span></span> <a href="/tags/SSH/">SSH</a>
-  </div>
-
-</div>
+        </div>
+        <footer class="article-footer">
+            
 
 
 
-	<div class="article-share" id="share">
-	
-	  <div data-url="https://lvshifu.github.io/2017/07/28/SSH/ssh-note1/" data-title="SSH介绍 | lvshifu" data-tsina="" class="share clearfix">
-	  </div>
-	
-	</div>
+    <a data-url="http://example.com/2017/07/28/SSH/ssh-note1/" data-id="ckj3uw1p3005gdc7bfvda5z7u" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
+<script>
+    (function ($) {
+        $('body').on('click', function() {
+            $('.article-share-box.on').removeClass('on');
+        }).on('click', '.article-share-link', function(e) {
+            e.stopPropagation();
+
+            var $this = $(this),
+                url = $this.attr('data-url'),
+                encodedUrl = encodeURIComponent(url),
+                id = 'article-share-box-' + $this.attr('data-id'),
+                offset = $this.offset(),
+                box;
+
+            if ($('#' + id).length) {
+                box = $('#' + id);
+
+                if (box.hasClass('on')){
+                    box.removeClass('on');
+                    return;
+                }
+            } else {
+                var html = [
+                    '<div id="' + id + '" class="article-share-box">',
+                        '<input class="article-share-input" value="' + url + '">',
+                        '<div class="article-share-links">',
+                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="article-share-twitter" target="_blank" title="Twitter"></a>',
+                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="article-share-facebook" target="_blank" title="Facebook"></a>',
+                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="article-share-pinterest" target="_blank" title="Pinterest"></a>',
+                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="article-share-google" target="_blank" title="Google+"></a>',
+                        '</div>',
+                    '</div>'
+                ].join('');
+
+              box = $(html);
+
+              $('body').append(box);
+            }
+
+            $('.article-share-box.on').hide();
+
+            box.css({
+                top: offset.top + 25,
+                left: offset.left
+            }).addClass('on');
+
+        }).on('click', '.article-share-box', function (e) {
+            e.stopPropagation();
+        }).on('click', '.article-share-box-input', function () {
+            $(this).select();
+        }).on('click', '.article-share-box-link', function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+
+            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
+        });
+    })(jQuery);
+</script>
+
+        </footer>
+    </div>
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "BlogPosting",
+        "author": {
+            "@type": "Person",
+            "name": "lvshifu"
+        },
+        "headline": "SSH介绍",
+        "image": "http://example.com",
+        "keywords": "SSH",
+        "genre": "",
+        "datePublished": "2017-07-28",
+        "dateCreated": "2017-07-28",
+        "dateModified": "2020-04-13",
+        "url": "http://example.com/2017/07/28/SSH/ssh-note1/",
+        "description": "SSH是什么SSH框架一般指的是Struts、Spring、Hibernate，后来Struts2代替了Struts。
+SSM框架一般指的是Spring MVC、Spring、MyBatis。",
+        "wordCount": 1028
+    }
+</script>
+
+</article>
+
+    <section id="comments">
+    
+        
+    <div id="disqus_thread">
+        <noscript>Please enable JavaScript to view the <a target="_blank" rel="noopener" href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+    </div>
 
 
-</footer>
-
-   	       
-	</article>
-	
-<nav class="article-nav clearfix">
- 
- <div class="prev" >
- <a href="/2017/08/29/Tools/freessl-note1/" title="Free SSL证书Let’s Encrypt">
-  <strong>上一篇：</strong><br/>
-  <span>
-  Free SSL证书Let’s Encrypt</span>
-</a>
-</div>
+    
+    </section>
 
 
-<div class="next">
-<a href="/2017/07/17/SSH/spring-note1/"  title="Spring介绍">
- <strong>下一篇：</strong><br/> 
- <span>Spring介绍
-</span>
-</a>
-</div>
 
+                        </div>
+                    </section>
+                    <aside id="sidebar">
+    <a class="sidebar-toggle" title="Expand Sidebar"><i class="toggle icon"></i></a>
+    <div class="sidebar-top">
+        <p>关注我 :</p>
+        <ul class="social-links">
+            
+                
+                <li>
+                    <a class="social-tooltip" title="github" href="https://github.com/lvshifu" target="_blank" rel="noopener">
+                        <i class="icon fa fa-github"></i>
+                    </a>
+                </li>
+                
+            
+        </ul>
+    </div>
+    
+        
+<nav id="article-nav">
+    
+        <a href="/2017/08/29/Tools/freessl-note1/" id="article-nav-newer" class="article-nav-link-wrap">
+        <strong class="article-nav-caption">下一篇</strong>
+        <p class="article-nav-title">
+        
+            Free SSL证书Let’s Encrypt
+        
+        </p>
+        <i class="icon fa fa-chevron-right" id="icon-chevron-right"></i>
+    </a>
+    
+    
+        <a href="/2017/07/17/SSH/spring-note1/" id="article-nav-older" class="article-nav-link-wrap">
+        <strong class="article-nav-caption">上一篇</strong>
+        <p class="article-nav-title">Spring介绍</p>
+        <i class="icon fa fa-chevron-left" id="icon-chevron-left"></i>
+        </a>
+    
 </nav>
 
-	
+    
+    <div class="widgets-container">
+        
+            
+                
 
-<section id="comments" class="comment">
-  <div id="disqus_thread">
-    <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
-  </div>
-</section>
+            
+                
+    <div class="widget-wrap">
+        <h3 class="widget-title">最新文章</h3>
+        <div class="widget">
+            <ul id="recent-post" class="">
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2020/11/02/Python/python-relative-imports/" class="thumbnail">
+    
+    
+        <span class="thumbnail-image thumbnail-none"></span>
+    
+    
+</a>
 
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"></p>
+                            <p class="item-title"><a href="/2020/11/02/Python/python-relative-imports/" class="title">Python reletive imports</a></p>
+                            <p class="item-date"><time datetime="2020-11-02T14:00:00.000Z" itemprop="datePublished">2020-11-02</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2020/10/02/Python/python-param-m/" class="thumbnail">
+    
+    
+        <span class="thumbnail-image thumbnail-none"></span>
+    
+    
+</a>
 
-</div>  
-      <div class="openaside"><a class="navbutton" href="#" title="显示侧边栏"></a></div>
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"></p>
+                            <p class="item-title"><a href="/2020/10/02/Python/python-param-m/" class="title">Python -m 参数</a></p>
+                            <p class="item-date"><time datetime="2020-10-02T14:00:00.000Z" itemprop="datePublished">2020-10-02</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2019/04/16/Tools/tools-file-share/" class="thumbnail">
+    
+    
+        <span class="thumbnail-image thumbnail-none"></span>
+    
+    
+</a>
 
-  <div id="toc" class="toc-aside">
-  <strong class="toc-title">文章目录</strong>
- 
- <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#SSH是什么"><span class="toc-number">1.</span> <span class="toc-text">SSH是什么</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#标准SSH框架"><span class="toc-number">2.</span> <span class="toc-text">标准SSH框架</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#Struts"><span class="toc-number">2.1.</span> <span class="toc-text">Struts</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Spring"><span class="toc-number">2.2.</span> <span class="toc-text">Spring</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Hibernate"><span class="toc-number">2.3.</span> <span class="toc-text">Hibernate</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#SSH深入理解"><span class="toc-number">2.4.</span> <span class="toc-text">SSH深入理解</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#公司框架发展"><span class="toc-number">2.5.</span> <span class="toc-text">公司框架发展</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#海事框架"><span class="toc-number">3.</span> <span class="toc-text">海事框架</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#2013框架"><span class="toc-number">4.</span> <span class="toc-text">2013框架</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#海事框架-和-2013框架比较"><span class="toc-number">5.</span> <span class="toc-text">海事框架 和 2013框架比较</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#配置（struts-xml）"><span class="toc-number">5.1.</span> <span class="toc-text">配置（struts.xml）</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#海事框架-1"><span class="toc-number">5.1.1.</span> <span class="toc-text">海事框架</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2013采用免配置方案"><span class="toc-number">5.1.2.</span> <span class="toc-text">2013采用免配置方案</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#默认路由"><span class="toc-number">5.2.</span> <span class="toc-text">默认路由</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#分层"><span class="toc-number">5.3.</span> <span class="toc-text">分层</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#海事框架-2"><span class="toc-number">5.3.1.</span> <span class="toc-text">海事框架</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2013框架-1"><span class="toc-number">5.3.2.</span> <span class="toc-text">2013框架</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#ORM（Hibernate-VS-JPA）"><span class="toc-number">5.4.</span> <span class="toc-text">ORM（Hibernate VS JPA）</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#海事框架采用Hibernate"><span class="toc-number">5.4.1.</span> <span class="toc-text">海事框架采用Hibernate</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2013框架采用HibernateJPA"><span class="toc-number">5.4.2.</span> <span class="toc-text">2013框架采用HibernateJPA</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#事务"><span class="toc-number">5.5.</span> <span class="toc-text">事务</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#2013框架特色"><span class="toc-number">6.</span> <span class="toc-text">2013框架特色</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#页面参数"><span class="toc-number">6.1.</span> <span class="toc-text">页面参数</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Spring-security集成"><span class="toc-number">6.2.</span> <span class="toc-text">Spring security集成</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Sitemesh应用"><span class="toc-number">6.3.</span> <span class="toc-text">Sitemesh应用</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#使用2013框架建立项目步骤"><span class="toc-number">7.</span> <span class="toc-text">使用2013框架建立项目步骤</span></a></li></ol>
- 
-  </div>
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"></p>
+                            <p class="item-title"><a href="/2019/04/16/Tools/tools-file-share/" class="title">实用工具介绍 文件分享</a></p>
+                            <p class="item-date"><time datetime="2019-04-16T06:38:00.000Z" itemprop="datePublished">2019-04-16</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2019/02/21/Docker/wsl-docker-problem/" class="thumbnail">
+    
+    
+        <span class="thumbnail-image thumbnail-none"></span>
+    
+    
+</a>
 
-<div id="asidepart">
-<div class="closeaside"><a class="closebutton" href="#" title="隐藏侧边栏"></a></div>
-<aside class="clearfix">
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"></p>
+                            <p class="item-title"><a href="/2019/02/21/Docker/wsl-docker-problem/" class="title">Windows上安装Docker</a></p>
+                            <p class="item-date"><time datetime="2019-02-21T08:20:00.000Z" itemprop="datePublished">2019-02-21</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2019/02/20/Docker/wsl-is-what/" class="thumbnail">
+    
+    
+        <span class="thumbnail-image thumbnail-none"></span>
+    
+    
+</a>
 
-  
-
-
-  
-<div class="tagslist">
-	<p class="asidetitle">标签</p>
-		<ul class="clearfix">
-		
-			
-				<li><a href="/tags/Java/" title="Java">Java<sup>14</sup></a></li>
-			
-		
-			
-				<li><a href="/tags/其他/" title="其他">其他<sup>11</sup></a></li>
-			
-		
-			
-				<li><a href="/tags/日语/" title="日语">日语<sup>9</sup></a></li>
-			
-		
-			
-				<li><a href="/tags/工具/" title="工具">工具<sup>5</sup></a></li>
-			
-		
-			
-				<li><a href="/tags/科学上网/" title="科学上网">科学上网<sup>5</sup></a></li>
-			
-		
-			
-				<li><a href="/tags/WSL/" title="WSL">WSL<sup>2</sup></a></li>
-			
-		
-			
-				<li><a href="/tags/Ionic/" title="Ionic">Ionic<sup>2</sup></a></li>
-			
-		
-			
-				<li><a href="/tags/WEB开发/" title="WEB开发">WEB开发<sup>2</sup></a></li>
-			
-		
-			
-				<li><a href="/tags/SSH-Tunnel/" title="SSH Tunnel">SSH Tunnel<sup>2</sup></a></li>
-			
-		
-			
-				<li><a href="/tags/Python/" title="Python">Python<sup>2</sup></a></li>
-			
-		
-			
-				<li><a href="/tags/Docker/" title="Docker">Docker<sup>1</sup></a></li>
-			
-		
-			
-				<li><a href="/tags/大数据/" title="大数据">大数据<sup>1</sup></a></li>
-			
-		
-			
-				<li><a href="/tags/BigData/" title="BigData">BigData<sup>1</sup></a></li>
-			
-		
-			
-				<li><a href="/tags/Excel/" title="Excel">Excel<sup>1</sup></a></li>
-			
-		
-			
-				<li><a href="/tags/Node/" title="Node">Node<sup>1</sup></a></li>
-			
-		
-			
-				<li><a href="/tags/Coding-Rule/" title="Coding Rule">Coding Rule<sup>1</sup></a></li>
-			
-		
-			
-				<li><a href="/tags/dozer/" title="dozer">dozer<sup>1</sup></a></li>
-			
-		
-			
-				<li><a href="/tags/Guava/" title="Guava">Guava<sup>1</sup></a></li>
-			
-		
-			
-				<li><a href="/tags/IDEA/" title="IDEA">IDEA<sup>1</sup></a></li>
-			
-		
-			
-				<li><a href="/tags/JRebel/" title="JRebel">JRebel<sup>1</sup></a></li>
-			
-		
-		</ul>
-</div>
-
-
-  
-  <div class="tagcloudlist">
-    <p class="asidetitle">标签云</p>
-    <div class="tagcloudlist clearfix">
-       <a href="/tags/Apache/" style="font-size: 10px;">Apache</a> <a href="/tags/BigData/" style="font-size: 10px;">BigData</a> <a href="/tags/Coding-Rule/" style="font-size: 10px;">Coding Rule</a> <a href="/tags/Docker/" style="font-size: 10px;">Docker</a> <a href="/tags/Excel/" style="font-size: 10px;">Excel</a> <a href="/tags/Guava/" style="font-size: 10px;">Guava</a> <a href="/tags/Hexo/" style="font-size: 10px;">Hexo</a> <a href="/tags/IDEA/" style="font-size: 10px;">IDEA</a> <a href="/tags/Ionic/" style="font-size: 12px;">Ionic</a> <a href="/tags/JRebel/" style="font-size: 10px;">JRebel</a> <a href="/tags/Java/" style="font-size: 20px;">Java</a> <a href="/tags/Lantern/" style="font-size: 10px;">Lantern</a> <a href="/tags/Nginx/" style="font-size: 10px;">Nginx</a> <a href="/tags/Node/" style="font-size: 10px;">Node</a> <a href="/tags/Openshift/" style="font-size: 10px;">Openshift</a> <a href="/tags/Python/" style="font-size: 12px;">Python</a> <a href="/tags/SSH/" style="font-size: 10px;">SSH</a> <a href="/tags/SSH-Tunnel/" style="font-size: 12px;">SSH Tunnel</a> <a href="/tags/SSL/" style="font-size: 10px;">SSL</a> <a href="/tags/Shadowsocks/" style="font-size: 10px;">Shadowsocks</a> <a href="/tags/Solr/" style="font-size: 10px;">Solr</a> <a href="/tags/Spring/" style="font-size: 10px;">Spring</a> <a href="/tags/Tomcat/" style="font-size: 10px;">Tomcat</a> <a href="/tags/WEB开发/" style="font-size: 12px;">WEB开发</a> <a href="/tags/WSL/" style="font-size: 12px;">WSL</a> <a href="/tags/dozer/" style="font-size: 10px;">dozer</a> <a href="/tags/plink/" style="font-size: 10px;">plink</a> <a href="/tags/tor/" style="font-size: 10px;">tor</a> <a href="/tags/其他/" style="font-size: 18px;">其他</a> <a href="/tags/内网穿透/" style="font-size: 10px;">内网穿透</a> <a href="/tags/大数据/" style="font-size: 10px;">大数据</a> <a href="/tags/工具/" style="font-size: 14px;">工具</a> <a href="/tags/影梭/" style="font-size: 10px;">影梭</a> <a href="/tags/日语/" style="font-size: 16px;">日语</a> <a href="/tags/科学上网/" style="font-size: 14px;">科学上网</a> <a href="/tags/蓝灯/" style="font-size: 10px;">蓝灯</a>
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"></p>
+                            <p class="item-title"><a href="/2019/02/20/Docker/wsl-is-what/" class="title">WSL是什么</a></p>
+                            <p class="item-date"><time datetime="2019-02-20T08:20:00.000Z" itemprop="datePublished">2019-02-20</time></p>
+                        </div>
+                    </li>
+                
+            </ul>
+        </div>
     </div>
-  </div>
+
+            
+                
+    <div class="widget-wrap widget-list">
+        <h3 class="widget-title">分类</h3>
+        <div class="widget">
+            <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Java/">Java</a><span class="category-list-count">1</span></li></ul>
+        </div>
+    </div>
 
 
-  
-  <div class="archiveslist">
-    <p class="asidetitle"><a href="/archives">归档</a></p>
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/11/">十一月 2020</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/10/">十月 2020</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/04/">四月 2019</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/02/">二月 2019</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/12/">十二月 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/11/">十一月 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/09/">九月 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/10/">十月 2017</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/09/">九月 2017</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/08/">八月 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/07/">七月 2017</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/06/">六月 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/05/">五月 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/04/">四月 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">三月 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/02/">二月 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/01/">一月 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/10/">十月 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/09/">九月 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/08/">八月 2016</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/07/">七月 2015</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/08/">八月 2014</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/11/">十一月 2013</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2011/05/">五月 2011</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2011/02/">二月 2011</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2011/01/">一月 2011</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2010/03/">三月 2010</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2009/10/">十月 2009</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2009/04/">四月 2009</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2009/01/">一月 2009</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2008/10/">十月 2008</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2008/09/">九月 2008</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2007/09/">九月 2007</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2007/06/">六月 2007</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2006/10/">十月 2006</a><span class="archive-list-count">4</span></li></ul>
-  </div>
+            
+                
+    <div class="widget-wrap widget-float">
+        <h3 class="widget-title">标签云</h3>
+        <div class="widget tagcloud">
+            <a href="/tags/Apache/" style="font-size: 10px;">Apache</a> <a href="/tags/BigData/" style="font-size: 10px;">BigData</a> <a href="/tags/Coding-Rule/" style="font-size: 10px;">Coding Rule</a> <a href="/tags/Docker/" style="font-size: 10px;">Docker</a> <a href="/tags/Excel/" style="font-size: 10px;">Excel</a> <a href="/tags/Guava/" style="font-size: 10px;">Guava</a> <a href="/tags/Hexo/" style="font-size: 10px;">Hexo</a> <a href="/tags/IDEA/" style="font-size: 10px;">IDEA</a> <a href="/tags/Ionic/" style="font-size: 12px;">Ionic</a> <a href="/tags/JRebel/" style="font-size: 10px;">JRebel</a> <a href="/tags/Java/" style="font-size: 20px;">Java</a> <a href="/tags/Lantern/" style="font-size: 10px;">Lantern</a> <a href="/tags/Nginx/" style="font-size: 10px;">Nginx</a> <a href="/tags/Node/" style="font-size: 10px;">Node</a> <a href="/tags/Openshift/" style="font-size: 10px;">Openshift</a> <a href="/tags/Python/" style="font-size: 12px;">Python</a> <a href="/tags/SSH/" style="font-size: 10px;">SSH</a> <a href="/tags/SSH-Tunnel/" style="font-size: 12px;">SSH Tunnel</a> <a href="/tags/SSL/" style="font-size: 10px;">SSL</a> <a href="/tags/Shadowsocks/" style="font-size: 10px;">Shadowsocks</a> <a href="/tags/Solr/" style="font-size: 10px;">Solr</a> <a href="/tags/Spring/" style="font-size: 10px;">Spring</a> <a href="/tags/Tomcat/" style="font-size: 10px;">Tomcat</a> <a href="/tags/WEB%E5%BC%80%E5%8F%91/" style="font-size: 12px;">WEB开发</a> <a href="/tags/WSL/" style="font-size: 12px;">WSL</a> <a href="/tags/dozer/" style="font-size: 10px;">dozer</a> <a href="/tags/plink/" style="font-size: 10px;">plink</a> <a href="/tags/tor/" style="font-size: 10px;">tor</a> <a href="/tags/%E5%85%B6%E4%BB%96/" style="font-size: 18px;">其他</a> <a href="/tags/%E5%86%85%E7%BD%91%E7%A9%BF%E9%80%8F/" style="font-size: 10px;">内网穿透</a> <a href="/tags/%E5%A4%A7%E6%95%B0%E6%8D%AE/" style="font-size: 10px;">大数据</a> <a href="/tags/%E5%B7%A5%E5%85%B7/" style="font-size: 14px;">工具</a> <a href="/tags/%E5%BD%B1%E6%A2%AD/" style="font-size: 10px;">影梭</a> <a href="/tags/%E6%97%A5%E8%AF%AD/" style="font-size: 16px;">日语</a> <a href="/tags/%E7%A7%91%E5%AD%A6%E4%B8%8A%E7%BD%91/" style="font-size: 14px;">科学上网</a> <a href="/tags/%E8%93%9D%E7%81%AF/" style="font-size: 10px;">蓝灯</a>
+        </div>
+    </div>
 
 
-  <div class="linkslist">
-  <p class="asidetitle">友情链接</p>
-    <ul>
+            
+                
+    <div class="widget-wrap widget-list">
+        <h3 class="widget-title">归档</h3>
+        <div class="widget">
+            <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/11/">十一月 2020</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/10/">十月 2020</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/04/">四月 2019</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/02/">二月 2019</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/12/">十二月 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/11/">十一月 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/09/">九月 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/10/">十月 2017</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/09/">九月 2017</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/08/">八月 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/07/">七月 2017</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/06/">六月 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/05/">五月 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/04/">四月 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">三月 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/02/">二月 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/01/">一月 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/10/">十月 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/09/">九月 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/08/">八月 2016</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/07/">七月 2015</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/08/">八月 2014</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/11/">十一月 2013</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2011/05/">五月 2011</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2011/02/">二月 2011</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2011/01/">一月 2011</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2010/03/">三月 2010</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2009/10/">十月 2009</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2009/04/">四月 2009</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2009/01/">一月 2009</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2008/10/">十月 2008</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2008/09/">九月 2008</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2007/09/">九月 2007</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2007/06/">六月 2007</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2006/10/">十月 2006</a><span class="archive-list-count">4</span></li></ul>
+        </div>
+    </div>
+
+
+            
+                
+    <div class="widget-wrap widget-list">
+        <h3 class="widget-title">链接</h3>
+        <div class="widget">
+            <ul>
+                
+                    <li>
+                        <a target="_blank" rel="noopener" href="http://hexo.io">Hexo</a>
+                    </li>
+                
+                    <li>
+                        <a target="_blank" rel="noopener" href="https://ricardo-cheng.github.io">Cheng&#39;s Blog</a>
+                    </li>
+                
+                    <li>
+                        <a target="_blank" rel="noopener" href="http://wuchong.me">Jark&#39;s Blog</a>
+                    </li>
+                
+            </ul>
+        </div>
+    </div>
+
+
+            
         
-          <li>
-            
-            	<a href="https://ricardo-cheng.github.io" target="_blank" title="Cheng&#39;s Blog">Cheng&#39;s Blog</a>
-            
-          </li>
-        
-          <li>
-            
-            	<a href="http://wuchong.me" target="_blank" title="Jark&#39;s Blog">Jark&#39;s Blog</a>
-            
-          </li>
-        
-    </ul>
-</div>
-
-  
-
-
+    </div>
 </aside>
-</div>
+
+                </div>
+            </div>
+        </div>
+        <footer id="footer">
+    <div class="container">
+        <div class="container-inner">
+            <a id="back-to-top" href="javascript:;"><i class="icon fa fa-angle-up"></i></a>
+            <div class="credit">
+                <h1 class="logo-wrap">
+                    <a href="/" class="logo"></a>
+                </h1>
+                <p>&copy; 2020 lvshifu</p>
+                
+                <p>Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>. Theme by <a href="https://github.com/ppoffice" target="_blank">PPOffice</a></p>
+                
+            </div>
+            <div class="footer-plugins">
+              
+    
+
+
+            </div>
+        </div>
     </div>
-    <footer><div id="footer" >
-	
-	
-	<section class="info">
-		<p> Hello ,I&#39;m lvshifu. <br/>
-			</p>
-	</section>
-	 
-	<div class="social-font" class="clearfix">
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-	</div>
-			
-		
-
-		<p class="copyright">
-		Powered by <a href="http://hexo.io" target="_blank" title="hexo">hexo</a> and Theme by <a href="https://github.com/wuchong/jacman" target="_blank" title="Jacman">Jacman</a> © 2020 
-		
-		<a href="/about" target="_blank" title="lvshifu">lvshifu</a>
-		
-		
-		</p>
-</div>
 </footer>
-    <script src="/js/jquery-2.0.3.min.js"></script>
-<script src="/js/jquery.imagesloaded.min.js"></script>
-<script src="/js/gallery.js"></script>
-<script src="/js/jquery.qrcode-0.12.0.min.js"></script>
 
-<script type="text/javascript">
-$(document).ready(function(){ 
-  $('.navbar').click(function(){
-    $('header nav').toggleClass('shownav');
-  });
-  var myWidth = 0;
-  function getSize(){
-    if( typeof( window.innerWidth ) == 'number' ) {
-      myWidth = window.innerWidth;
-    } else if( document.documentElement && document.documentElement.clientWidth) {
-      myWidth = document.documentElement.clientWidth;
-    };
-  };
-  var m = $('#main'),
-      a = $('#asidepart'),
-      c = $('.closeaside'),
-      o = $('.openaside');
-  c.click(function(){
-    a.addClass('fadeOut').css('display', 'none');
-    o.css('display', 'block').addClass('fadeIn');
-    m.addClass('moveMain');
-  });
-  o.click(function(){
-    o.css('display', 'none').removeClass('beforeFadeIn');
-    a.css('display', 'block').removeClass('fadeOut').addClass('fadeIn');      
-    m.removeClass('moveMain');
-  });
-  $(window).scroll(function(){
-    o.css("top",Math.max(80,260-$(this).scrollTop()));
-  });
-  
-  $(window).resize(function(){
-    getSize(); 
-    if (myWidth >= 1024) {
-      $('header nav').removeClass('shownav');
-    }else{
-      m.removeClass('moveMain');
-      a.css('display', 'block').removeClass('fadeOut');
-      o.css('display', 'none');
-      
-      $('#toc.toc-aside').css('display', 'none');
+    </div>
+    
+    
+    <script>
+    var disqus_shortname = 'lvshifu-github-io';
+    
+    
+    var disqus_url = 'http://example.com/2017/07/28/SSH/ssh-note1/';
+    
+    (function() {
+    var dsq = document.createElement('script');
+    dsq.type = 'text/javascript';
+    dsq.async = true;
+    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+    </script>
+
+
+
+
+
+    
         
-    }
-  });
-});
-</script>
+<script src="/libs/lightgallery/js/lightgallery.min.js"></script>
 
-<script type="text/javascript">
-$(document).ready(function(){ 
-  var ai = $('.article-content>iframe'),
-      ae = $('.article-content>embed'),
-      t  = $('#toc'),
-      ta = $('#toc.toc-aside'),
-      o  = $('.openaside'),
-      c  = $('.closeaside');
-  if(ai.length>0){
-    ai.wrap('<div class="video-container" />');
-  };
-  if(ae.length>0){
-   ae.wrap('<div class="video-container" />');
-  };
-  c.click(function(){
-    ta.css('display', 'block').addClass('fadeIn');
-  });
-  o.click(function(){
-    ta.css('display', 'none');
-  });
-  $(window).scroll(function(){
-    ta.css("top",Math.max(140,320-$(this).scrollTop()));
-  });
-});
-</script>
+        
+<script src="/libs/lightgallery/js/lg-thumbnail.min.js"></script>
 
+        
+<script src="/libs/lightgallery/js/lg-pager.min.js"></script>
 
-<script type="text/javascript">
-$(document).ready(function(){ 
-  var $this = $('.share'),
-      url = $this.attr('data-url'),
-      encodedUrl = encodeURIComponent(url),
-      title = $this.attr('data-title'),
-      tsina = $this.attr('data-tsina'),
-      description = $this.attr('description');
-  var html = [
-  '<div class="hoverqrcode clearfix"></div>',
-  '<a class="overlay" id="qrcode"></a>',
-  '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="article-share-facebook" target="_blank" title="Facebook"></a>',
-  '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="article-share-twitter" target="_blank" title="Twitter"></a>',
-  '<a href="#qrcode" class="article-share-qrcode" title="微信"></a>',
-  '<a href="http://widget.renren.com/dialog/share?resourceUrl=' + encodedUrl + '&srcUrl=' + encodedUrl + '&title=' + title +'" class="article-share-renren" target="_blank" title="人人"></a>',
-  '<a href="http://service.weibo.com/share/share.php?title='+title+'&url='+encodedUrl +'&ralateUid='+ tsina +'&searchPic=true&style=number' +'" class="article-share-weibo" target="_blank" title="微博"></a>',
-  '<span title="Share to"></span>'
-  ].join('');
-  $this.append(html);
+        
+<script src="/libs/lightgallery/js/lg-autoplay.min.js"></script>
 
-  $('.hoverqrcode').hide();
+        
+<script src="/libs/lightgallery/js/lg-fullscreen.min.js"></script>
 
-  var myWidth = 0;
-  function updatehoverqrcode(){
-    if( typeof( window.innerWidth ) == 'number' ) {
-      myWidth = window.innerWidth;
-    } else if( document.documentElement && document.documentElement.clientWidth) {
-      myWidth = document.documentElement.clientWidth;
-    };
-    var qrsize = myWidth > 1024 ? 200:100;
-    var options = {render: 'image', size: qrsize, fill: '#2ca6cb', text: url, radius: 0.5, quiet: 1};
-    var p = $('.article-share-qrcode').position();
-    $('.hoverqrcode').empty().css('width', qrsize).css('height', qrsize)
-                          .css('left', p.left-qrsize/2+20).css('top', p.top-qrsize-10)
-                          .qrcode(options);
-  };
-  $(window).resize(function(){
-    $('.hoverqrcode').hide();
-  });
-  $('.article-share-qrcode').click(function(){
-    updatehoverqrcode();
-    $('.hoverqrcode').toggle();
-  });
-  $('.article-share-qrcode').hover(function(){}, function(){
-      $('.hoverqrcode').hide();
-  });
-});   
-</script>
+        
+<script src="/libs/lightgallery/js/lg-zoom.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-hash.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-share.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-video.min.js"></script>
+
+    
+    
+        
+<script src="/libs/justified-gallery/jquery.justifiedGallery.min.js"></script>
+
+    
+    
+
+    
+    
+    
 
 
 
+<!-- Custom Scripts -->
 
-<script type="text/javascript">
-
-var disqus_shortname = 'lvshifu-github-io';
-
-(function(){
-  var dsq = document.createElement('script');
-  dsq.type = 'text/javascript';
-  dsq.async = true;
-  dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
-  (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
-}());
-(function(){
-  var dsq = document.createElement('script');
-  dsq.type = 'text/javascript';
-  dsq.async = true;
-  dsq.src = '//' + disqus_shortname + '.disqus.com/count.js';
-  (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
-}());
-</script>
+<script src="/js/main.js"></script>
 
 
-
-
-
-
-<link rel="stylesheet" href="/fancybox/jquery.fancybox.css" media="screen" type="text/css">
-<script src="/fancybox/jquery.fancybox.pack.js"></script>
-<script type="text/javascript">
-$(document).ready(function(){ 
-  $('.article-content').each(function(i){
-    $(this).find('img').each(function(){
-      if ($(this).parent().hasClass('fancybox')) return;
-      var alt = this.alt;
-      if (alt) $(this).after('<span class="caption">' + alt + '</span>');
-      $(this).wrap('<a href="' + this.src + '" title="' + alt + '" class="fancybox"></a>');
-    });
-    $(this).find('.fancybox').each(function(){
-      $(this).attr('rel', 'article' + i);
-    });
-  });
-  if($.fancybox){
-    $('.fancybox').fancybox();
-  }
-}); 
-</script>
-
-
-
-<!-- Analytics Begin -->
-
-
-
-
-
-<!-- Analytics End -->
-
-<!-- Totop Begin -->
-
-	<div id="totop">
-	<a title="返回顶部"><img src="/img/scrollup.png"/></a>
-	</div>
-	<script src="/js/totop.js"></script>
-
-<!-- Totop End -->
-
-<!-- MathJax Begin -->
-<!-- mathjax config similar to math.stackexchange -->
-
-
-<!-- MathJax End -->
-
-<!-- Tiny_search Begin -->
-
-<!-- Tiny_search End -->
-
-  </body>
+</body>
 </html>

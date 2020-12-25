@@ -1,570 +1,662 @@
-
- <!DOCTYPE HTML>
-<html lang="zh-CN">
+<!DOCTYPE html>
+<html>
 <head>
-  <meta charset="UTF-8">
-  
-    <title>使用Apache Common进行通用排序 | lvshifu</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=no">
-    
-    <meta name="author" content="lvshifu">
+    <meta charset="utf-8" />
+
     
 
+    
+    <title>使用Apache Common进行通用排序 | lvshifu</title>
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="keywords" content="Java" />
     
     <meta name="description" content="通用排序方式一">
-<meta name="keywords" content="Java">
 <meta property="og:type" content="article">
 <meta property="og:title" content="使用Apache Common进行通用排序">
-<meta property="og:url" content="https://lvshifu.github.io/2009/10/22/Java/java-apache-common/index.html">
+<meta property="og:url" content="http://example.com/2009/10/22/Java/java-apache-common/index.html">
 <meta property="og:site_name" content="lvshifu">
 <meta property="og:description" content="通用排序方式一">
-<meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2020-04-13T04:17:54.675Z">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2009-10-22T13:18:02.000Z">
+<meta property="article:modified_time" content="2020-04-13T04:17:54.675Z">
+<meta property="article:author" content="lvshifu">
+<meta property="article:tag" content="Java">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="使用Apache Common进行通用排序">
-<meta name="twitter:description" content="通用排序方式一">
+    
 
     
-    <link rel="alternative" href="/atom.xml" title="lvshifu" type="application/atom+xml">
-    
-    
-    <link rel="icon" href="/img/smile.png">
-    
-    
-    <link rel="apple-touch-icon" href="/img/jacman.jpg">
-    <link rel="apple-touch-icon-precomposed" href="/img/jacman.jpg">
-    
-    <link rel="stylesheet" href="/css/style.css">
-</head>
 
-  <body>
-    <header>
-      
-<div>
-		
-			<div id="textlogo">
-				<h1 class="site-name"><a href="/" title="lvshifu">lvshifu</a></h1>
-				<h2 class="blog-motto"></h2>
-			</div>
-			<div class="navbar"><a class="navbutton navmobile" href="#" title="菜单">
-			</a></div>
-			<nav class="animated">
-				<ul>
-					<ul>
-					 
-						<li><a href="/">主页</a></li>
-					
-						<li><a href="/archives">归档</a></li>
-					
-						<li><a href="/tags">标签</a></li>
-					
-						<li><a href="/about">关于</a></li>
-					
-					<li>
- 					
-					<form class="search" action="/search/index.html" method="get" accept-charset="utf-8">
-						<label>Search</label>
-						<input type="search" id="search" autocomplete="off" name="q" maxlength="20" placeholder="搜索" />
-					</form>
-					
-					</li>
-				</ul>
-			</nav>			
+    
+
+    
+<link rel="stylesheet" href="/libs/font-awesome/css/font-awesome.min.css">
+
+    
+<link rel="stylesheet" href="/libs/titillium-web/styles.css">
+
+    
+<link rel="stylesheet" href="/libs/source-code-pro/styles.css">
+
+
+    
+<link rel="stylesheet" href="/css/style.css">
+
+
+    
+<script src="/libs/jquery/3.5.0/jquery.min.js"></script>
+
+    
+    
+        
+<link rel="stylesheet" href="/libs/lightgallery/css/lightgallery.min.css">
+
+    
+    
+        
+<link rel="stylesheet" href="/libs/justified-gallery/justifiedGallery.min.css">
+
+    
+    
+    
+    
+
+
+<meta name="generator" content="Hexo 5.3.0"></head>
+
+<body>
+    <div id="wrap">
+        <header id="header">
+    <div id="header-outer" class="outer">
+        <div class="container">
+            <div class="container-inner">
+                <div id="header-title">
+                    <h1 class="logo-wrap">
+                        <a href="/" class="logo"></a>
+                    </h1>
+                    
+                </div>
+                <div id="header-inner" class="nav-container">
+                    <a id="main-nav-toggle" class="nav-icon fa fa-bars"></a>
+                    <div class="nav-container-inner">
+                        <ul id="main-nav">
+                            
+                                <li class="main-nav-list-item" >
+                                    <a class="main-nav-list-link" href="/">主页</a>
+                                </li>
+                            
+                                    <ul class="main-nav-list"><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/Java/">Java</a></li></ul>
+                                
+                                <li class="main-nav-list-item" >
+                                    <a class="main-nav-list-link" href="/archives">归档</a>
+                                </li>
+                            
+                                <li class="main-nav-list-item" >
+                                    <a class="main-nav-list-link" href="/about/index.html">关于</a>
+                                </li>
+                            
+                        </ul>
+                        <nav id="sub-nav">
+                            <div id="search-form-wrap">
+
+    <form class="search-form">
+        <input type="text" class="ins-search-input search-form-input" placeholder="搜索" />
+        <button type="submit" class="search-form-submit"></button>
+    </form>
+    <div class="ins-search">
+    <div class="ins-search-mask"></div>
+    <div class="ins-search-container">
+        <div class="ins-input-wrapper">
+            <input type="text" class="ins-search-input" placeholder="想要查找什么..." />
+            <span class="ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
 </div>
-    </header>
-    <div id="container">
-      <div id="main" class="post" itemscope itemprop="blogPost">
-  
-	<article itemprop="articleBody"> 
-		<header class="article-info clearfix">
-  <h1 itemprop="name">
-    
-      <a href="/2009/10/22/Java/java-apache-common/" title="使用Apache Common进行通用排序" itemprop="url">使用Apache Common进行通用排序</a>
-  </h1>
-  <p class="article-author">By
-       
-		<a href="/about" title="lvshifu" target="_blank" itemprop="author">lvshifu</a>
-		
-  <p class="article-time">
-    <time datetime="2009-10-22T13:18:02.000Z" itemprop="datePublished"> 发表于 2009-10-22</time>
-    
-  </p>
+<script>
+(function (window) {
+    var INSIGHT_CONFIG = {
+        TRANSLATION: {
+            POSTS: '文章',
+            PAGES: '页面',
+            CATEGORIES: '分类',
+            TAGS: '标签',
+            UNTITLED: '(未命名)',
+        },
+        ROOT_URL: '/',
+        CONTENT_URL: '/content.json',
+    };
+    window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+})(window);
+</script>
+
+<script src="/js/insight.js"></script>
+
+
+</div>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 </header>
-	<div class="article-content">
-		
-		<div id="toc" class="toc-article">
-			<strong class="toc-title">文章目录</strong>
-		
-			<ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#通用排序方式一"><span class="toc-number">1.</span> <span class="toc-text">通用排序方式一</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#通用排序方式二"><span class="toc-number">2.</span> <span class="toc-text">通用排序方式二</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#代码定义"><span class="toc-number">3.</span> <span class="toc-text">代码定义</span></a></li></ol>
-		
-		</div>
-		
-		<h1 id="通用排序方式一"><a href="#通用排序方式一" class="headerlink" title="通用排序方式一"></a>通用排序方式一</h1><a id="more"></a>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div><div class="line">79</div><div class="line">80</div><div class="line">81</div><div class="line">82</div><div class="line">83</div><div class="line">84</div><div class="line">85</div><div class="line">86</div><div class="line">87</div><div class="line">88</div><div class="line">89</div><div class="line">90</div><div class="line">91</div></pre></td><td class="code"><pre><div class="line"></div><div class="line"><span class="keyword">import</span> java.util.*;</div><div class="line"><span class="keyword">import</span> org.apache.commons.collections.comparators.ComparatorChain;</div><div class="line"></div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Sort</span></span></div><div class="line"><span class="class"></span>&#123;</div><div class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="keyword">boolean</span> ASC = <span class="keyword">false</span>;</div><div class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="keyword">boolean</span> DESC = <span class="keyword">true</span>;</div><div class="line">    <span class="keyword">private</span> Object targetBean[];</div><div class="line">    <span class="keyword">private</span> List targetBeanList;</div><div class="line">    <span class="keyword">private</span> List sortKey;</div><div class="line">    <span class="keyword">private</span> List sortType;</div><div class="line">    <span class="keyword">private</span> ComparatorChain comparetor;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">private</span> <span class="title">Sort</span><span class="params">()</span></span></div><div class="line"><span class="function">    </span>&#123;</div><div class="line">        targetBean = <span class="keyword">null</span>;</div><div class="line">        targetBeanList = <span class="keyword">null</span>;</div><div class="line">        sortKey = <span class="keyword">null</span>;</div><div class="line">        sortType = <span class="keyword">null</span>;</div><div class="line">        comparetor = <span class="keyword">null</span>;</div><div class="line">        comparetor = <span class="keyword">new</span> ComparatorChain();</div><div class="line">        sortKey = <span class="keyword">new</span> ArrayList();</div><div class="line">        sortType = <span class="keyword">new</span> ArrayList();</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> Sort <span class="title">targetBean</span><span class="params">(Object beans[])</span></span></div><div class="line"><span class="function">    </span>&#123;</div><div class="line">        Sort sort = <span class="keyword">new</span> Sort();</div><div class="line">        sort.targetBean = beans;</div><div class="line">        <span class="keyword">return</span> sort;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> Sort <span class="title">targetBean</span><span class="params">(List beansList)</span></span></div><div class="line"><span class="function">    </span>&#123;</div><div class="line">        Sort sort = <span class="keyword">new</span> Sort();</div><div class="line">        sort.targetBeanList = beansList;</div><div class="line">        <span class="keyword">return</span> sort;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">public</span> Sort <span class="title">key</span><span class="params">(String keyPropertyName, <span class="keyword">boolean</span> sortOrder)</span></span></div><div class="line"><span class="function">    </span>&#123;</div><div class="line">        Boolean order = <span class="keyword">new</span> Boolean(sortOrder);</div><div class="line">        sortKey.add(keyPropertyName);</div><div class="line">        sortType.add(order);</div><div class="line">        <span class="keyword">return</span> <span class="keyword">this</span>;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="keyword">public</span> Object[] beans()</div><div class="line">    &#123;</div><div class="line">        <span class="keyword">if</span>(targetBeanList != <span class="keyword">null</span>)</div><div class="line">            listToBeans();</div><div class="line">        execute();</div><div class="line">        <span class="keyword">return</span> targetBean;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">public</span> List <span class="title">list</span><span class="params">()</span></span></div><div class="line"><span class="function">    </span>&#123;</div><div class="line">        <span class="keyword">if</span>(targetBeanList != <span class="keyword">null</span>)</div><div class="line">            listToBeans();</div><div class="line">        execute();</div><div class="line">        <span class="keyword">int</span> len = targetBean.length;</div><div class="line">        targetBeanList = <span class="keyword">new</span> ArrayList();</div><div class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> beanIdx = <span class="number">0</span>; beanIdx &lt; len; beanIdx++)</div><div class="line">            targetBeanList.add(targetBean[beanIdx]);</div><div class="line"></div><div class="line"></div><div class="line">        <span class="keyword">return</span> targetBeanList;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">listToBeans</span><span class="params">()</span></span></div><div class="line"><span class="function">    </span>&#123;</div><div class="line">        targetBean = <span class="keyword">new</span> Object[targetBeanList.size()];</div><div class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> listIdx = <span class="number">0</span>; listIdx &lt; targetBean.length; listIdx++)</div><div class="line">            targetBean[listIdx] = targetBeanList.get(listIdx);</div><div class="line"></div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">execute</span><span class="params">()</span></span></div><div class="line"><span class="function">    </span>&#123;</div><div class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> idx = <span class="number">0</span>; idx &lt; sortKey.size(); idx++)</div><div class="line">        &#123;</div><div class="line">            Comparator sortComp = <span class="keyword">new</span> SortCreateComparator((String)sortKey.get(idx));</div><div class="line">            comparetor.addComparator(sortComp, ((Boolean)sortType.get(idx)).booleanValue());</div><div class="line">        &#125;</div><div class="line"></div><div class="line">        Arrays.sort(targetBean, comparetor);</div><div class="line">    &#125;</div><div class="line"></div><div class="line">&#125;</div><div class="line"></div></pre></td></tr></table></figure>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div></pre></td><td class="code"><pre><div class="line"></div><div class="line"><span class="keyword">import</span> java.util.Comparator;</div><div class="line"><span class="keyword">import</span> org.apache.commons.beanutils.PropertyUtils;</div><div class="line"><span class="keyword">import</span> org.apache.commons.collections.comparators.NullComparator;</div><div class="line"></div><div class="line"><span class="keyword">final</span> <span class="class"><span class="keyword">class</span> <span class="title">SortCreateComparator</span></span></div><div class="line"><span class="class">    <span class="keyword">implements</span> <span class="title">Comparator</span></span></div><div class="line"><span class="class"></span>&#123;</div><div class="line"></div><div class="line">    <span class="keyword">private</span> String sortKey;</div><div class="line">    <span class="keyword">private</span> NullComparator comparetor;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">protected</span> <span class="title">SortCreateComparator</span><span class="params">(String sortKey)</span></span></div><div class="line"><span class="function">    </span>&#123;</div><div class="line">        <span class="keyword">this</span>.sortKey = sortKey;</div><div class="line">        comparetor = <span class="keyword">new</span> NullComparator(<span class="keyword">true</span>);</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">compare</span><span class="params">(Object o1, Object o2)</span></span></div><div class="line"><span class="function">        <span class="keyword">throws</span> RuntimeException</span></div><div class="line"><span class="function">    </span>&#123;</div><div class="line">        <span class="keyword">int</span> ret = <span class="number">0</span>;</div><div class="line">        Object obj1 = <span class="keyword">null</span>;</div><div class="line">        Object obj2 = <span class="keyword">null</span>;</div><div class="line">        <span class="keyword">try</span></div><div class="line">        &#123;</div><div class="line">            obj1 = PropertyUtils.getProperty(o1, sortKey);</div><div class="line">            obj2 = PropertyUtils.getProperty(o2, sortKey);</div><div class="line">            ret = comparetor.compare(obj1, obj2);</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">catch</span>(Exception e)</div><div class="line">        &#123;</div><div class="line">            <span class="keyword">throw</span> <span class="keyword">new</span> RuntimeException(e);</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">return</span> ret;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">&#125;</div><div class="line"></div><div class="line"></div></pre></td></tr></table></figure>
+
+        <div class="container">
+            <div class="main-body container-inner">
+                <div class="main-body-inner">
+                    <section id="main">
+                        <div class="main-body-header">
+    <h1 class="header">
+    
+    未分类
+    </h1>
+</div>
+
+                        <div class="main-body-content">
+                            <article id="post-Java/java-apache-common" class="article article-single article-type-post" itemscope itemprop="blogPost">
+    <div class="article-inner">
+        
+            <header class="article-header">
+                
+    
+        <h1 class="article-title" itemprop="name">
+        使用Apache Common进行通用排序
+        </h1>
+    
+
+            </header>
+        
+        
+            <div class="article-meta">
+                
+  <div class="article-date">
+    <i class="fa fa-calendar"></i>
+    <a href="/2009/10/22/Java/java-apache-common/" class="article-date">
+       <time datetime="2009-10-22T13:18:02.000Z" itemprop="datePublished">2009-10-22</time>
+    </a>
+  </div>
+
+
+<div class="article-date">
+  <i class="fa fa-calendar-plus-o"></i>
+  <a href="/2009/10/22/Java/java-apache-common/" class="article-date">
+     <time datetime="2020-04-13T04:17:54.675Z" itemprop="dateModified">2020-04-13</time>
+  </a>
+</div>
+
+
+                
+
+                
+    <div class="article-tag">
+        <i class="fa fa-tag"></i>
+        <a class="tag-link-link" href="/tags/Java/" rel="tag">Java</a>
+    </div>
+
+                
+
+                
+
+            </div>
+        
+        
+        <div class="article-entry" itemprop="articleBody">
+            
+
+            
+
+            
+
+            <h1 id="通用排序方式一"><a href="#通用排序方式一" class="headerlink" title="通用排序方式一"></a>通用排序方式一</h1><a id="more"></a>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">import</span> java.util.*;</span><br><span class="line"><span class="keyword">import</span> org.apache.commons.collections.comparators.ComparatorChain;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Sort</span></span></span><br><span class="line"><span class="class"></span>&#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="keyword">boolean</span> ASC = <span class="keyword">false</span>;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="keyword">boolean</span> DESC = <span class="keyword">true</span>;</span><br><span class="line">    <span class="keyword">private</span> Object targetBean[];</span><br><span class="line">    <span class="keyword">private</span> List targetBeanList;</span><br><span class="line">    <span class="keyword">private</span> List sortKey;</span><br><span class="line">    <span class="keyword">private</span> List sortType;</span><br><span class="line">    <span class="keyword">private</span> ComparatorChain comparetor;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="title">Sort</span><span class="params">()</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        targetBean = <span class="keyword">null</span>;</span><br><span class="line">        targetBeanList = <span class="keyword">null</span>;</span><br><span class="line">        sortKey = <span class="keyword">null</span>;</span><br><span class="line">        sortType = <span class="keyword">null</span>;</span><br><span class="line">        comparetor = <span class="keyword">null</span>;</span><br><span class="line">        comparetor = <span class="keyword">new</span> ComparatorChain();</span><br><span class="line">        sortKey = <span class="keyword">new</span> ArrayList();</span><br><span class="line">        sortType = <span class="keyword">new</span> ArrayList();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> Sort <span class="title">targetBean</span><span class="params">(Object beans[])</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        Sort sort = <span class="keyword">new</span> Sort();</span><br><span class="line">        sort.targetBean = beans;</span><br><span class="line">        <span class="keyword">return</span> sort;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> Sort <span class="title">targetBean</span><span class="params">(List beansList)</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        Sort sort = <span class="keyword">new</span> Sort();</span><br><span class="line">        sort.targetBeanList = beansList;</span><br><span class="line">        <span class="keyword">return</span> sort;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> Sort <span class="title">key</span><span class="params">(String keyPropertyName, <span class="keyword">boolean</span> sortOrder)</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        Boolean order = <span class="keyword">new</span> Boolean(sortOrder);</span><br><span class="line">        sortKey.add(keyPropertyName);</span><br><span class="line">        sortType.add(order);</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">this</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> Object[] beans()</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">if</span>(targetBeanList != <span class="keyword">null</span>)</span><br><span class="line">            listToBeans();</span><br><span class="line">        execute();</span><br><span class="line">        <span class="keyword">return</span> targetBean;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> List <span class="title">list</span><span class="params">()</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(targetBeanList != <span class="keyword">null</span>)</span><br><span class="line">            listToBeans();</span><br><span class="line">        execute();</span><br><span class="line">        <span class="keyword">int</span> len = targetBean.length;</span><br><span class="line">        targetBeanList = <span class="keyword">new</span> ArrayList();</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> beanIdx = <span class="number">0</span>; beanIdx &lt; len; beanIdx++)</span><br><span class="line">            targetBeanList.add(targetBean[beanIdx]);</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> targetBeanList;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">listToBeans</span><span class="params">()</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        targetBean = <span class="keyword">new</span> Object[targetBeanList.size()];</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> listIdx = <span class="number">0</span>; listIdx &lt; targetBean.length; listIdx++)</span><br><span class="line">            targetBean[listIdx] = targetBeanList.get(listIdx);</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">execute</span><span class="params">()</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> idx = <span class="number">0</span>; idx &lt; sortKey.size(); idx++)</span><br><span class="line">        &#123;</span><br><span class="line">            Comparator sortComp = <span class="keyword">new</span> SortCreateComparator((String)sortKey.get(idx));</span><br><span class="line">            comparetor.addComparator(sortComp, ((Boolean)sortType.get(idx)).booleanValue());</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        Arrays.sort(targetBean, comparetor);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">import</span> java.util.Comparator;</span><br><span class="line"><span class="keyword">import</span> org.apache.commons.beanutils.PropertyUtils;</span><br><span class="line"><span class="keyword">import</span> org.apache.commons.collections.comparators.NullComparator;</span><br><span class="line"></span><br><span class="line"><span class="keyword">final</span> <span class="class"><span class="keyword">class</span> <span class="title">SortCreateComparator</span></span></span><br><span class="line"><span class="class">    <span class="keyword">implements</span> <span class="title">Comparator</span></span></span><br><span class="line"><span class="class"></span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> String sortKey;</span><br><span class="line">    <span class="keyword">private</span> NullComparator comparetor;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">protected</span> <span class="title">SortCreateComparator</span><span class="params">(String sortKey)</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.sortKey = sortKey;</span><br><span class="line">        comparetor = <span class="keyword">new</span> NullComparator(<span class="keyword">true</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">compare</span><span class="params">(Object o1, Object o2)</span></span></span><br><span class="line"><span class="function">        <span class="keyword">throws</span> RuntimeException</span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> ret = <span class="number">0</span>;</span><br><span class="line">        Object obj1 = <span class="keyword">null</span>;</span><br><span class="line">        Object obj2 = <span class="keyword">null</span>;</span><br><span class="line">        <span class="keyword">try</span></span><br><span class="line">        &#123;</span><br><span class="line">            obj1 = PropertyUtils.getProperty(o1, sortKey);</span><br><span class="line">            obj2 = PropertyUtils.getProperty(o2, sortKey);</span><br><span class="line">            ret = comparetor.compare(obj1, obj2);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">catch</span>(Exception e)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">throw</span> <span class="keyword">new</span> RuntimeException(e);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> ret;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+
 <p>Listに格納されたBeanや、Bean配列に格納されたBeanをソートします。<br>ソートを行うクラスはgetterが含まれるBeanの配列か、 そのBeanが格納されたListである必要があります。<br>次にSortクラスを使用した例を説明します。</p>
 <p>对放到List的Bean或Bean数组进行排序。Bean里需要有getter方法。<br>下面看一下使用Sort类的例子。</p>
 <p>・ソート対象Bean</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">bean</span> </span>&#123;</div><div class="line">    <span class="keyword">private</span> Integer id;</div><div class="line">    <span class="keyword">private</span> String name;</div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setId</span><span class="params">(Integer i)</span> </span>&#123; <span class="keyword">this</span>.id = i; &#125;</div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setName</span><span class="params">(String str)</span> </span>&#123; <span class="keyword">this</span>.name = str; &#125;</div><div class="line">    <span class="function"><span class="keyword">public</span> Integer <span class="title">getId</span><span class="params">()</span></span>&#123; <span class="keyword">return</span> <span class="keyword">this</span>.id; &#125;</div><div class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">getName</span><span class="params">()</span></span>&#123; <span class="keyword">return</span> <span class="keyword">this</span>.name; &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">bean</span> </span>&#123;</span><br><span class="line">    <span class="keyword">private</span> Integer id;</span><br><span class="line">    <span class="keyword">private</span> String name;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setId</span><span class="params">(Integer i)</span> </span>&#123; <span class="keyword">this</span>.id = i; &#125;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setName</span><span class="params">(String str)</span> </span>&#123; <span class="keyword">this</span>.name = str; &#125;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> Integer <span class="title">getId</span><span class="params">()</span></span>&#123; <span class="keyword">return</span> <span class="keyword">this</span>.id; &#125;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">getName</span><span class="params">()</span></span>&#123; <span class="keyword">return</span> <span class="keyword">this</span>.name; &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p> ・ソート実行テスト</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">test</span> </span>&#123;</div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">testSort</span><span class="params">()</span></span>&#123;</div><div class="line">        List beanList = <span class="keyword">new</span> ArrayList();</div><div class="line">        Bean bean = <span class="keyword">new</span> Bean();</div><div class="line">        bean.setId(<span class="keyword">new</span> Integer(<span class="number">3</span>));</div><div class="line">        bean.setName(<span class="string">"张三"</span>);</div><div class="line">        beanList.add(bean);</div><div class="line">        bean = <span class="keyword">new</span> Bean();</div><div class="line">        bean.setId(<span class="keyword">new</span> Integer(<span class="number">1</span>));</div><div class="line">        bean.setName(<span class="string">"李四"</span>);</div><div class="line">        beanList.add(bean);</div><div class="line">        bean = <span class="keyword">new</span> Bean();</div><div class="line">        bean.setId(<span class="keyword">new</span> Integer(<span class="number">2</span>));</div><div class="line">        bean.setName(<span class="string">"王五"</span>);</div><div class="line">        beanList.add(bean);</div><div class="line">        beanList = Sort.targetBean(beanList).key(<span class="string">"id"</span>, Sort.DESC).list();</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">test</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">testSort</span><span class="params">()</span></span>&#123;</span><br><span class="line">        List beanList = <span class="keyword">new</span> ArrayList();</span><br><span class="line">        Bean bean = <span class="keyword">new</span> Bean();</span><br><span class="line">        bean.setId(<span class="keyword">new</span> Integer(<span class="number">3</span>));</span><br><span class="line">        bean.setName(<span class="string">&quot;张三&quot;</span>);</span><br><span class="line">        beanList.add(bean);</span><br><span class="line">        bean = <span class="keyword">new</span> Bean();</span><br><span class="line">        bean.setId(<span class="keyword">new</span> Integer(<span class="number">1</span>));</span><br><span class="line">        bean.setName(<span class="string">&quot;李四&quot;</span>);</span><br><span class="line">        beanList.add(bean);</span><br><span class="line">        bean = <span class="keyword">new</span> Bean();</span><br><span class="line">        bean.setId(<span class="keyword">new</span> Integer(<span class="number">2</span>));</span><br><span class="line">        bean.setName(<span class="string">&quot;王五&quot;</span>);</span><br><span class="line">        beanList.add(bean);</span><br><span class="line">        beanList = Sort.targetBean(beanList).key(<span class="string">&quot;id&quot;</span>, Sort.DESC).list();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>testSort()を実行すると、beanListには次のような値が設定されたBeanが格納されています。</p>
 <pre><code>id | name
 ---+--------------
 3 | 张三
 2 | 王五
-1 | 李四
-</code></pre><p>Sort#keyメソッドで指定されたキー名（プロパティ名）とソート順（昇順、降順）に従って、 Sort#listメソッドによってソートが実行されます。<br>キー情報はSort#keyメソッドをいくつも指定することで、複数設定できます。</p>
+1 | 李四</code></pre>
+<p>Sort#keyメソッドで指定されたキー名（プロパティ名）とソート順（昇順、降順）に従って、 Sort#listメソッドによってソートが実行されます。<br>キー情報はSort#keyメソッドをいくつも指定することで、複数設定できます。</p>
 <pre><code>Sort.targetBean(bean).key(&quot;month&quot;, Sort.ASC)
     .key(&quot;productName&quot;, Sort.DESC)
     .key(&quot;price&quot;, Sort.ASC)
-    .beans();
-</code></pre><p>キー情報を設定し終わりソートを実行するには、beansメソッドまたはlistメソッドを 実行します。<br>beansメソッドはソートされたオブジェクト配列が戻り値となり、<br>listメソッドはオブジェクトが格納されたListが戻り値となります。</p>
-<h1 id="通用排序方式二"><a href="#通用排序方式二" class="headerlink" title="通用排序方式二"></a>通用排序方式二</h1><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div><div class="line">79</div><div class="line">80</div><div class="line">81</div><div class="line">82</div><div class="line">83</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">package</span> com.jast.gakuen.framework.util; </div><div class="line"></div><div class="line"><span class="keyword">import</span> java.util.ArrayList; </div><div class="line"><span class="keyword">import</span> java.util.Comparator; </div><div class="line"><span class="keyword">import</span> java.util.List; </div><div class="line"><span class="comment">/** </span></div><div class="line"><span class="comment"> * Comparable配列用Comparatorクラス</span></div><div class="line"><span class="comment"> * </span></div><div class="line"><span class="comment"> * Comparable[](Comparableインターフェース実装クラスの配列)を </span></div><div class="line"><span class="comment"> * 要素とするListをソートします。</span></div><div class="line"><span class="comment"> * &lt;pre&gt;</span></div><div class="line"><span class="comment"> * 使用例: ArrayComparatorを利用してCSVデータをソートします</span></div><div class="line"><span class="comment"> * &lt;code&gt;</span></div><div class="line"><span class="comment"> * // CSVファイルを読み込みString[]を要素とするListを作成</span></div><div class="line"><span class="comment"> * UtilCsvReader cr = new UtilCsvReader();</span></div><div class="line"><span class="comment"> * cr.open("input.csv");</span></div><div class="line"><span class="comment"> * List list = cr.inputList();</span></div><div class="line"><span class="comment"> * cr.close();</span></div><div class="line"><span class="comment"> * </span></div><div class="line"><span class="comment"> * // CSVデータをソート (有効期限日付の降順、ユーザIDの昇順)</span></div><div class="line"><span class="comment"> * ArrayComparator sort = new ArrayComparator();</span></div><div class="line"><span class="comment"> * sort.desc(Smp001CSV01.IDX_AvlDateFrom);</span></div><div class="line"><span class="comment"> * sort.asc(Smp001CSV01.IDX_UserId);</span></div><div class="line"><span class="comment"> * Collections.sort(list, sort);</span></div><div class="line"><span class="comment"> * </span></div><div class="line"><span class="comment"> * // ソート後のCSVデータを書き込む</span></div><div class="line"><span class="comment"> * UtilCsvWriter cw = new UtilCsvWriter();</span></div><div class="line"><span class="comment"> * cw.open("output.csv");</span></div><div class="line"><span class="comment"> * cw.outputList(list);</span></div><div class="line"><span class="comment"> * cw.close();</span></div><div class="line"><span class="comment"> * &lt;code&gt;</span></div><div class="line"><span class="comment"> * &lt;/pre&gt;</span></div><div class="line"><span class="comment"> * <span class="doctag">@author</span> JApan System Techniques Co.,Ltd. </span></div><div class="line"><span class="comment"> */</span> </div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">ArrayComparator</span> <span class="keyword">implements</span> <span class="title">Comparator</span> </span>&#123;</div><div class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> Integer SORT_ASC = <span class="keyword">new</span> Integer(<span class="number">0</span>);</div><div class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> Integer SORT_DESC = <span class="keyword">new</span> Integer(<span class="number">1</span>);</div><div class="line">    <span class="keyword">private</span> List columnList = <span class="keyword">new</span> ArrayList();</div><div class="line">    <span class="keyword">private</span> List orderList = <span class="keyword">new</span> ArrayList();</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="title">ArrayComparator</span><span class="params">()</span> </span>&#123;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="comment">/*</span></div><div class="line"><span class="comment">     * (非 Javadoc) </span></div><div class="line"><span class="comment">     * @see java.util.Comparator#compare(java.lang.Object, java.lang.Object)</span></div><div class="line"><span class="comment">     */</span> </div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">compare</span><span class="params">(Object obj1, Object obj2)</span> </span>&#123;</div><div class="line">        Comparable[] cmp1 = (Comparable[]) obj1;</div><div class="line">        Comparable[] cmp2 = (Comparable[]) obj2;</div><div class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>, size = columnList.size(); i &lt; size; i++) &#123;</div><div class="line">            <span class="keyword">int</span> idx = ((Integer) columnList.get(i)).intValue();</div><div class="line">            <span class="keyword">int</span> ret = comp(cmp1[idx], cmp2[idx]);</div><div class="line">            <span class="keyword">if</span> (ret != <span class="number">0</span>) &#123;</div><div class="line">                Integer sort = (Integer) orderList.get(i);</div><div class="line">                <span class="keyword">return</span> (sort.equals(SORT_ASC)) ? ret : -ret;</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">return</span> <span class="number">0</span>;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="comment">/** </span></div><div class="line"><span class="comment">     * ソート順(昇順)を追加します。 </span></div><div class="line"><span class="comment">     * <span class="doctag">@param</span> columnIdx 対象カラムインデックス </span></div><div class="line"><span class="comment">     */</span></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">asc</span><span class="params">(<span class="keyword">int</span> columnIdx)</span> </span>&#123;</div><div class="line">        columnList.add(<span class="keyword">new</span> Integer(columnIdx));</div><div class="line">        orderList.add(SORT_ASC);</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="comment">/** </span></div><div class="line"><span class="comment">     * ソート順(降順)を追加します。 </span></div><div class="line"><span class="comment">     * <span class="doctag">@param</span> columnIdx 対象カラムインデックス </span></div><div class="line"><span class="comment">     */</span></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">desc</span><span class="params">(<span class="keyword">int</span> columnIdx)</span> </span>&#123;</div><div class="line">        columnList.add(<span class="keyword">new</span> Integer(columnIdx));</div><div class="line">        orderList.add(SORT_DESC);</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">int</span> <span class="title">comp</span><span class="params">(Comparable o1, Comparable o2)</span> </span>&#123;</div><div class="line">        <span class="keyword">return</span> o1 == <span class="keyword">null</span> ? o2 == <span class="keyword">null</span> ? <span class="number">0</span> : <span class="number">1</span> : o2 == <span class="keyword">null</span> ? -<span class="number">1</span> : o1.compareTo(o2);</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<h1 id="代码定义"><a href="#代码定义" class="headerlink" title="代码定义"></a>代码定义</h1><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div></pre></td><td class="code"><pre><div class="line"><span class="comment">/**</span></div><div class="line"><span class="comment"> * コード区分定義基底クラス </span></div><div class="line"><span class="comment"> * <span class="doctag">@author</span> JApan System Techniques Co.,Ltd.</span></div><div class="line"><span class="comment"> */</span></div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">CodeDefBase</span> </span>&#123;</div><div class="line">    <span class="keyword">protected</span> Object code; <span class="comment">// コード</span></div><div class="line">    <span class="keyword">protected</span> String name; <span class="comment">// 名称</span></div><div class="line">    <span class="keyword">protected</span> String shortName; <span class="comment">// 略称</span></div><div class="line"></div><div class="line">    <span class="comment">/**</span></div><div class="line"><span class="comment">     * コンストラクタ </span></div><div class="line"><span class="comment">     * <span class="doctag">@param</span> codeValue コード値(Object) </span></div><div class="line"><span class="comment">     * <span class="doctag">@param</span> name 名称 * </span></div><div class="line"><span class="comment">     * <span class="doctag">@param</span> shortName 略称</span></div><div class="line"><span class="comment">     */</span></div><div class="line">    <span class="function"><span class="keyword">protected</span> <span class="title">CodeDefBase</span><span class="params">(Object codeValue, String name, String shortName)</span> </span>&#123;</div><div class="line">        <span class="keyword">this</span>.code = codeValue;</div><div class="line">        <span class="keyword">this</span>.name = name;</div><div class="line">        <span class="keyword">this</span>.shortName = shortName;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="comment">/**</span></div><div class="line"><span class="comment">     * コンストラクタ </span></div><div class="line"><span class="comment">     * <span class="doctag">@param</span> codeValue コード値(int) </span></div><div class="line"><span class="comment">     * <span class="doctag">@param</span> name 名称 </span></div><div class="line"><span class="comment">     * <span class="doctag">@param</span> shortName 略称</span></div><div class="line"><span class="comment">     */</span></div><div class="line">    <span class="function"><span class="keyword">protected</span> <span class="title">CodeDefBase</span><span class="params">(<span class="keyword">int</span> codeValue, String name, String shortName)</span> </span>&#123;</div><div class="line">        <span class="keyword">this</span>.code = <span class="keyword">new</span> Integer(codeValue);</div><div class="line">        <span class="keyword">this</span>.name = name;</div><div class="line">        <span class="keyword">this</span>.shortName = shortName;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="comment">/**</span></div><div class="line"><span class="comment">     * コードの値(Object)を取得します。 </span></div><div class="line"><span class="comment">     * <span class="doctag">@return</span> コードの値</span></div><div class="line"><span class="comment">     */</span></div><div class="line">    <span class="function"><span class="keyword">protected</span> Object <span class="title">getObjectCode</span><span class="params">()</span> </span>&#123;</div><div class="line">        <span class="keyword">return</span> code;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="comment">/**</span></div><div class="line"><span class="comment">     * コードの値(String)を取得します。 </span></div><div class="line"><span class="comment">     * <span class="doctag">@return</span> コードの値</span></div><div class="line"><span class="comment">     */</span></div><div class="line">    <span class="function"><span class="keyword">protected</span> String <span class="title">getStringCode</span><span class="params">()</span> </span>&#123;</div><div class="line">        <span class="keyword">return</span> code.toString();</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="comment">/**</span></div><div class="line"><span class="comment">     * コードの値(int)を取得します。 </span></div><div class="line"><span class="comment">     * <span class="doctag">@return</span> コードの値</span></div><div class="line"><span class="comment">     */</span></div><div class="line">    <span class="function"><span class="keyword">protected</span> <span class="keyword">int</span> <span class="title">getIntCode</span><span class="params">()</span> </span>&#123;</div><div class="line">        <span class="keyword">return</span> ((Integer) code).intValue();</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="comment">/**</span></div><div class="line"><span class="comment">     * コードの表示名称を取得します。 </span></div><div class="line"><span class="comment">     * <span class="doctag">@return</span> コードの名称</span></div><div class="line"><span class="comment">     */</span></div><div class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">getName</span><span class="params">()</span> </span>&#123;</div><div class="line">        <span class="keyword">return</span> name;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="comment">/**</span></div><div class="line"><span class="comment">     * コードの略称を取得します。 </span></div><div class="line"><span class="comment">     * <span class="doctag">@return</span> コードの略称</span></div><div class="line"><span class="comment">     */</span></div><div class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">getShortName</span><span class="params">()</span> </span>&#123;</div><div class="line">        <span class="keyword">return</span> shortName;</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"></div></pre></td></tr></table></figure>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div><div class="line">79</div><div class="line">80</div><div class="line">81</div><div class="line">82</div><div class="line">83</div><div class="line">84</div><div class="line">85</div><div class="line">86</div><div class="line">87</div><div class="line">88</div><div class="line">89</div><div class="line">90</div><div class="line">91</div><div class="line">92</div><div class="line">93</div><div class="line">94</div><div class="line">95</div><div class="line">96</div><div class="line">97</div></pre></td><td class="code"><pre><div class="line"></div><div class="line"><span class="keyword">package</span> com.ces.appraisal.score.actions;</div><div class="line"></div><div class="line"><span class="keyword">import</span> java.util.Iterator;</div><div class="line"><span class="keyword">import</span> java.util.LinkedHashMap;</div><div class="line"><span class="keyword">import</span> com.jast.gakuen.framework.util.*;</div><div class="line"></div><div class="line"><span class="comment">/**</span></div><div class="line"><span class="comment"> * コード区分定義クラス【宛先区分】</span></div><div class="line"><span class="comment"> * </span></div><div class="line"><span class="comment"> * <span class="doctag">@author</span> JApan System Techniques Co.,Ltd.</span></div><div class="line"><span class="comment"> */</span></div><div class="line"><span class="keyword">public</span> <span class="keyword">final</span> <span class="class"><span class="keyword">class</span> <span class="title">AtesakiKbn</span> <span class="keyword">extends</span> <span class="title">CodeDefBase</span> </span>&#123;</div><div class="line">    <span class="comment">// static変数（コードの一覧）</span></div><div class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> LinkedHashMap codeMap = <span class="keyword">new</span> LinkedHashMap();</div><div class="line"></div><div class="line">    <span class="comment">/**</span></div><div class="line"><span class="comment">     * コードの定義 </span></div><div class="line"><span class="comment">     * GAKUSEI:学生住所 </span></div><div class="line"><span class="comment">     * HOSHONIN:保証人住所 </span></div><div class="line"><span class="comment">     * KISEISAKI:帰省先住所</span></div><div class="line"><span class="comment">     * SHIGANSHA:志願者住所</span></div><div class="line"><span class="comment">     */</span></div><div class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">final</span> AtesakiKbn GAKUSEI = <span class="keyword">new</span> AtesakiKbn(<span class="string">"1"</span>, <span class="string">"学生住所"</span>, <span class="string">"学生"</span>);</div><div class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">final</span> AtesakiKbn HOSHONIN = <span class="keyword">new</span> AtesakiKbn(<span class="string">"2"</span>, <span class="string">"保証人住所"</span>, <span class="string">"保証人"</span>);</div><div class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">final</span> AtesakiKbn KISEISAKI = <span class="keyword">new</span> AtesakiKbn(<span class="string">"3"</span>, <span class="string">"帰省先住所"</span>, <span class="string">"帰省先"</span>);</div><div class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">final</span> AtesakiKbn SHIGANSHA = <span class="keyword">new</span> AtesakiKbn(<span class="string">"4"</span>, <span class="string">"志願者住所"</span>, <span class="string">"志願者"</span>);</div><div class="line"></div><div class="line">    <span class="comment">/**</span></div><div class="line"><span class="comment">     * コード値を指定してコードオブジェクトを取得します。</span></div><div class="line"><span class="comment">     * <span class="doctag">@param</span> codeValue コード値 </span></div><div class="line"><span class="comment">     * <span class="doctag">@return</span> AtesakiKbnオブジェクト</span></div><div class="line"><span class="comment">     */</span></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> AtesakiKbn <span class="title">getCodeDef</span><span class="params">(String codeValue)</span> </span>&#123;</div><div class="line">        <span class="keyword">return</span> (AtesakiKbn) codeMap.get(codeValue);</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="comment">/**</span></div><div class="line"><span class="comment">     * 妥当なコードかチェックします。</span></div><div class="line"><span class="comment">     * <span class="doctag">@param</span> codeValue コード値</span></div><div class="line"><span class="comment">     * <span class="doctag">@return</span> 妥当性</span></div><div class="line"><span class="comment">     */</span></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">boolean</span> <span class="title">isValid</span><span class="params">(String codeValue)</span> </span>&#123;</div><div class="line">        <span class="keyword">return</span> codeMap.containsKey(codeValue);</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="comment">/**</span></div><div class="line"><span class="comment">     * コードの一覧を取得します。</span></div><div class="line"><span class="comment">     * <span class="doctag">@return</span> コード一覧Iterator</span></div><div class="line"><span class="comment">     */</span></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> Iterator <span class="title">getList</span><span class="params">()</span> </span>&#123;</div><div class="line">        LinkedHashMap copyMap = <span class="keyword">new</span> LinkedHashMap(codeMap);</div><div class="line">        <span class="keyword">return</span> copyMap.values().iterator();</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="comment">/*</span></div><div class="line"><span class="comment">     * コンストラクタ </span></div><div class="line"><span class="comment">     * @param codeValue コード値</span></div><div class="line"><span class="comment">     * @param name コード名称</span></div><div class="line"><span class="comment">     * @param shortName コード略称 指定しなかった場合は名称をセットします。</span></div><div class="line"><span class="comment">     */</span> </div><div class="line">    <span class="function"><span class="keyword">private</span> <span class="title">AtesakiKbn</span><span class="params">(String codeValue, String name, String shortName)</span> </span>&#123;</div><div class="line">        <span class="keyword">super</span>(codeValue, name, shortName);</div><div class="line">        codeMap.put(codeValue, <span class="keyword">this</span>);</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="comment">/**</span></div><div class="line"><span class="comment">     * コードの値を取得します。</span></div><div class="line"><span class="comment">     * <span class="doctag">@return</span> コードの値</span></div><div class="line"><span class="comment">     */</span></div><div class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">getCode</span><span class="params">()</span> </span>&#123;</div><div class="line">        <span class="keyword">return</span> getStringCode();</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="comment">/**</span></div><div class="line"><span class="comment">     * オブジェクト同士を比較し、型とコード値が等しいかどうかを 判定します。</span></div><div class="line"><span class="comment">     * <span class="doctag">@param</span> obj コード・区分定義クラスのオブジェクト</span></div><div class="line"><span class="comment">     * <span class="doctag">@return</span> 型とコード値が一致する場合にTrueを戻します。</span></div><div class="line"><span class="comment">     */</span></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">equals</span><span class="params">(Object obj)</span> </span>&#123;</div><div class="line">        <span class="keyword">if</span> (!(obj <span class="keyword">instanceof</span> AtesakiKbn)) &#123;</div><div class="line">            <span class="keyword">return</span> <span class="keyword">false</span>;</div><div class="line">        &#125;</div><div class="line">        AtesakiKbn other = (AtesakiKbn) obj;</div><div class="line">        <span class="keyword">return</span> other.code == <span class="keyword">this</span>.code;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="comment">/** </span></div><div class="line"><span class="comment">     * コードクラスが保持するコード値の一覧を String[] で取得します。</span></div><div class="line"><span class="comment">     * <span class="doctag">@return</span> コード値の一覧 </span></div><div class="line"><span class="comment">     */</span></div><div class="line">    <span class="keyword">public</span> <span class="keyword">static</span> String[] getArrays() &#123;</div><div class="line">        LinkedHashMap copyMap = <span class="keyword">new</span> LinkedHashMap(codeMap);</div><div class="line">        <span class="keyword">return</span> (String[]) copyMap.keySet().toArray(<span class="keyword">new</span> String[<span class="number">0</span>]);</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"></div></pre></td></tr></table></figure>
-  
-	</div>
-		<footer class="article-footer clearfix">
-<div class="article-catetags">
+    .beans();</code></pre>
+<p>キー情報を設定し終わりソートを実行するには、beansメソッドまたはlistメソッドを 実行します。<br>beansメソッドはソートされたオブジェクト配列が戻り値となり、<br>listメソッドはオブジェクトが格納されたListが戻り値となります。</p>
+<h1 id="通用排序方式二"><a href="#通用排序方式二" class="headerlink" title="通用排序方式二"></a>通用排序方式二</h1><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> com.jast.gakuen.framework.util; </span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> java.util.ArrayList; </span><br><span class="line"><span class="keyword">import</span> java.util.Comparator; </span><br><span class="line"><span class="keyword">import</span> java.util.List; </span><br><span class="line"><span class="comment">/** </span></span><br><span class="line"><span class="comment"> * Comparable配列用Comparatorクラス</span></span><br><span class="line"><span class="comment"> * </span></span><br><span class="line"><span class="comment"> * Comparable[](Comparableインターフェース実装クラスの配列)を </span></span><br><span class="line"><span class="comment"> * 要素とするListをソートします。</span></span><br><span class="line"><span class="comment"> * &lt;pre&gt;</span></span><br><span class="line"><span class="comment"> * 使用例: ArrayComparatorを利用してCSVデータをソートします</span></span><br><span class="line"><span class="comment"> * &lt;code&gt;</span></span><br><span class="line"><span class="comment"> * // CSVファイルを読み込みString[]を要素とするListを作成</span></span><br><span class="line"><span class="comment"> * UtilCsvReader cr = new UtilCsvReader();</span></span><br><span class="line"><span class="comment"> * cr.open(&quot;input.csv&quot;);</span></span><br><span class="line"><span class="comment"> * List list = cr.inputList();</span></span><br><span class="line"><span class="comment"> * cr.close();</span></span><br><span class="line"><span class="comment"> * </span></span><br><span class="line"><span class="comment"> * // CSVデータをソート (有効期限日付の降順、ユーザIDの昇順)</span></span><br><span class="line"><span class="comment"> * ArrayComparator sort = new ArrayComparator();</span></span><br><span class="line"><span class="comment"> * sort.desc(Smp001CSV01.IDX_AvlDateFrom);</span></span><br><span class="line"><span class="comment"> * sort.asc(Smp001CSV01.IDX_UserId);</span></span><br><span class="line"><span class="comment"> * Collections.sort(list, sort);</span></span><br><span class="line"><span class="comment"> * </span></span><br><span class="line"><span class="comment"> * // ソート後のCSVデータを書き込む</span></span><br><span class="line"><span class="comment"> * UtilCsvWriter cw = new UtilCsvWriter();</span></span><br><span class="line"><span class="comment"> * cw.open(&quot;output.csv&quot;);</span></span><br><span class="line"><span class="comment"> * cw.outputList(list);</span></span><br><span class="line"><span class="comment"> * cw.close();</span></span><br><span class="line"><span class="comment"> * &lt;code&gt;</span></span><br><span class="line"><span class="comment"> * &lt;/pre&gt;</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@author</span> JApan System Techniques Co.,Ltd. </span></span><br><span class="line"><span class="comment"> */</span> </span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">ArrayComparator</span> <span class="keyword">implements</span> <span class="title">Comparator</span> </span>&#123;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> Integer SORT_ASC = <span class="keyword">new</span> Integer(<span class="number">0</span>);</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> Integer SORT_DESC = <span class="keyword">new</span> Integer(<span class="number">1</span>);</span><br><span class="line">    <span class="keyword">private</span> List columnList = <span class="keyword">new</span> ArrayList();</span><br><span class="line">    <span class="keyword">private</span> List orderList = <span class="keyword">new</span> ArrayList();</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">ArrayComparator</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/*</span></span><br><span class="line"><span class="comment">     * (非 Javadoc) </span></span><br><span class="line"><span class="comment">     * @see java.util.Comparator#compare(java.lang.Object, java.lang.Object)</span></span><br><span class="line"><span class="comment">     */</span> </span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">compare</span><span class="params">(Object obj1, Object obj2)</span> </span>&#123;</span><br><span class="line">        Comparable[] cmp1 = (Comparable[]) obj1;</span><br><span class="line">        Comparable[] cmp2 = (Comparable[]) obj2;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>, size = columnList.size(); i &lt; size; i++) &#123;</span><br><span class="line">            <span class="keyword">int</span> idx = ((Integer) columnList.get(i)).intValue();</span><br><span class="line">            <span class="keyword">int</span> ret = comp(cmp1[idx], cmp2[idx]);</span><br><span class="line">            <span class="keyword">if</span> (ret != <span class="number">0</span>) &#123;</span><br><span class="line">                Integer sort = (Integer) orderList.get(i);</span><br><span class="line">                <span class="keyword">return</span> (sort.equals(SORT_ASC)) ? ret : -ret;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/** </span></span><br><span class="line"><span class="comment">     * ソート順(昇順)を追加します。 </span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> columnIdx 対象カラムインデックス </span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">asc</span><span class="params">(<span class="keyword">int</span> columnIdx)</span> </span>&#123;</span><br><span class="line">        columnList.add(<span class="keyword">new</span> Integer(columnIdx));</span><br><span class="line">        orderList.add(SORT_ASC);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/** </span></span><br><span class="line"><span class="comment">     * ソート順(降順)を追加します。 </span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> columnIdx 対象カラムインデックス </span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">desc</span><span class="params">(<span class="keyword">int</span> columnIdx)</span> </span>&#123;</span><br><span class="line">        columnList.add(<span class="keyword">new</span> Integer(columnIdx));</span><br><span class="line">        orderList.add(SORT_DESC);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">int</span> <span class="title">comp</span><span class="params">(Comparable o1, Comparable o2)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> o1 == <span class="keyword">null</span> ? o2 == <span class="keyword">null</span> ? <span class="number">0</span> : <span class="number">1</span> : o2 == <span class="keyword">null</span> ? -<span class="number">1</span> : o1.compareTo(o2);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 
-  <div class="article-tags">
-  
-  <span></span> <a href="/tags/Java/">Java</a>
-  </div>
+<h1 id="代码定义"><a href="#代码定义" class="headerlink" title="代码定义"></a>代码定义</h1><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * コード区分定義基底クラス </span></span><br><span class="line"><span class="comment"> * <span class="doctag">@author</span> JApan System Techniques Co.,Ltd.</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">CodeDefBase</span> </span>&#123;</span><br><span class="line">    <span class="keyword">protected</span> Object code; <span class="comment">// コード</span></span><br><span class="line">    <span class="keyword">protected</span> String name; <span class="comment">// 名称</span></span><br><span class="line">    <span class="keyword">protected</span> String shortName; <span class="comment">// 略称</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * コンストラクタ </span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> codeValue コード値(Object) </span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> name 名称 * </span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> shortName 略称</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="function"><span class="keyword">protected</span> <span class="title">CodeDefBase</span><span class="params">(Object codeValue, String name, String shortName)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.code = codeValue;</span><br><span class="line">        <span class="keyword">this</span>.name = name;</span><br><span class="line">        <span class="keyword">this</span>.shortName = shortName;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * コンストラクタ </span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> codeValue コード値(int) </span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> name 名称 </span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> shortName 略称</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="function"><span class="keyword">protected</span> <span class="title">CodeDefBase</span><span class="params">(<span class="keyword">int</span> codeValue, String name, String shortName)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.code = <span class="keyword">new</span> Integer(codeValue);</span><br><span class="line">        <span class="keyword">this</span>.name = name;</span><br><span class="line">        <span class="keyword">this</span>.shortName = shortName;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * コードの値(Object)を取得します。 </span></span><br><span class="line"><span class="comment">     * <span class="doctag">@return</span> コードの値</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="function"><span class="keyword">protected</span> Object <span class="title">getObjectCode</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> code;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * コードの値(String)を取得します。 </span></span><br><span class="line"><span class="comment">     * <span class="doctag">@return</span> コードの値</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="function"><span class="keyword">protected</span> String <span class="title">getStringCode</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> code.toString();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * コードの値(int)を取得します。 </span></span><br><span class="line"><span class="comment">     * <span class="doctag">@return</span> コードの値</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="function"><span class="keyword">protected</span> <span class="keyword">int</span> <span class="title">getIntCode</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> ((Integer) code).intValue();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * コードの表示名称を取得します。 </span></span><br><span class="line"><span class="comment">     * <span class="doctag">@return</span> コードの名称</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">getName</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> name;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * コードの略称を取得します。 </span></span><br><span class="line"><span class="comment">     * <span class="doctag">@return</span> コードの略称</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">getShortName</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> shortName;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
 
-</div>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">package</span> com.ces.appraisal.score.actions;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> java.util.Iterator;</span><br><span class="line"><span class="keyword">import</span> java.util.LinkedHashMap;</span><br><span class="line"><span class="keyword">import</span> com.jast.gakuen.framework.util.*;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * コード区分定義クラス【宛先区分】</span></span><br><span class="line"><span class="comment"> * </span></span><br><span class="line"><span class="comment"> * <span class="doctag">@author</span> JApan System Techniques Co.,Ltd.</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">final</span> <span class="class"><span class="keyword">class</span> <span class="title">AtesakiKbn</span> <span class="keyword">extends</span> <span class="title">CodeDefBase</span> </span>&#123;</span><br><span class="line">    <span class="comment">// static変数（コードの一覧）</span></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> LinkedHashMap codeMap = <span class="keyword">new</span> LinkedHashMap();</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * コードの定義 </span></span><br><span class="line"><span class="comment">     * GAKUSEI:学生住所 </span></span><br><span class="line"><span class="comment">     * HOSHONIN:保証人住所 </span></span><br><span class="line"><span class="comment">     * KISEISAKI:帰省先住所</span></span><br><span class="line"><span class="comment">     * SHIGANSHA:志願者住所</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">final</span> AtesakiKbn GAKUSEI = <span class="keyword">new</span> AtesakiKbn(<span class="string">&quot;1&quot;</span>, <span class="string">&quot;学生住所&quot;</span>, <span class="string">&quot;学生&quot;</span>);</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">final</span> AtesakiKbn HOSHONIN = <span class="keyword">new</span> AtesakiKbn(<span class="string">&quot;2&quot;</span>, <span class="string">&quot;保証人住所&quot;</span>, <span class="string">&quot;保証人&quot;</span>);</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">final</span> AtesakiKbn KISEISAKI = <span class="keyword">new</span> AtesakiKbn(<span class="string">&quot;3&quot;</span>, <span class="string">&quot;帰省先住所&quot;</span>, <span class="string">&quot;帰省先&quot;</span>);</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">final</span> AtesakiKbn SHIGANSHA = <span class="keyword">new</span> AtesakiKbn(<span class="string">&quot;4&quot;</span>, <span class="string">&quot;志願者住所&quot;</span>, <span class="string">&quot;志願者&quot;</span>);</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * コード値を指定してコードオブジェクトを取得します。</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> codeValue コード値 </span></span><br><span class="line"><span class="comment">     * <span class="doctag">@return</span> AtesakiKbnオブジェクト</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> AtesakiKbn <span class="title">getCodeDef</span><span class="params">(String codeValue)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> (AtesakiKbn) codeMap.get(codeValue);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 妥当なコードかチェックします。</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> codeValue コード値</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@return</span> 妥当性</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">boolean</span> <span class="title">isValid</span><span class="params">(String codeValue)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> codeMap.containsKey(codeValue);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * コードの一覧を取得します。</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@return</span> コード一覧Iterator</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> Iterator <span class="title">getList</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        LinkedHashMap copyMap = <span class="keyword">new</span> LinkedHashMap(codeMap);</span><br><span class="line">        <span class="keyword">return</span> copyMap.values().iterator();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/*</span></span><br><span class="line"><span class="comment">     * コンストラクタ </span></span><br><span class="line"><span class="comment">     * @param codeValue コード値</span></span><br><span class="line"><span class="comment">     * @param name コード名称</span></span><br><span class="line"><span class="comment">     * @param shortName コード略称 指定しなかった場合は名称をセットします。</span></span><br><span class="line"><span class="comment">     */</span> </span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="title">AtesakiKbn</span><span class="params">(String codeValue, String name, String shortName)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">super</span>(codeValue, name, shortName);</span><br><span class="line">        codeMap.put(codeValue, <span class="keyword">this</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * コードの値を取得します。</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@return</span> コードの値</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">getCode</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> getStringCode();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * オブジェクト同士を比較し、型とコード値が等しいかどうかを 判定します。</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> obj コード・区分定義クラスのオブジェクト</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@return</span> 型とコード値が一致する場合にTrueを戻します。</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">equals</span><span class="params">(Object obj)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (!(obj <span class="keyword">instanceof</span> AtesakiKbn)) &#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        AtesakiKbn other = (AtesakiKbn) obj;</span><br><span class="line">        <span class="keyword">return</span> other.code == <span class="keyword">this</span>.code;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/** </span></span><br><span class="line"><span class="comment">     * コードクラスが保持するコード値の一覧を String[] で取得します。</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@return</span> コード値の一覧 </span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> String[] getArrays() &#123;</span><br><span class="line">        LinkedHashMap copyMap = <span class="keyword">new</span> LinkedHashMap(codeMap);</span><br><span class="line">        <span class="keyword">return</span> (String[]) copyMap.keySet().toArray(<span class="keyword">new</span> String[<span class="number">0</span>]);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+        </div>
+        <footer class="article-footer">
+            
 
 
 
-	<div class="article-share" id="share">
-	
-	  <div data-url="https://lvshifu.github.io/2009/10/22/Java/java-apache-common/" data-title="使用Apache Common进行通用排序 | lvshifu" data-tsina="" class="share clearfix">
-	  </div>
-	
-	</div>
+    <a data-url="http://example.com/2009/10/22/Java/java-apache-common/" data-id="ckj3uw1nl000qdc7bcvh69qfi" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
+<script>
+    (function ($) {
+        $('body').on('click', function() {
+            $('.article-share-box.on').removeClass('on');
+        }).on('click', '.article-share-link', function(e) {
+            e.stopPropagation();
+
+            var $this = $(this),
+                url = $this.attr('data-url'),
+                encodedUrl = encodeURIComponent(url),
+                id = 'article-share-box-' + $this.attr('data-id'),
+                offset = $this.offset(),
+                box;
+
+            if ($('#' + id).length) {
+                box = $('#' + id);
+
+                if (box.hasClass('on')){
+                    box.removeClass('on');
+                    return;
+                }
+            } else {
+                var html = [
+                    '<div id="' + id + '" class="article-share-box">',
+                        '<input class="article-share-input" value="' + url + '">',
+                        '<div class="article-share-links">',
+                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="article-share-twitter" target="_blank" title="Twitter"></a>',
+                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="article-share-facebook" target="_blank" title="Facebook"></a>',
+                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="article-share-pinterest" target="_blank" title="Pinterest"></a>',
+                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="article-share-google" target="_blank" title="Google+"></a>',
+                        '</div>',
+                    '</div>'
+                ].join('');
+
+              box = $(html);
+
+              $('body').append(box);
+            }
+
+            $('.article-share-box.on').hide();
+
+            box.css({
+                top: offset.top + 25,
+                left: offset.left
+            }).addClass('on');
+
+        }).on('click', '.article-share-box', function (e) {
+            e.stopPropagation();
+        }).on('click', '.article-share-box-input', function () {
+            $(this).select();
+        }).on('click', '.article-share-box-link', function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+
+            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
+        });
+    })(jQuery);
+</script>
+
+        </footer>
+    </div>
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "BlogPosting",
+        "author": {
+            "@type": "Person",
+            "name": "lvshifu"
+        },
+        "headline": "使用Apache Common进行通用排序",
+        "image": "http://example.com",
+        "keywords": "Java",
+        "genre": "",
+        "datePublished": "2009-10-22",
+        "dateCreated": "2009-10-22",
+        "dateModified": "2020-04-13",
+        "url": "http://example.com/2009/10/22/Java/java-apache-common/",
+        "description": "通用排序方式一",
+        "wordCount": 3963
+    }
+</script>
+
+</article>
+
+    <section id="comments">
+    
+        
+    <div id="disqus_thread">
+        <noscript>Please enable JavaScript to view the <a target="_blank" rel="noopener" href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+    </div>
 
 
-</footer>
-
-   	       
-	</article>
-	
-<nav class="article-nav clearfix">
- 
- <div class="prev" >
- <a href="/2010/03/06/Tools/fanqiang/fanqiang-note1/" title="tor">
-  <strong>上一篇：</strong><br/>
-  <span>
-  tor</span>
-</a>
-</div>
+    
+    </section>
 
 
-<div class="next">
-<a href="/2009/04/02/Java/java-abcdto1234/"  title="Java中把ABCD等单个字符转成数字1234">
- <strong>下一篇：</strong><br/> 
- <span>Java中把ABCD等单个字符转成数字1234
-</span>
-</a>
-</div>
 
+                        </div>
+                    </section>
+                    <aside id="sidebar">
+    <a class="sidebar-toggle" title="Expand Sidebar"><i class="toggle icon"></i></a>
+    <div class="sidebar-top">
+        <p>关注我 :</p>
+        <ul class="social-links">
+            
+                
+                <li>
+                    <a class="social-tooltip" title="github" href="https://github.com/lvshifu" target="_blank" rel="noopener">
+                        <i class="icon fa fa-github"></i>
+                    </a>
+                </li>
+                
+            
+        </ul>
+    </div>
+    
+        
+<nav id="article-nav">
+    
+        <a href="/2010/03/06/Tools/fanqiang/fanqiang-note1/" id="article-nav-newer" class="article-nav-link-wrap">
+        <strong class="article-nav-caption">下一篇</strong>
+        <p class="article-nav-title">
+        
+            tor
+        
+        </p>
+        <i class="icon fa fa-chevron-right" id="icon-chevron-right"></i>
+    </a>
+    
+    
+        <a href="/2009/04/02/Java/java-abcdto1234/" id="article-nav-older" class="article-nav-link-wrap">
+        <strong class="article-nav-caption">上一篇</strong>
+        <p class="article-nav-title">Java中把ABCD等单个字符转成数字1234</p>
+        <i class="icon fa fa-chevron-left" id="icon-chevron-left"></i>
+        </a>
+    
 </nav>
 
-	
+    
+    <div class="widgets-container">
+        
+            
+                
 
-<section id="comments" class="comment">
-  <div id="disqus_thread">
-    <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
-  </div>
-</section>
+            
+                
+    <div class="widget-wrap">
+        <h3 class="widget-title">最新文章</h3>
+        <div class="widget">
+            <ul id="recent-post" class="">
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2020/11/02/Python/python-relative-imports/" class="thumbnail">
+    
+    
+        <span class="thumbnail-image thumbnail-none"></span>
+    
+    
+</a>
 
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"></p>
+                            <p class="item-title"><a href="/2020/11/02/Python/python-relative-imports/" class="title">Python reletive imports</a></p>
+                            <p class="item-date"><time datetime="2020-11-02T14:00:00.000Z" itemprop="datePublished">2020-11-02</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2020/10/02/Python/python-param-m/" class="thumbnail">
+    
+    
+        <span class="thumbnail-image thumbnail-none"></span>
+    
+    
+</a>
 
-</div>  
-      <div class="openaside"><a class="navbutton" href="#" title="显示侧边栏"></a></div>
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"></p>
+                            <p class="item-title"><a href="/2020/10/02/Python/python-param-m/" class="title">Python -m 参数</a></p>
+                            <p class="item-date"><time datetime="2020-10-02T14:00:00.000Z" itemprop="datePublished">2020-10-02</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2019/04/16/Tools/tools-file-share/" class="thumbnail">
+    
+    
+        <span class="thumbnail-image thumbnail-none"></span>
+    
+    
+</a>
 
-  <div id="toc" class="toc-aside">
-  <strong class="toc-title">文章目录</strong>
- 
- <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#通用排序方式一"><span class="toc-number">1.</span> <span class="toc-text">通用排序方式一</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#通用排序方式二"><span class="toc-number">2.</span> <span class="toc-text">通用排序方式二</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#代码定义"><span class="toc-number">3.</span> <span class="toc-text">代码定义</span></a></li></ol>
- 
-  </div>
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"></p>
+                            <p class="item-title"><a href="/2019/04/16/Tools/tools-file-share/" class="title">实用工具介绍 文件分享</a></p>
+                            <p class="item-date"><time datetime="2019-04-16T06:38:00.000Z" itemprop="datePublished">2019-04-16</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2019/02/21/Docker/wsl-docker-problem/" class="thumbnail">
+    
+    
+        <span class="thumbnail-image thumbnail-none"></span>
+    
+    
+</a>
 
-<div id="asidepart">
-<div class="closeaside"><a class="closebutton" href="#" title="隐藏侧边栏"></a></div>
-<aside class="clearfix">
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"></p>
+                            <p class="item-title"><a href="/2019/02/21/Docker/wsl-docker-problem/" class="title">Windows上安装Docker</a></p>
+                            <p class="item-date"><time datetime="2019-02-21T08:20:00.000Z" itemprop="datePublished">2019-02-21</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2019/02/20/Docker/wsl-is-what/" class="thumbnail">
+    
+    
+        <span class="thumbnail-image thumbnail-none"></span>
+    
+    
+</a>
 
-  
-
-
-  
-<div class="tagslist">
-	<p class="asidetitle">标签</p>
-		<ul class="clearfix">
-		
-			
-				<li><a href="/tags/Java/" title="Java">Java<sup>14</sup></a></li>
-			
-		
-			
-				<li><a href="/tags/其他/" title="其他">其他<sup>11</sup></a></li>
-			
-		
-			
-				<li><a href="/tags/日语/" title="日语">日语<sup>9</sup></a></li>
-			
-		
-			
-				<li><a href="/tags/工具/" title="工具">工具<sup>5</sup></a></li>
-			
-		
-			
-				<li><a href="/tags/科学上网/" title="科学上网">科学上网<sup>5</sup></a></li>
-			
-		
-			
-				<li><a href="/tags/WSL/" title="WSL">WSL<sup>2</sup></a></li>
-			
-		
-			
-				<li><a href="/tags/Ionic/" title="Ionic">Ionic<sup>2</sup></a></li>
-			
-		
-			
-				<li><a href="/tags/WEB开发/" title="WEB开发">WEB开发<sup>2</sup></a></li>
-			
-		
-			
-				<li><a href="/tags/SSH-Tunnel/" title="SSH Tunnel">SSH Tunnel<sup>2</sup></a></li>
-			
-		
-			
-				<li><a href="/tags/Python/" title="Python">Python<sup>2</sup></a></li>
-			
-		
-			
-				<li><a href="/tags/Docker/" title="Docker">Docker<sup>1</sup></a></li>
-			
-		
-			
-				<li><a href="/tags/大数据/" title="大数据">大数据<sup>1</sup></a></li>
-			
-		
-			
-				<li><a href="/tags/BigData/" title="BigData">BigData<sup>1</sup></a></li>
-			
-		
-			
-				<li><a href="/tags/Excel/" title="Excel">Excel<sup>1</sup></a></li>
-			
-		
-			
-				<li><a href="/tags/Node/" title="Node">Node<sup>1</sup></a></li>
-			
-		
-			
-				<li><a href="/tags/Coding-Rule/" title="Coding Rule">Coding Rule<sup>1</sup></a></li>
-			
-		
-			
-				<li><a href="/tags/dozer/" title="dozer">dozer<sup>1</sup></a></li>
-			
-		
-			
-				<li><a href="/tags/Guava/" title="Guava">Guava<sup>1</sup></a></li>
-			
-		
-			
-				<li><a href="/tags/IDEA/" title="IDEA">IDEA<sup>1</sup></a></li>
-			
-		
-			
-				<li><a href="/tags/JRebel/" title="JRebel">JRebel<sup>1</sup></a></li>
-			
-		
-		</ul>
-</div>
-
-
-  
-  <div class="tagcloudlist">
-    <p class="asidetitle">标签云</p>
-    <div class="tagcloudlist clearfix">
-       <a href="/tags/Apache/" style="font-size: 10px;">Apache</a> <a href="/tags/BigData/" style="font-size: 10px;">BigData</a> <a href="/tags/Coding-Rule/" style="font-size: 10px;">Coding Rule</a> <a href="/tags/Docker/" style="font-size: 10px;">Docker</a> <a href="/tags/Excel/" style="font-size: 10px;">Excel</a> <a href="/tags/Guava/" style="font-size: 10px;">Guava</a> <a href="/tags/Hexo/" style="font-size: 10px;">Hexo</a> <a href="/tags/IDEA/" style="font-size: 10px;">IDEA</a> <a href="/tags/Ionic/" style="font-size: 12px;">Ionic</a> <a href="/tags/JRebel/" style="font-size: 10px;">JRebel</a> <a href="/tags/Java/" style="font-size: 20px;">Java</a> <a href="/tags/Lantern/" style="font-size: 10px;">Lantern</a> <a href="/tags/Nginx/" style="font-size: 10px;">Nginx</a> <a href="/tags/Node/" style="font-size: 10px;">Node</a> <a href="/tags/Openshift/" style="font-size: 10px;">Openshift</a> <a href="/tags/Python/" style="font-size: 12px;">Python</a> <a href="/tags/SSH/" style="font-size: 10px;">SSH</a> <a href="/tags/SSH-Tunnel/" style="font-size: 12px;">SSH Tunnel</a> <a href="/tags/SSL/" style="font-size: 10px;">SSL</a> <a href="/tags/Shadowsocks/" style="font-size: 10px;">Shadowsocks</a> <a href="/tags/Solr/" style="font-size: 10px;">Solr</a> <a href="/tags/Spring/" style="font-size: 10px;">Spring</a> <a href="/tags/Tomcat/" style="font-size: 10px;">Tomcat</a> <a href="/tags/WEB开发/" style="font-size: 12px;">WEB开发</a> <a href="/tags/WSL/" style="font-size: 12px;">WSL</a> <a href="/tags/dozer/" style="font-size: 10px;">dozer</a> <a href="/tags/plink/" style="font-size: 10px;">plink</a> <a href="/tags/tor/" style="font-size: 10px;">tor</a> <a href="/tags/其他/" style="font-size: 18px;">其他</a> <a href="/tags/内网穿透/" style="font-size: 10px;">内网穿透</a> <a href="/tags/大数据/" style="font-size: 10px;">大数据</a> <a href="/tags/工具/" style="font-size: 14px;">工具</a> <a href="/tags/影梭/" style="font-size: 10px;">影梭</a> <a href="/tags/日语/" style="font-size: 16px;">日语</a> <a href="/tags/科学上网/" style="font-size: 14px;">科学上网</a> <a href="/tags/蓝灯/" style="font-size: 10px;">蓝灯</a>
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"></p>
+                            <p class="item-title"><a href="/2019/02/20/Docker/wsl-is-what/" class="title">WSL是什么</a></p>
+                            <p class="item-date"><time datetime="2019-02-20T08:20:00.000Z" itemprop="datePublished">2019-02-20</time></p>
+                        </div>
+                    </li>
+                
+            </ul>
+        </div>
     </div>
-  </div>
+
+            
+                
+    <div class="widget-wrap widget-list">
+        <h3 class="widget-title">分类</h3>
+        <div class="widget">
+            <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Java/">Java</a><span class="category-list-count">1</span></li></ul>
+        </div>
+    </div>
 
 
-  
-  <div class="archiveslist">
-    <p class="asidetitle"><a href="/archives">归档</a></p>
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/11/">十一月 2020</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/10/">十月 2020</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/04/">四月 2019</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/02/">二月 2019</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/12/">十二月 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/11/">十一月 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/09/">九月 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/10/">十月 2017</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/09/">九月 2017</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/08/">八月 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/07/">七月 2017</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/06/">六月 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/05/">五月 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/04/">四月 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">三月 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/02/">二月 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/01/">一月 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/10/">十月 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/09/">九月 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/08/">八月 2016</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/07/">七月 2015</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/08/">八月 2014</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/11/">十一月 2013</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2011/05/">五月 2011</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2011/02/">二月 2011</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2011/01/">一月 2011</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2010/03/">三月 2010</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2009/10/">十月 2009</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2009/04/">四月 2009</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2009/01/">一月 2009</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2008/10/">十月 2008</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2008/09/">九月 2008</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2007/09/">九月 2007</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2007/06/">六月 2007</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2006/10/">十月 2006</a><span class="archive-list-count">4</span></li></ul>
-  </div>
+            
+                
+    <div class="widget-wrap widget-float">
+        <h3 class="widget-title">标签云</h3>
+        <div class="widget tagcloud">
+            <a href="/tags/Apache/" style="font-size: 10px;">Apache</a> <a href="/tags/BigData/" style="font-size: 10px;">BigData</a> <a href="/tags/Coding-Rule/" style="font-size: 10px;">Coding Rule</a> <a href="/tags/Docker/" style="font-size: 10px;">Docker</a> <a href="/tags/Excel/" style="font-size: 10px;">Excel</a> <a href="/tags/Guava/" style="font-size: 10px;">Guava</a> <a href="/tags/Hexo/" style="font-size: 10px;">Hexo</a> <a href="/tags/IDEA/" style="font-size: 10px;">IDEA</a> <a href="/tags/Ionic/" style="font-size: 12px;">Ionic</a> <a href="/tags/JRebel/" style="font-size: 10px;">JRebel</a> <a href="/tags/Java/" style="font-size: 20px;">Java</a> <a href="/tags/Lantern/" style="font-size: 10px;">Lantern</a> <a href="/tags/Nginx/" style="font-size: 10px;">Nginx</a> <a href="/tags/Node/" style="font-size: 10px;">Node</a> <a href="/tags/Openshift/" style="font-size: 10px;">Openshift</a> <a href="/tags/Python/" style="font-size: 12px;">Python</a> <a href="/tags/SSH/" style="font-size: 10px;">SSH</a> <a href="/tags/SSH-Tunnel/" style="font-size: 12px;">SSH Tunnel</a> <a href="/tags/SSL/" style="font-size: 10px;">SSL</a> <a href="/tags/Shadowsocks/" style="font-size: 10px;">Shadowsocks</a> <a href="/tags/Solr/" style="font-size: 10px;">Solr</a> <a href="/tags/Spring/" style="font-size: 10px;">Spring</a> <a href="/tags/Tomcat/" style="font-size: 10px;">Tomcat</a> <a href="/tags/WEB%E5%BC%80%E5%8F%91/" style="font-size: 12px;">WEB开发</a> <a href="/tags/WSL/" style="font-size: 12px;">WSL</a> <a href="/tags/dozer/" style="font-size: 10px;">dozer</a> <a href="/tags/plink/" style="font-size: 10px;">plink</a> <a href="/tags/tor/" style="font-size: 10px;">tor</a> <a href="/tags/%E5%85%B6%E4%BB%96/" style="font-size: 18px;">其他</a> <a href="/tags/%E5%86%85%E7%BD%91%E7%A9%BF%E9%80%8F/" style="font-size: 10px;">内网穿透</a> <a href="/tags/%E5%A4%A7%E6%95%B0%E6%8D%AE/" style="font-size: 10px;">大数据</a> <a href="/tags/%E5%B7%A5%E5%85%B7/" style="font-size: 14px;">工具</a> <a href="/tags/%E5%BD%B1%E6%A2%AD/" style="font-size: 10px;">影梭</a> <a href="/tags/%E6%97%A5%E8%AF%AD/" style="font-size: 16px;">日语</a> <a href="/tags/%E7%A7%91%E5%AD%A6%E4%B8%8A%E7%BD%91/" style="font-size: 14px;">科学上网</a> <a href="/tags/%E8%93%9D%E7%81%AF/" style="font-size: 10px;">蓝灯</a>
+        </div>
+    </div>
 
 
-  <div class="linkslist">
-  <p class="asidetitle">友情链接</p>
-    <ul>
+            
+                
+    <div class="widget-wrap widget-list">
+        <h3 class="widget-title">归档</h3>
+        <div class="widget">
+            <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/11/">十一月 2020</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/10/">十月 2020</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/04/">四月 2019</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/02/">二月 2019</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/12/">十二月 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/11/">十一月 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/09/">九月 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/10/">十月 2017</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/09/">九月 2017</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/08/">八月 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/07/">七月 2017</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/06/">六月 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/05/">五月 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/04/">四月 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">三月 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/02/">二月 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/01/">一月 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/10/">十月 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/09/">九月 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/08/">八月 2016</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/07/">七月 2015</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/08/">八月 2014</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/11/">十一月 2013</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2011/05/">五月 2011</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2011/02/">二月 2011</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2011/01/">一月 2011</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2010/03/">三月 2010</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2009/10/">十月 2009</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2009/04/">四月 2009</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2009/01/">一月 2009</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2008/10/">十月 2008</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2008/09/">九月 2008</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2007/09/">九月 2007</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2007/06/">六月 2007</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2006/10/">十月 2006</a><span class="archive-list-count">4</span></li></ul>
+        </div>
+    </div>
+
+
+            
+                
+    <div class="widget-wrap widget-list">
+        <h3 class="widget-title">链接</h3>
+        <div class="widget">
+            <ul>
+                
+                    <li>
+                        <a target="_blank" rel="noopener" href="http://hexo.io">Hexo</a>
+                    </li>
+                
+                    <li>
+                        <a target="_blank" rel="noopener" href="https://ricardo-cheng.github.io">Cheng&#39;s Blog</a>
+                    </li>
+                
+                    <li>
+                        <a target="_blank" rel="noopener" href="http://wuchong.me">Jark&#39;s Blog</a>
+                    </li>
+                
+            </ul>
+        </div>
+    </div>
+
+
+            
         
-          <li>
-            
-            	<a href="https://ricardo-cheng.github.io" target="_blank" title="Cheng&#39;s Blog">Cheng&#39;s Blog</a>
-            
-          </li>
-        
-          <li>
-            
-            	<a href="http://wuchong.me" target="_blank" title="Jark&#39;s Blog">Jark&#39;s Blog</a>
-            
-          </li>
-        
-    </ul>
-</div>
-
-  
-
-
+    </div>
 </aside>
-</div>
+
+                </div>
+            </div>
+        </div>
+        <footer id="footer">
+    <div class="container">
+        <div class="container-inner">
+            <a id="back-to-top" href="javascript:;"><i class="icon fa fa-angle-up"></i></a>
+            <div class="credit">
+                <h1 class="logo-wrap">
+                    <a href="/" class="logo"></a>
+                </h1>
+                <p>&copy; 2020 lvshifu</p>
+                
+                <p>Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>. Theme by <a href="https://github.com/ppoffice" target="_blank">PPOffice</a></p>
+                
+            </div>
+            <div class="footer-plugins">
+              
+    
+
+
+            </div>
+        </div>
     </div>
-    <footer><div id="footer" >
-	
-	
-	<section class="info">
-		<p> Hello ,I&#39;m lvshifu. <br/>
-			</p>
-	</section>
-	 
-	<div class="social-font" class="clearfix">
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-	</div>
-			
-		
-
-		<p class="copyright">
-		Powered by <a href="http://hexo.io" target="_blank" title="hexo">hexo</a> and Theme by <a href="https://github.com/wuchong/jacman" target="_blank" title="Jacman">Jacman</a> © 2020 
-		
-		<a href="/about" target="_blank" title="lvshifu">lvshifu</a>
-		
-		
-		</p>
-</div>
 </footer>
-    <script src="/js/jquery-2.0.3.min.js"></script>
-<script src="/js/jquery.imagesloaded.min.js"></script>
-<script src="/js/gallery.js"></script>
-<script src="/js/jquery.qrcode-0.12.0.min.js"></script>
 
-<script type="text/javascript">
-$(document).ready(function(){ 
-  $('.navbar').click(function(){
-    $('header nav').toggleClass('shownav');
-  });
-  var myWidth = 0;
-  function getSize(){
-    if( typeof( window.innerWidth ) == 'number' ) {
-      myWidth = window.innerWidth;
-    } else if( document.documentElement && document.documentElement.clientWidth) {
-      myWidth = document.documentElement.clientWidth;
-    };
-  };
-  var m = $('#main'),
-      a = $('#asidepart'),
-      c = $('.closeaside'),
-      o = $('.openaside');
-  c.click(function(){
-    a.addClass('fadeOut').css('display', 'none');
-    o.css('display', 'block').addClass('fadeIn');
-    m.addClass('moveMain');
-  });
-  o.click(function(){
-    o.css('display', 'none').removeClass('beforeFadeIn');
-    a.css('display', 'block').removeClass('fadeOut').addClass('fadeIn');      
-    m.removeClass('moveMain');
-  });
-  $(window).scroll(function(){
-    o.css("top",Math.max(80,260-$(this).scrollTop()));
-  });
-  
-  $(window).resize(function(){
-    getSize(); 
-    if (myWidth >= 1024) {
-      $('header nav').removeClass('shownav');
-    }else{
-      m.removeClass('moveMain');
-      a.css('display', 'block').removeClass('fadeOut');
-      o.css('display', 'none');
-      
-      $('#toc.toc-aside').css('display', 'none');
+    </div>
+    
+    
+    <script>
+    var disqus_shortname = 'lvshifu-github-io';
+    
+    
+    var disqus_url = 'http://example.com/2009/10/22/Java/java-apache-common/';
+    
+    (function() {
+    var dsq = document.createElement('script');
+    dsq.type = 'text/javascript';
+    dsq.async = true;
+    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+    </script>
+
+
+
+
+
+    
         
-    }
-  });
-});
-</script>
+<script src="/libs/lightgallery/js/lightgallery.min.js"></script>
 
-<script type="text/javascript">
-$(document).ready(function(){ 
-  var ai = $('.article-content>iframe'),
-      ae = $('.article-content>embed'),
-      t  = $('#toc'),
-      ta = $('#toc.toc-aside'),
-      o  = $('.openaside'),
-      c  = $('.closeaside');
-  if(ai.length>0){
-    ai.wrap('<div class="video-container" />');
-  };
-  if(ae.length>0){
-   ae.wrap('<div class="video-container" />');
-  };
-  c.click(function(){
-    ta.css('display', 'block').addClass('fadeIn');
-  });
-  o.click(function(){
-    ta.css('display', 'none');
-  });
-  $(window).scroll(function(){
-    ta.css("top",Math.max(140,320-$(this).scrollTop()));
-  });
-});
-</script>
+        
+<script src="/libs/lightgallery/js/lg-thumbnail.min.js"></script>
 
+        
+<script src="/libs/lightgallery/js/lg-pager.min.js"></script>
 
-<script type="text/javascript">
-$(document).ready(function(){ 
-  var $this = $('.share'),
-      url = $this.attr('data-url'),
-      encodedUrl = encodeURIComponent(url),
-      title = $this.attr('data-title'),
-      tsina = $this.attr('data-tsina'),
-      description = $this.attr('description');
-  var html = [
-  '<div class="hoverqrcode clearfix"></div>',
-  '<a class="overlay" id="qrcode"></a>',
-  '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="article-share-facebook" target="_blank" title="Facebook"></a>',
-  '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="article-share-twitter" target="_blank" title="Twitter"></a>',
-  '<a href="#qrcode" class="article-share-qrcode" title="微信"></a>',
-  '<a href="http://widget.renren.com/dialog/share?resourceUrl=' + encodedUrl + '&srcUrl=' + encodedUrl + '&title=' + title +'" class="article-share-renren" target="_blank" title="人人"></a>',
-  '<a href="http://service.weibo.com/share/share.php?title='+title+'&url='+encodedUrl +'&ralateUid='+ tsina +'&searchPic=true&style=number' +'" class="article-share-weibo" target="_blank" title="微博"></a>',
-  '<span title="Share to"></span>'
-  ].join('');
-  $this.append(html);
+        
+<script src="/libs/lightgallery/js/lg-autoplay.min.js"></script>
 
-  $('.hoverqrcode').hide();
+        
+<script src="/libs/lightgallery/js/lg-fullscreen.min.js"></script>
 
-  var myWidth = 0;
-  function updatehoverqrcode(){
-    if( typeof( window.innerWidth ) == 'number' ) {
-      myWidth = window.innerWidth;
-    } else if( document.documentElement && document.documentElement.clientWidth) {
-      myWidth = document.documentElement.clientWidth;
-    };
-    var qrsize = myWidth > 1024 ? 200:100;
-    var options = {render: 'image', size: qrsize, fill: '#2ca6cb', text: url, radius: 0.5, quiet: 1};
-    var p = $('.article-share-qrcode').position();
-    $('.hoverqrcode').empty().css('width', qrsize).css('height', qrsize)
-                          .css('left', p.left-qrsize/2+20).css('top', p.top-qrsize-10)
-                          .qrcode(options);
-  };
-  $(window).resize(function(){
-    $('.hoverqrcode').hide();
-  });
-  $('.article-share-qrcode').click(function(){
-    updatehoverqrcode();
-    $('.hoverqrcode').toggle();
-  });
-  $('.article-share-qrcode').hover(function(){}, function(){
-      $('.hoverqrcode').hide();
-  });
-});   
-</script>
+        
+<script src="/libs/lightgallery/js/lg-zoom.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-hash.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-share.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-video.min.js"></script>
+
+    
+    
+        
+<script src="/libs/justified-gallery/jquery.justifiedGallery.min.js"></script>
+
+    
+    
+
+    
+    
+    
 
 
 
+<!-- Custom Scripts -->
 
-<script type="text/javascript">
-
-var disqus_shortname = 'lvshifu-github-io';
-
-(function(){
-  var dsq = document.createElement('script');
-  dsq.type = 'text/javascript';
-  dsq.async = true;
-  dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
-  (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
-}());
-(function(){
-  var dsq = document.createElement('script');
-  dsq.type = 'text/javascript';
-  dsq.async = true;
-  dsq.src = '//' + disqus_shortname + '.disqus.com/count.js';
-  (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
-}());
-</script>
+<script src="/js/main.js"></script>
 
 
-
-
-
-
-<link rel="stylesheet" href="/fancybox/jquery.fancybox.css" media="screen" type="text/css">
-<script src="/fancybox/jquery.fancybox.pack.js"></script>
-<script type="text/javascript">
-$(document).ready(function(){ 
-  $('.article-content').each(function(i){
-    $(this).find('img').each(function(){
-      if ($(this).parent().hasClass('fancybox')) return;
-      var alt = this.alt;
-      if (alt) $(this).after('<span class="caption">' + alt + '</span>');
-      $(this).wrap('<a href="' + this.src + '" title="' + alt + '" class="fancybox"></a>');
-    });
-    $(this).find('.fancybox').each(function(){
-      $(this).attr('rel', 'article' + i);
-    });
-  });
-  if($.fancybox){
-    $('.fancybox').fancybox();
-  }
-}); 
-</script>
-
-
-
-<!-- Analytics Begin -->
-
-
-
-
-
-<!-- Analytics End -->
-
-<!-- Totop Begin -->
-
-	<div id="totop">
-	<a title="返回顶部"><img src="/img/scrollup.png"/></a>
-	</div>
-	<script src="/js/totop.js"></script>
-
-<!-- Totop End -->
-
-<!-- MathJax Begin -->
-<!-- mathjax config similar to math.stackexchange -->
-
-
-<!-- MathJax End -->
-
-<!-- Tiny_search Begin -->
-
-<!-- Tiny_search End -->
-
-  </body>
+</body>
 </html>
