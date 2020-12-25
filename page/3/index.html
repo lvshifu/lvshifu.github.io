@@ -79,6 +79,486 @@
         <header class="article-info clearfix">
   <h1 itemprop="name">
     
+      <a href="/2017/02/10/Java/java-coding-rule/" title="Java开发规范" itemprop="url">Java开发规范</a>
+  </h1>
+  <p class="article-author">By
+       
+		<a href="/about" title="lvshifu" target="_blank" itemprop="author">lvshifu</a>
+		
+  <p class="article-time">
+    <time datetime="2017-02-10T08:24:03.000Z" itemprop="datePublished"> 发表于 2017-02-10</time>
+    
+  </p>
+</header>
+    <div class="article-content">
+        
+        <h1 id="Java"><a href="#Java" class="headerlink" title="Java"></a>Java</h1><p><a href="https://google.github.io/styleguide/javaguide.html" target="_blank" rel="external">Google Java 开发规范英文版</a><br><a href="http://www.hawstein.com/posts/google-java-style.html" target="_blank" rel="external">Google Java 开发规范中文版</a><br><a href="https://yq.aliyun.com/articles/69327?spm=5176.8067842.tagmain.5.fsRBQl" target="_blank" rel="external">阿里 Java 编码规范</a></p>
+<h1 id="Python"><a href="#Python" class="headerlink" title="Python"></a>Python</h1><p><a href="https://google.github.io/styleguide/pyguide.html" target="_blank" rel="external">google-python-styleguide 英文版</a><br><a href="https://zh-google-styleguide.readthedocs.io/en/latest/google-python-styleguide/python_style_rules/" target="_blank" rel="external">google-python-styleguide 中文版</a></p>
+<h1 id="其他"><a href="#其他" class="headerlink" title="其他"></a>其他</h1><p><a href="https://google.github.io/styleguide/" target="_blank" rel="external">Google Style Guides</a></p>
+
+        
+        
+        <p class="article-more-link">
+          
+       </p>
+    </div>
+    <footer class="article-footer clearfix">
+<div class="article-catetags">
+
+<div class="article-categories">
+  <span></span>
+  <a class="article-category-link" href="/categories/Java/">Java</a>
+</div>
+
+
+  <div class="article-tags">
+  
+  <span></span> <a href="/tags/Coding-Rule/">Coding Rule</a><a href="/tags/Java/">Java</a>
+  </div>
+
+</div>
+
+
+
+
+<div class="comments-count">
+	
+	  	<span></span>
+		<a href="/2017/02/10/Java/java-coding-rule/#disqus_thread" class="comments-count-link">Comments</a>
+	
+</div>
+
+</footer>
+
+
+    </article>
+
+
+
+
+
+
+   
+    
+    <article class="post-expand post" itemprop="articleBody"> 
+        <header class="article-info clearfix">
+  <h1 itemprop="name">
+    
+      <a href="/2017/01/12/Tools/hexo-note1/" title="Hexo注意事项" itemprop="url">Hexo注意事项</a>
+  </h1>
+  <p class="article-author">By
+       
+		<a href="/about" title="lvshifu" target="_blank" itemprop="author">lvshifu</a>
+		
+  <p class="article-time">
+    <time datetime="2017-01-12T04:18:02.000Z" itemprop="datePublished"> 发表于 2017-01-12</time>
+    
+  </p>
+</header>
+    <div class="article-content">
+        
+        <h1 id="Hexo乱码问题"><a href="#Hexo乱码问题" class="headerlink" title="Hexo乱码问题"></a>Hexo乱码问题</h1><p>初始安装Hexo后，配置文件和示例post的编码不是UTF-8格式，写入中文字符后，生成静态文件会产生乱码。另存为UTF-8格式后，问题即可解决。</p>
+        
+        
+        <p class="article-more-link">
+          
+            <a href="/2017/01/12/Tools/hexo-note1/#more">Read More</a>
+          
+       </p>
+    </div>
+    <footer class="article-footer clearfix">
+<div class="article-catetags">
+
+
+  <div class="article-tags">
+  
+  <span></span> <a href="/tags/Hexo/">Hexo</a>
+  </div>
+
+</div>
+
+
+
+
+<div class="comments-count">
+	
+	  	<span></span>
+		<a href="/2017/01/12/Tools/hexo-note1/#disqus_thread" class="comments-count-link">Comments</a>
+	
+</div>
+
+</footer>
+
+
+    </article>
+
+
+
+
+
+
+   
+    
+    <article class="post-expand post" itemprop="articleBody"> 
+        <header class="article-info clearfix">
+  <h1 itemprop="name">
+    
+      <a href="/2016/10/08/Java/java-tomcat-static-file/" title="Tomcat静态文件处理能力比较" itemprop="url">Tomcat静态文件处理能力比较</a>
+  </h1>
+  <p class="article-author">By
+       
+		<a href="/about" title="lvshifu" target="_blank" itemprop="author">lvshifu</a>
+		
+  <p class="article-time">
+    <time datetime="2016-10-08T08:24:03.000Z" itemprop="datePublished"> 发表于 2016-10-08</time>
+    
+  </p>
+</header>
+    <div class="article-content">
+        
+        <h1 id="Tomcat-6-7-8-9处理静态文件能力比较"><a href="#Tomcat-6-7-8-9处理静态文件能力比较" class="headerlink" title="Tomcat 6 7 8 9处理静态文件能力比较"></a>Tomcat 6 7 8 9处理静态文件能力比较</h1><p>在项目中偶然碰到这种情况，感觉有些奇怪，记录一下。<br>主要状况是在开发环境用的是Tomcat6，运行正常。<br>部署到正式环境后，首页展示突然变得很慢，调查下来，只有Tomcat版本不同，于是在开发环境做了一下在不同Tomcat版本下首页展示时间的对比，结果如下。</p>
+        
+        
+        <p class="article-more-link">
+          
+            <a href="/2016/10/08/Java/java-tomcat-static-file/#more">Read More</a>
+          
+       </p>
+    </div>
+    <footer class="article-footer clearfix">
+<div class="article-catetags">
+
+
+  <div class="article-tags">
+  
+  <span></span> <a href="/tags/Java/">Java</a><a href="/tags/Tomcat/">Tomcat</a>
+  </div>
+
+</div>
+
+
+
+
+<div class="comments-count">
+	
+	  	<span></span>
+		<a href="/2016/10/08/Java/java-tomcat-static-file/#disqus_thread" class="comments-count-link">Comments</a>
+	
+</div>
+
+</footer>
+
+
+    </article>
+
+
+
+
+
+
+   
+    
+    <article class="post-expand post" itemprop="articleBody"> 
+        <header class="article-info clearfix">
+  <h1 itemprop="name">
+    
+      <a href="/2016/09/20/Java/java-common-wrong1/" title="Java开发常见错误集1" itemprop="url">Java开发常见错误集1</a>
+  </h1>
+  <p class="article-author">By
+       
+		<a href="/about" title="lvshifu" target="_blank" itemprop="author">lvshifu</a>
+		
+  <p class="article-time">
+    <time datetime="2016-09-20T08:56:38.000Z" itemprop="datePublished"> 发表于 2016-09-20</time>
+    
+  </p>
+</header>
+    <div class="article-content">
+        
+        <h2 id="1-Eclipse和MyEclipse的Workspace弄混"><a href="#1-Eclipse和MyEclipse的Workspace弄混" class="headerlink" title="1.Eclipse和MyEclipse的Workspace弄混"></a>1.Eclipse和MyEclipse的Workspace弄混</h2><p>经常会有在文件管理器里直接操作文件的时候，在文件管理里操作了，但是在Eclipse里没有及时刷新同步，导致编译不及时，看不到改动后的效果。<br>还有的是按个人习惯，有多个Workspace，有时会在Eclipse里面操作WorkspaceA，而在文件管理器里操作WorkspaceB，进而产生怎么修改也不能生效的怪异现象。</p>
+        
+        
+        <p class="article-more-link">
+          
+            <a href="/2016/09/20/Java/java-common-wrong1/#more">Read More</a>
+          
+       </p>
+    </div>
+    <footer class="article-footer clearfix">
+<div class="article-catetags">
+
+
+  <div class="article-tags">
+  
+  <span></span> <a href="/tags/Java/">Java</a><a href="/tags/WEB开发/">WEB开发</a>
+  </div>
+
+</div>
+
+
+
+
+<div class="comments-count">
+	
+	  	<span></span>
+		<a href="/2016/09/20/Java/java-common-wrong1/#disqus_thread" class="comments-count-link">Comments</a>
+	
+</div>
+
+</footer>
+
+
+    </article>
+
+
+
+
+
+
+   
+    
+    <article class="post-expand post" itemprop="articleBody"> 
+        <header class="article-info clearfix">
+  <h1 itemprop="name">
+    
+      <a href="/2016/08/20/Java/java-dozer/" title="BeanUtils or dozer" itemprop="url">BeanUtils or dozer</a>
+  </h1>
+  <p class="article-author">By
+       
+		<a href="/about" title="lvshifu" target="_blank" itemprop="author">lvshifu</a>
+		
+  <p class="article-time">
+    <time datetime="2016-08-20T13:18:02.000Z" itemprop="datePublished"> 发表于 2016-08-20</time>
+    
+  </p>
+</header>
+    <div class="article-content">
+        
+        <p>dozer是一种对象转换工具，类似于apache的BeanUtils。但是dozer更强大，它可以灵活的处理复杂类型之间的映射。不但可以进行简单的属性映射、复杂的类型映射、双向映射、递归映射等，并且可以通过XML配置文件进行灵活的配置。</p>
+
+        
+        
+        <p class="article-more-link">
+          
+       </p>
+    </div>
+    <footer class="article-footer clearfix">
+<div class="article-catetags">
+
+
+  <div class="article-tags">
+  
+  <span></span> <a href="/tags/Java/">Java</a><a href="/tags/dozer/">dozer</a>
+  </div>
+
+</div>
+
+
+
+
+<div class="comments-count">
+	
+	  	<span></span>
+		<a href="/2016/08/20/Java/java-dozer/#disqus_thread" class="comments-count-link">Comments</a>
+	
+</div>
+
+</footer>
+
+
+    </article>
+
+
+
+
+
+
+   
+    
+    <article class="post-expand post" itemprop="articleBody"> 
+        <header class="article-info clearfix">
+  <h1 itemprop="name">
+    
+      <a href="/2016/08/05/Java/java-guava/" title="Guava介绍" itemprop="url">Guava介绍</a>
+  </h1>
+  <p class="article-author">By
+       
+		<a href="/about" title="lvshifu" target="_blank" itemprop="author">lvshifu</a>
+		
+  <p class="article-time">
+    <time datetime="2016-08-05T13:18:02.000Z" itemprop="datePublished"> 发表于 2016-08-05</time>
+    
+  </p>
+</header>
+    <div class="article-content">
+        
+        <p>Guava: Google Core Libraries for Java<br>
+        
+        
+        <p class="article-more-link">
+          
+            <a href="/2016/08/05/Java/java-guava/#more">Read More</a>
+          
+       </p>
+    </div>
+    <footer class="article-footer clearfix">
+<div class="article-catetags">
+
+
+  <div class="article-tags">
+  
+  <span></span> <a href="/tags/Java/">Java</a><a href="/tags/Guava/">Guava</a>
+  </div>
+
+</div>
+
+
+
+
+<div class="comments-count">
+	
+	  	<span></span>
+		<a href="/2016/08/05/Java/java-guava/#disqus_thread" class="comments-count-link">Comments</a>
+	
+</div>
+
+</footer>
+
+
+    </article>
+
+
+
+
+
+
+   
+    
+    <article class="post-expand post" itemprop="articleBody"> 
+        <header class="article-info clearfix">
+  <h1 itemprop="name">
+    
+      <a href="/2015/07/19/Tools/fanqiang/fanqiang-note5/" title="Openshift" itemprop="url">Openshift</a>
+  </h1>
+  <p class="article-author">By
+       
+		<a href="/about" title="lvshifu" target="_blank" itemprop="author">lvshifu</a>
+		
+  <p class="article-time">
+    <time datetime="2015-07-19T13:18:02.000Z" itemprop="datePublished"> 发表于 2015-07-19</time>
+    
+  </p>
+</header>
+    <div class="article-content">
+        
+        <h1 id="OpenShift"><a href="#OpenShift" class="headerlink" title="OpenShift"></a>OpenShift</h1><ul>
+<li>OpenShift是红帽公司推出的一个云计算服务平台，开发人员可以用它来构建和发布web应用。Openshift广泛支持多种编程语言和框架，如Java，Ruby和PHP等。另外它还提供了多种集成开发工具如Eclipse integration，JBoss Developer Studio和 Jenkins等。OpenShift 基于一个开源生态系统为移动应用，数据库服务等，提供支持。 ——来自百度百科</li>
+</ul>
+<p>OpenShift支持ssh tunnel应用，简单配置后，即可作为ssh tunnel服务器使用，客户端使用Bitvise Tunnelier或者其他等效客户端，即可方便的达到科学上网的效果。</p>
+
+        
+        
+        <p class="article-more-link">
+          
+       </p>
+    </div>
+    <footer class="article-footer clearfix">
+<div class="article-catetags">
+
+
+  <div class="article-tags">
+  
+  <span></span> <a href="/tags/科学上网/">科学上网</a><a href="/tags/SSH-Tunnel/">SSH Tunnel</a><a href="/tags/Openshift/">Openshift</a>
+  </div>
+
+</div>
+
+
+
+
+<div class="comments-count">
+	
+	  	<span></span>
+		<a href="/2015/07/19/Tools/fanqiang/fanqiang-note5/#disqus_thread" class="comments-count-link">Comments</a>
+	
+</div>
+
+</footer>
+
+
+    </article>
+
+
+
+
+
+
+   
+    
+    <article class="post-expand post" itemprop="articleBody"> 
+        <header class="article-info clearfix">
+  <h1 itemprop="name">
+    
+      <a href="/2014/08/06/Tools/fanqiang/fanqiang-note4/" title="Shadowsocks" itemprop="url">Shadowsocks</a>
+  </h1>
+  <p class="article-author">By
+       
+		<a href="/about" title="lvshifu" target="_blank" itemprop="author">lvshifu</a>
+		
+  <p class="article-time">
+    <time datetime="2014-08-06T13:18:02.000Z" itemprop="datePublished"> 发表于 2014-08-06</time>
+    
+  </p>
+</header>
+    <div class="article-content">
+        
+        <h1 id="Shadowsocks"><a href="#Shadowsocks" class="headerlink" title="Shadowsocks"></a>Shadowsocks</h1><p>中文名称影梭，有PC和Android版本。是SSH隧道技术的升级版。</p>
+<p>ssh tunnel 代理，通过 ssh 与墙外服务器建立一条加密隧道，用户通过建立起的隧道进行代理，通过 ssh server 向真实的服务发起请求，服务通过 ssh server，再通过创建好的隧道返回给用户，此时的通讯 GFW 会将其视作普通的连接。达到访问墙外网站的目的。但由于创建隧道和数据传输的过程中，ssh 本身的特征是明显的，GFW 通过各种流量特征分析，能够识别哪些连接是 ssh 隧道，并对隧道做干扰。应对与这种情况，出现了Shadowsocks技术。</p>
+<p>Shadowsocks 把原来 ssh 创建的 Socks5 协议拆开成 Server 端和 Client 端，它发出的 TCP 包，没有明显包特征，GFW 分析不出来。</p>
+
+        
+        
+        <p class="article-more-link">
+          
+       </p>
+    </div>
+    <footer class="article-footer clearfix">
+<div class="article-catetags">
+
+
+  <div class="article-tags">
+  
+  <span></span> <a href="/tags/科学上网/">科学上网</a><a href="/tags/影梭/">影梭</a><a href="/tags/Shadowsocks/">Shadowsocks</a>
+  </div>
+
+</div>
+
+
+
+
+<div class="comments-count">
+	
+	  	<span></span>
+		<a href="/2014/08/06/Tools/fanqiang/fanqiang-note4/#disqus_thread" class="comments-count-link">Comments</a>
+	
+</div>
+
+</footer>
+
+
+    </article>
+
+
+
+
+
+
+   
+    
+    <article class="post-expand post" itemprop="articleBody"> 
+        <header class="article-info clearfix">
+  <h1 itemprop="name">
+    
       <a href="/2013/11/23/Tools/fanqiang/fanqiang-note3/" title="Lantern" itemprop="url">Lantern</a>
   </h1>
   <p class="article-author">By
@@ -190,487 +670,9 @@
 
 
 
-   
-    
-    <article class="post-expand post" itemprop="articleBody"> 
-        <header class="article-info clearfix">
-  <h1 itemprop="name">
-    
-      <a href="/2011/02/14/other/other-note8/" title="诗歌转记" itemprop="url">诗歌转记</a>
-  </h1>
-  <p class="article-author">By
-       
-		<a href="/about" title="lvshifu" target="_blank" itemprop="author">lvshifu</a>
-		
-  <p class="article-time">
-    <time datetime="2011-02-14T09:41:02.000Z" itemprop="datePublished"> 发表于 2011-02-14</time>
-    
-  </p>
-</header>
-    <div class="article-content">
-        
-        <p>那一年，转动所有的转经筒，</p>
-<p>不为超度，只为触摸你的指尖；</p>
-<p>那一年，磕长头匍匐在山路，</p>
-<p>不为觐见，只为贴着你的温暖；</p>
-<p>那一世，转山转水转佛塔，</p>
-<p>不为修来世，只为在途中与你相见。</p>
-<p>—-六世达赖仓央嘉措</p>
-
-        
-        
-        <p class="article-more-link">
-          
-       </p>
-    </div>
-    <footer class="article-footer clearfix">
-<div class="article-catetags">
-
-
-  <div class="article-tags">
-  
-  <span></span> <a href="/tags/其他/">其他</a>
-  </div>
-
-</div>
-
-
-
-
-<div class="comments-count">
-	
-	  	<span></span>
-		<a href="/2011/02/14/other/other-note8/#disqus_thread" class="comments-count-link">Comments</a>
-	
-</div>
-
-</footer>
-
-
-    </article>
-
-
-
-
-
-
-   
-    
-    <article class="post-expand post" itemprop="articleBody"> 
-        <header class="article-info clearfix">
-  <h1 itemprop="name">
-    
-      <a href="/2011/01/21/other/other-note7/" title="2010冬季雪景" itemprop="url">2010冬季雪景</a>
-  </h1>
-  <p class="article-author">By
-       
-		<a href="/about" title="lvshifu" target="_blank" itemprop="author">lvshifu</a>
-		
-  <p class="article-time">
-    <time datetime="2011-01-21T13:37:02.000Z" itemprop="datePublished"> 发表于 2011-01-21</time>
-    
-  </p>
-</header>
-    <div class="article-content">
-        
-        <p>2010冬季雪景<br>
-        
-        
-        <p class="article-more-link">
-          
-            <a href="/2011/01/21/other/other-note7/#more">Read More</a>
-          
-       </p>
-    </div>
-    <footer class="article-footer clearfix">
-<div class="article-catetags">
-
-
-  <div class="article-tags">
-  
-  <span></span> <a href="/tags/其他/">其他</a>
-  </div>
-
-</div>
-
-
-
-
-<div class="comments-count">
-	
-	  	<span></span>
-		<a href="/2011/01/21/other/other-note7/#disqus_thread" class="comments-count-link">Comments</a>
-	
-</div>
-
-</footer>
-
-
-    </article>
-
-
-
-
-
-
-   
-    
-    <article class="post-expand post" itemprop="articleBody"> 
-        <header class="article-info clearfix">
-  <h1 itemprop="name">
-    
-      <a href="/2011/01/13/other/other-note6/" title="应该读点经济学" itemprop="url">应该读点经济学</a>
-  </h1>
-  <p class="article-author">By
-       
-		<a href="/about" title="lvshifu" target="_blank" itemprop="author">lvshifu</a>
-		
-  <p class="article-time">
-    <time datetime="2011-01-13T13:17:02.000Z" itemprop="datePublished"> 发表于 2011-01-13</time>
-    
-  </p>
-</header>
-    <div class="article-content">
-        
-        <p>哲人问他的学生；“如果有一种东西，可以使社会繁荣，生活惬意，但代价是每年要葬送一千个人的生命，你接受吗？”<br>学生说：“当然不接受，生命是无价的！”<br>哲人于是说：“那我们就不要再用汽车了。”</p>
-<p>–《以经济学的观点观察生活：应该读点经济学》</p>
-
-        
-        
-        <p class="article-more-link">
-          
-       </p>
-    </div>
-    <footer class="article-footer clearfix">
-<div class="article-catetags">
-
-
-  <div class="article-tags">
-  
-  <span></span> <a href="/tags/其他/">其他</a>
-  </div>
-
-</div>
-
-
-
-
-<div class="comments-count">
-	
-	  	<span></span>
-		<a href="/2011/01/13/other/other-note6/#disqus_thread" class="comments-count-link">Comments</a>
-	
-</div>
-
-</footer>
-
-
-    </article>
-
-
-
-
-
-
-   
-    
-    <article class="post-expand post" itemprop="articleBody"> 
-        <header class="article-info clearfix">
-  <h1 itemprop="name">
-    
-      <a href="/2010/03/06/Tools/fanqiang/fanqiang-note1/" title="tor" itemprop="url">tor</a>
-  </h1>
-  <p class="article-author">By
-       
-		<a href="/about" title="lvshifu" target="_blank" itemprop="author">lvshifu</a>
-		
-  <p class="article-time">
-    <time datetime="2010-03-06T13:18:02.000Z" itemprop="datePublished"> 发表于 2010-03-06</time>
-    
-  </p>
-</header>
-    <div class="article-content">
-        
-        <h1 id="tor"><a href="#tor" class="headerlink" title="tor"></a>tor</h1><p>Anonymity OnlineProtect your privacy.<br>Defend yourself against network surveillance and traffic analysis</p>
-        
-        
-        <p class="article-more-link">
-          
-            <a href="/2010/03/06/Tools/fanqiang/fanqiang-note1/#more">Read More</a>
-          
-       </p>
-    </div>
-    <footer class="article-footer clearfix">
-<div class="article-catetags">
-
-
-  <div class="article-tags">
-  
-  <span></span> <a href="/tags/科学上网/">科学上网</a><a href="/tags/tor/">tor</a>
-  </div>
-
-</div>
-
-
-
-
-<div class="comments-count">
-	
-	  	<span></span>
-		<a href="/2010/03/06/Tools/fanqiang/fanqiang-note1/#disqus_thread" class="comments-count-link">Comments</a>
-	
-</div>
-
-</footer>
-
-
-    </article>
-
-
-
-
-
-
-   
-    
-    <article class="post-expand post" itemprop="articleBody"> 
-        <header class="article-info clearfix">
-  <h1 itemprop="name">
-    
-      <a href="/2009/10/22/Java/java-apache-common/" title="使用Apache Common进行通用排序" itemprop="url">使用Apache Common进行通用排序</a>
-  </h1>
-  <p class="article-author">By
-       
-		<a href="/about" title="lvshifu" target="_blank" itemprop="author">lvshifu</a>
-		
-  <p class="article-time">
-    <time datetime="2009-10-22T13:18:02.000Z" itemprop="datePublished"> 发表于 2009-10-22</time>
-    
-  </p>
-</header>
-    <div class="article-content">
-        
-        <h1 id="通用排序方式一"><a href="#通用排序方式一" class="headerlink" title="通用排序方式一"></a>通用排序方式一</h1>
-        
-        
-        <p class="article-more-link">
-          
-            <a href="/2009/10/22/Java/java-apache-common/#more">Read More</a>
-          
-       </p>
-    </div>
-    <footer class="article-footer clearfix">
-<div class="article-catetags">
-
-
-  <div class="article-tags">
-  
-  <span></span> <a href="/tags/Java/">Java</a>
-  </div>
-
-</div>
-
-
-
-
-<div class="comments-count">
-	
-	  	<span></span>
-		<a href="/2009/10/22/Java/java-apache-common/#disqus_thread" class="comments-count-link">Comments</a>
-	
-</div>
-
-</footer>
-
-
-    </article>
-
-
-
-
-
-
-   
-    
-    <article class="post-expand post" itemprop="articleBody"> 
-        <header class="article-info clearfix">
-  <h1 itemprop="name">
-    
-      <a href="/2009/04/02/Java/java-abcdto1234/" title="Java中把ABCD等单个字符转成数字1234" itemprop="url">Java中把ABCD等单个字符转成数字1234</a>
-  </h1>
-  <p class="article-author">By
-       
-		<a href="/about" title="lvshifu" target="_blank" itemprop="author">lvshifu</a>
-		
-  <p class="article-time">
-    <time datetime="2009-04-02T00:34:02.000Z" itemprop="datePublished"> 发表于 2009-04-02</time>
-    
-  </p>
-</header>
-    <div class="article-content">
-        
-        <p>最近工作中遇到一个问题， 要把ABCD等单个字符转成对应的数字1234，乍一看上去问题很简单，也有多种方式来解决，可实际上实现时还是用了一些时间来考虑，可能是脑子越来越不好用了吧，^_^<br>
-        
-        
-        <p class="article-more-link">
-          
-            <a href="/2009/04/02/Java/java-abcdto1234/#more">Read More</a>
-          
-       </p>
-    </div>
-    <footer class="article-footer clearfix">
-<div class="article-catetags">
-
-
-  <div class="article-tags">
-  
-  <span></span> <a href="/tags/Java/">Java</a>
-  </div>
-
-</div>
-
-
-
-
-<div class="comments-count">
-	
-	  	<span></span>
-		<a href="/2009/04/02/Java/java-abcdto1234/#disqus_thread" class="comments-count-link">Comments</a>
-	
-</div>
-
-</footer>
-
-
-    </article>
-
-
-
-
-
-
-   
-    
-    <article class="post-expand post" itemprop="articleBody"> 
-        <header class="article-info clearfix">
-  <h1 itemprop="name">
-    
-      <a href="/2009/01/27/other/other-note5/" title="2009农历新年--在东京" itemprop="url">2009农历新年--在东京</a>
-  </h1>
-  <p class="article-author">By
-       
-		<a href="/about" title="lvshifu" target="_blank" itemprop="author">lvshifu</a>
-		
-  <p class="article-time">
-    <time datetime="2009-01-27T12:58:02.000Z" itemprop="datePublished"> 发表于 2009-01-27</time>
-    
-  </p>
-</header>
-    <div class="article-content">
-        
-        <p>大年三十包饺子<br>
-        
-        
-        <p class="article-more-link">
-          
-            <a href="/2009/01/27/other/other-note5/#more">Read More</a>
-          
-       </p>
-    </div>
-    <footer class="article-footer clearfix">
-<div class="article-catetags">
-
-
-  <div class="article-tags">
-  
-  <span></span> <a href="/tags/其他/">其他</a>
-  </div>
-
-</div>
-
-
-
-
-<div class="comments-count">
-	
-	  	<span></span>
-		<a href="/2009/01/27/other/other-note5/#disqus_thread" class="comments-count-link">Comments</a>
-	
-</div>
-
-</footer>
-
-
-    </article>
-
-
-
-
-
-
-   
-    
-    <article class="post-expand post" itemprop="articleBody"> 
-        <header class="article-info clearfix">
-  <h1 itemprop="name">
-    
-      <a href="/2009/01/17/Japanese/nihongo-note9/" title="マッシュアップ" itemprop="url">マッシュアップ</a>
-  </h1>
-  <p class="article-author">By
-       
-		<a href="/about" title="lvshifu" target="_blank" itemprop="author">lvshifu</a>
-		
-  <p class="article-time">
-    <time datetime="2009-01-17T12:58:02.000Z" itemprop="datePublished"> 发表于 2009-01-17</time>
-    
-  </p>
-</header>
-    <div class="article-content">
-        
-        <p>clipped from www.sophia-it.com<br>マッシュアップ</p>
-<p>【英】mashup</p>
-        
-        
-        <p class="article-more-link">
-          
-            <a href="/2009/01/17/Japanese/nihongo-note9/#more">Read More</a>
-          
-       </p>
-    </div>
-    <footer class="article-footer clearfix">
-<div class="article-catetags">
-
-
-  <div class="article-tags">
-  
-  <span></span> <a href="/tags/日语/">日语</a>
-  </div>
-
-</div>
-
-
-
-
-<div class="comments-count">
-	
-	  	<span></span>
-		<a href="/2009/01/17/Japanese/nihongo-note9/#disqus_thread" class="comments-count-link">Comments</a>
-	
-</div>
-
-</footer>
-
-
-    </article>
-
-
-
-
-
-
 
   <nav id="page-nav" class="clearfix">
-    <a class="extend prev" rel="prev" href="/page/2/"><span></span>Prev</a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><span class="page-number current">3</span><a class="page-number" href="/page/4/">4</a><a class="page-number" href="/page/5/">5</a><a class="extend next" rel="next" href="/page/4/">Next<span></span></a>
+    <a class="extend prev" rel="prev" href="/page/2/"><span></span>Prev</a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><span class="page-number current">3</span><a class="page-number" href="/page/4/">4</a><a class="page-number" href="/page/5/">5</a><a class="page-number" href="/page/6/">6</a><a class="extend next" rel="next" href="/page/4/">Next<span></span></a>
   </nav>
 
 </div>
@@ -693,11 +695,15 @@
 			
 		
 			
+				<li><a href="/tags/其他/" title="其他">其他<sup>11</sup></a></li>
+			
+		
+			
 				<li><a href="/tags/日语/" title="日语">日语<sup>9</sup></a></li>
 			
 		
 			
-				<li><a href="/tags/其他/" title="其他">其他<sup>9</sup></a></li>
+				<li><a href="/tags/工具/" title="工具">工具<sup>5</sup></a></li>
 			
 		
 			
@@ -705,7 +711,7 @@
 			
 		
 			
-				<li><a href="/tags/工具/" title="工具">工具<sup>3</sup></a></li>
+				<li><a href="/tags/WSL/" title="WSL">WSL<sup>2</sup></a></li>
 			
 		
 			
@@ -721,35 +727,11 @@
 			
 		
 			
-				<li><a href="/tags/dozer/" title="dozer">dozer<sup>1</sup></a></li>
+				<li><a href="/tags/Python/" title="Python">Python<sup>2</sup></a></li>
 			
 		
 			
-				<li><a href="/tags/IDEA/" title="IDEA">IDEA<sup>1</sup></a></li>
-			
-		
-			
-				<li><a href="/tags/JRebel/" title="JRebel">JRebel<sup>1</sup></a></li>
-			
-		
-			
-				<li><a href="/tags/Apache/" title="Apache">Apache<sup>1</sup></a></li>
-			
-		
-			
-				<li><a href="/tags/Nginx/" title="Nginx">Nginx<sup>1</sup></a></li>
-			
-		
-			
-				<li><a href="/tags/Solr/" title="Solr">Solr<sup>1</sup></a></li>
-			
-		
-			
-				<li><a href="/tags/Tomcat/" title="Tomcat">Tomcat<sup>1</sup></a></li>
-			
-		
-			
-				<li><a href="/tags/SSL/" title="SSL">SSL<sup>1</sup></a></li>
+				<li><a href="/tags/Docker/" title="Docker">Docker<sup>1</sup></a></li>
 			
 		
 			
@@ -765,7 +747,27 @@
 			
 		
 			
-				<li><a href="/tags/Shadowsocks/" title="Shadowsocks">Shadowsocks<sup>1</sup></a></li>
+				<li><a href="/tags/Node/" title="Node">Node<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/Coding-Rule/" title="Coding Rule">Coding Rule<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/dozer/" title="dozer">dozer<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/Guava/" title="Guava">Guava<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/IDEA/" title="IDEA">IDEA<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/JRebel/" title="JRebel">JRebel<sup>1</sup></a></li>
 			
 		
 		</ul>
@@ -776,7 +778,7 @@
   <div class="tagcloudlist">
     <p class="asidetitle">标签云</p>
     <div class="tagcloudlist clearfix">
-       <a href="/tags/Apache/" style="font-size: 10px;">Apache</a> <a href="/tags/BigData/" style="font-size: 10px;">BigData</a> <a href="/tags/Coding-Rule/" style="font-size: 10px;">Coding Rule</a> <a href="/tags/Excel/" style="font-size: 10px;">Excel</a> <a href="/tags/Guava/" style="font-size: 10px;">Guava</a> <a href="/tags/Hexo/" style="font-size: 10px;">Hexo</a> <a href="/tags/IDEA/" style="font-size: 10px;">IDEA</a> <a href="/tags/Ionic/" style="font-size: 12px;">Ionic</a> <a href="/tags/JRebel/" style="font-size: 10px;">JRebel</a> <a href="/tags/Java/" style="font-size: 20px;">Java</a> <a href="/tags/Lantern/" style="font-size: 10px;">Lantern</a> <a href="/tags/Nginx/" style="font-size: 10px;">Nginx</a> <a href="/tags/Node/" style="font-size: 10px;">Node</a> <a href="/tags/Openshift/" style="font-size: 10px;">Openshift</a> <a href="/tags/SSH/" style="font-size: 10px;">SSH</a> <a href="/tags/SSH-Tunnel/" style="font-size: 12px;">SSH Tunnel</a> <a href="/tags/SSL/" style="font-size: 10px;">SSL</a> <a href="/tags/Shadowsocks/" style="font-size: 10px;">Shadowsocks</a> <a href="/tags/Solr/" style="font-size: 10px;">Solr</a> <a href="/tags/Spring/" style="font-size: 10px;">Spring</a> <a href="/tags/Tomcat/" style="font-size: 10px;">Tomcat</a> <a href="/tags/WEB开发/" style="font-size: 12px;">WEB开发</a> <a href="/tags/dozer/" style="font-size: 10px;">dozer</a> <a href="/tags/plink/" style="font-size: 10px;">plink</a> <a href="/tags/tor/" style="font-size: 10px;">tor</a> <a href="/tags/其他/" style="font-size: 18px;">其他</a> <a href="/tags/大数据/" style="font-size: 10px;">大数据</a> <a href="/tags/工具/" style="font-size: 14px;">工具</a> <a href="/tags/影梭/" style="font-size: 10px;">影梭</a> <a href="/tags/日语/" style="font-size: 18px;">日语</a> <a href="/tags/科学上网/" style="font-size: 16px;">科学上网</a> <a href="/tags/蓝灯/" style="font-size: 10px;">蓝灯</a>
+       <a href="/tags/Apache/" style="font-size: 10px;">Apache</a> <a href="/tags/BigData/" style="font-size: 10px;">BigData</a> <a href="/tags/Coding-Rule/" style="font-size: 10px;">Coding Rule</a> <a href="/tags/Docker/" style="font-size: 10px;">Docker</a> <a href="/tags/Excel/" style="font-size: 10px;">Excel</a> <a href="/tags/Guava/" style="font-size: 10px;">Guava</a> <a href="/tags/Hexo/" style="font-size: 10px;">Hexo</a> <a href="/tags/IDEA/" style="font-size: 10px;">IDEA</a> <a href="/tags/Ionic/" style="font-size: 12px;">Ionic</a> <a href="/tags/JRebel/" style="font-size: 10px;">JRebel</a> <a href="/tags/Java/" style="font-size: 20px;">Java</a> <a href="/tags/Lantern/" style="font-size: 10px;">Lantern</a> <a href="/tags/Nginx/" style="font-size: 10px;">Nginx</a> <a href="/tags/Node/" style="font-size: 10px;">Node</a> <a href="/tags/Openshift/" style="font-size: 10px;">Openshift</a> <a href="/tags/Python/" style="font-size: 12px;">Python</a> <a href="/tags/SSH/" style="font-size: 10px;">SSH</a> <a href="/tags/SSH-Tunnel/" style="font-size: 12px;">SSH Tunnel</a> <a href="/tags/SSL/" style="font-size: 10px;">SSL</a> <a href="/tags/Shadowsocks/" style="font-size: 10px;">Shadowsocks</a> <a href="/tags/Solr/" style="font-size: 10px;">Solr</a> <a href="/tags/Spring/" style="font-size: 10px;">Spring</a> <a href="/tags/Tomcat/" style="font-size: 10px;">Tomcat</a> <a href="/tags/WEB开发/" style="font-size: 12px;">WEB开发</a> <a href="/tags/WSL/" style="font-size: 12px;">WSL</a> <a href="/tags/dozer/" style="font-size: 10px;">dozer</a> <a href="/tags/plink/" style="font-size: 10px;">plink</a> <a href="/tags/tor/" style="font-size: 10px;">tor</a> <a href="/tags/其他/" style="font-size: 18px;">其他</a> <a href="/tags/内网穿透/" style="font-size: 10px;">内网穿透</a> <a href="/tags/大数据/" style="font-size: 10px;">大数据</a> <a href="/tags/工具/" style="font-size: 14px;">工具</a> <a href="/tags/影梭/" style="font-size: 10px;">影梭</a> <a href="/tags/日语/" style="font-size: 16px;">日语</a> <a href="/tags/科学上网/" style="font-size: 14px;">科学上网</a> <a href="/tags/蓝灯/" style="font-size: 10px;">蓝灯</a>
     </div>
   </div>
 
@@ -784,7 +786,7 @@
   
   <div class="archiveslist">
     <p class="asidetitle"><a href="/archives">归档</a></p>
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/10/">十月 2017</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/09/">九月 2017</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/08/">八月 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/07/">七月 2017</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/06/">六月 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/05/">五月 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/04/">四月 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">三月 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/02/">二月 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/01/">一月 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/10/">十月 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/09/">九月 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/08/">八月 2016</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/07/">七月 2015</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/08/">八月 2014</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/11/">十一月 2013</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2011/05/">五月 2011</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2011/02/">二月 2011</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2011/01/">一月 2011</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2010/03/">三月 2010</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2009/10/">十月 2009</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2009/04/">四月 2009</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2009/01/">一月 2009</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2008/10/">十月 2008</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2008/09/">九月 2008</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2007/09/">九月 2007</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2007/06/">六月 2007</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2006/10/">十月 2006</a><span class="archive-list-count">4</span></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/11/">十一月 2020</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/10/">十月 2020</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/04/">四月 2019</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/02/">二月 2019</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/12/">十二月 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/11/">十一月 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/09/">九月 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/10/">十月 2017</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/09/">九月 2017</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/08/">八月 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/07/">七月 2017</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/06/">六月 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/05/">五月 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/04/">四月 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">三月 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/02/">二月 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/01/">一月 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/10/">十月 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/09/">九月 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/08/">八月 2016</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/07/">七月 2015</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/08/">八月 2014</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/11/">十一月 2013</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2011/05/">五月 2011</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2011/02/">二月 2011</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2011/01/">一月 2011</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2010/03/">三月 2010</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2009/10/">十月 2009</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2009/04/">四月 2009</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2009/01/">一月 2009</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2008/10/">十月 2008</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2008/09/">九月 2008</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2007/09/">九月 2007</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2007/06/">六月 2007</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2006/10/">十月 2006</a><span class="archive-list-count">4</span></li></ul>
   </div>
 
 
@@ -837,7 +839,7 @@
 		
 
 		<p class="copyright">
-		Powered by <a href="http://hexo.io" target="_blank" title="hexo">hexo</a> and Theme by <a href="https://github.com/wuchong/jacman" target="_blank" title="Jacman">Jacman</a> © 2017 
+		Powered by <a href="http://hexo.io" target="_blank" title="hexo">hexo</a> and Theme by <a href="https://github.com/wuchong/jacman" target="_blank" title="Jacman">Jacman</a> © 2020 
 		
 		<a href="/about" target="_blank" title="lvshifu">lvshifu</a>
 		

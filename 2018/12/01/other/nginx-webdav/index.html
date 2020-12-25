@@ -1,0 +1,565 @@
+
+ <!DOCTYPE HTML>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  
+    <title>Nginx开启Webdav | lvshifu</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=no">
+    
+    <meta name="author" content="lvshifu">
+    
+
+    
+    <meta name="description" content="网上搜到一个开源笔记本应用Joplin，https://joplin.cozic.net/。开源、跨平台、有移动端、可以Webdav同步、支持Markdown。  Joplin 是一个自由开源的笔记和待办事项应用，可用于 Linux、Windows、macOS、Android 和 iOS。它的主要功能包括端到端加密，Markdown 支持以及通过 NextCloud、Dropbox、OneDriv">
+<meta name="keywords" content="其他">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Nginx开启Webdav">
+<meta property="og:url" content="https://lvshifu.github.io/2018/12/01/other/nginx-webdav/index.html">
+<meta property="og:site_name" content="lvshifu">
+<meta property="og:description" content="网上搜到一个开源笔记本应用Joplin，https://joplin.cozic.net/。开源、跨平台、有移动端、可以Webdav同步、支持Markdown。  Joplin 是一个自由开源的笔记和待办事项应用，可用于 Linux、Windows、macOS、Android 和 iOS。它的主要功能包括端到端加密，Markdown 支持以及通过 NextCloud、Dropbox、OneDriv">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2020-04-13T04:17:54.740Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Nginx开启Webdav">
+<meta name="twitter:description" content="网上搜到一个开源笔记本应用Joplin，https://joplin.cozic.net/。开源、跨平台、有移动端、可以Webdav同步、支持Markdown。  Joplin 是一个自由开源的笔记和待办事项应用，可用于 Linux、Windows、macOS、Android 和 iOS。它的主要功能包括端到端加密，Markdown 支持以及通过 NextCloud、Dropbox、OneDriv">
+
+    
+    <link rel="alternative" href="/atom.xml" title="lvshifu" type="application/atom+xml">
+    
+    
+    <link rel="icon" href="/img/smile.png">
+    
+    
+    <link rel="apple-touch-icon" href="/img/jacman.jpg">
+    <link rel="apple-touch-icon-precomposed" href="/img/jacman.jpg">
+    
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+
+  <body>
+    <header>
+      
+<div>
+		
+			<div id="textlogo">
+				<h1 class="site-name"><a href="/" title="lvshifu">lvshifu</a></h1>
+				<h2 class="blog-motto"></h2>
+			</div>
+			<div class="navbar"><a class="navbutton navmobile" href="#" title="菜单">
+			</a></div>
+			<nav class="animated">
+				<ul>
+					<ul>
+					 
+						<li><a href="/">主页</a></li>
+					
+						<li><a href="/archives">归档</a></li>
+					
+						<li><a href="/tags">标签</a></li>
+					
+						<li><a href="/about">关于</a></li>
+					
+					<li>
+ 					
+					<form class="search" action="/search/index.html" method="get" accept-charset="utf-8">
+						<label>Search</label>
+						<input type="search" id="search" autocomplete="off" name="q" maxlength="20" placeholder="搜索" />
+					</form>
+					
+					</li>
+				</ul>
+			</nav>			
+</div>
+    </header>
+    <div id="container">
+      <div id="main" class="post" itemscope itemprop="blogPost">
+  
+	<article itemprop="articleBody"> 
+		<header class="article-info clearfix">
+  <h1 itemprop="name">
+    
+      <a href="/2018/12/01/other/nginx-webdav/" title="Nginx开启Webdav" itemprop="url">Nginx开启Webdav</a>
+  </h1>
+  <p class="article-author">By
+       
+		<a href="/about" title="lvshifu" target="_blank" itemprop="author">lvshifu</a>
+		
+  <p class="article-time">
+    <time datetime="2018-12-01T08:00:00.000Z" itemprop="datePublished"> 发表于 2018-12-01</time>
+    
+  </p>
+</header>
+	<div class="article-content">
+		
+		<p>网上搜到一个开源笔记本应用Joplin，<a href="https://joplin.cozic.net/。" target="_blank" rel="external">https://joplin.cozic.net/。</a><br>开源、跨平台、有移动端、可以Webdav同步、支持Markdown。</p>
+<blockquote>
+<p>Joplin 是一个自由开源的笔记和待办事项应用，可用于 Linux、Windows、macOS、Android 和 iOS。它的主要功能包括端到端加密，Markdown 支持以及通过 NextCloud、Dropbox、OneDrive 或 WebDAV 等第三方服务进行同步。</p>
+</blockquote>
+<p>正好手上有腾讯云服务器，尝试部署了一下。<br><a id="more"></a></p>
+<p>yum install nginx后，查看配置，默认启用了–with-http_dav_module，但是仍然不能同步。故用源码安装，加入nginx-dav-ext-module模块。</p>
+<ol>
+<li><p>安装准备<br>yum install gcc<br>yum install git<br>yum install httpd-tools<br>wget <a href="https://nginx.org/download/nginx-1.14.2.tar.gz" target="_blank" rel="external">https://nginx.org/download/nginx-1.14.2.tar.gz</a></p>
+</li>
+<li><p>解压缩<br>tar xzvf nginx-1.14.2.tar.gz<br>cd nginx-1.14.2/<br>cd src</p>
+</li>
+<li><p>获取nginx-dav-ext-module<br>git clone <a href="https://github.com/arut/nginx-dav-ext-module.git" target="_blank" rel="external">https://github.com/arut/nginx-dav-ext-module.git</a></p>
+</li>
+<li><p>安装缺失的组件<br>yum install pcre-devel<br>yum install zlib-devel<br>yum install libxml2-devel<br>yum install libxslt-devel</p>
+</li>
+<li><p>检查用户<br>id nginx</p>
+</li>
+<li><p>configure<br>./configure –with-http_dav_module –add-module=./src/nginx-dav-ext-module/  –group=nginx –user=nginx</p>
+</li>
+<li><p>安装<br>make &amp;&amp;make install</p>
+</li>
+<li><p>更改目录权限<br>chown -R nginx:nginx /usr/local/nginx</p>
+</li>
+<li><p>验证<br>nginx -V</p>
+</li>
+<li><p>修改配置<br>cd /usr/local/nginx/conf<br>vi nginx.conf<br>加上include语句<br>mkdir vhost<br>touch domainname.conf</p>
+</li>
+<li><p>domainname.conf配置</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">server &#123; </div><div class="line">  listen 8080;</div><div class="line">  server_name site.com;</div><div class="line">  client_max_body_size 20M;</div><div class="line">   location / &#123;  </div><div class="line">    dav_methods PUT DELETE MKCOL COPY MOVE;</div><div class="line">    dav_ext_methods PROPFIND OPTIONS;</div><div class="line">    dav_access group:rw all:r;</div><div class="line">    root /var/www/dav/;</div><div class="line">    auth_basic &quot;Restricted&quot;;</div><div class="line">    auth_basic_user_file /var/www/dav/.htpasswd;</div><div class="line">    &#125;</div><div class="line">   &#125;</div></pre></td></tr></table></figure>
+</li>
+<li><p>生成WEBDAV用户名密码<br>htpasswd -c /usr/local/nginx/conf/.htpasswd user1</p>
+</li>
+<li><p>启动<br>nginx</p>
+</li>
+</ol>
+  
+	</div>
+		<footer class="article-footer clearfix">
+<div class="article-catetags">
+
+
+  <div class="article-tags">
+  
+  <span></span> <a href="/tags/其他/">其他</a>
+  </div>
+
+</div>
+
+
+
+	<div class="article-share" id="share">
+	
+	  <div data-url="https://lvshifu.github.io/2018/12/01/other/nginx-webdav/" data-title="Nginx开启Webdav | lvshifu" data-tsina="" class="share clearfix">
+	  </div>
+	
+	</div>
+
+
+</footer>
+
+   	       
+	</article>
+	
+<nav class="article-nav clearfix">
+ 
+ <div class="prev" >
+ <a href="/2019/02/20/Docker/wsl-is-what/" title="WSL是什么">
+  <strong>上一篇：</strong><br/>
+  <span>
+  WSL是什么</span>
+</a>
+</div>
+
+
+<div class="next">
+<a href="/2018/11/13/other/network-record/"  title="腾讯云服务器网站备案">
+ <strong>下一篇：</strong><br/> 
+ <span>腾讯云服务器网站备案
+</span>
+</a>
+</div>
+
+</nav>
+
+	
+
+<section id="comments" class="comment">
+  <div id="disqus_thread">
+    <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+  </div>
+</section>
+
+
+</div>  
+      <div class="openaside"><a class="navbutton" href="#" title="显示侧边栏"></a></div>
+
+<div id="asidepart">
+<div class="closeaside"><a class="closebutton" href="#" title="隐藏侧边栏"></a></div>
+<aside class="clearfix">
+
+  
+
+
+  
+<div class="tagslist">
+	<p class="asidetitle">标签</p>
+		<ul class="clearfix">
+		
+			
+				<li><a href="/tags/Java/" title="Java">Java<sup>14</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/其他/" title="其他">其他<sup>11</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/日语/" title="日语">日语<sup>9</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/工具/" title="工具">工具<sup>5</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/科学上网/" title="科学上网">科学上网<sup>5</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/WSL/" title="WSL">WSL<sup>2</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/Ionic/" title="Ionic">Ionic<sup>2</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/WEB开发/" title="WEB开发">WEB开发<sup>2</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/SSH-Tunnel/" title="SSH Tunnel">SSH Tunnel<sup>2</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/Python/" title="Python">Python<sup>2</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/Docker/" title="Docker">Docker<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/大数据/" title="大数据">大数据<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/BigData/" title="BigData">BigData<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/Excel/" title="Excel">Excel<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/Node/" title="Node">Node<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/Coding-Rule/" title="Coding Rule">Coding Rule<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/dozer/" title="dozer">dozer<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/Guava/" title="Guava">Guava<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/IDEA/" title="IDEA">IDEA<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/JRebel/" title="JRebel">JRebel<sup>1</sup></a></li>
+			
+		
+		</ul>
+</div>
+
+
+  
+  <div class="tagcloudlist">
+    <p class="asidetitle">标签云</p>
+    <div class="tagcloudlist clearfix">
+       <a href="/tags/Apache/" style="font-size: 10px;">Apache</a> <a href="/tags/BigData/" style="font-size: 10px;">BigData</a> <a href="/tags/Coding-Rule/" style="font-size: 10px;">Coding Rule</a> <a href="/tags/Docker/" style="font-size: 10px;">Docker</a> <a href="/tags/Excel/" style="font-size: 10px;">Excel</a> <a href="/tags/Guava/" style="font-size: 10px;">Guava</a> <a href="/tags/Hexo/" style="font-size: 10px;">Hexo</a> <a href="/tags/IDEA/" style="font-size: 10px;">IDEA</a> <a href="/tags/Ionic/" style="font-size: 12px;">Ionic</a> <a href="/tags/JRebel/" style="font-size: 10px;">JRebel</a> <a href="/tags/Java/" style="font-size: 20px;">Java</a> <a href="/tags/Lantern/" style="font-size: 10px;">Lantern</a> <a href="/tags/Nginx/" style="font-size: 10px;">Nginx</a> <a href="/tags/Node/" style="font-size: 10px;">Node</a> <a href="/tags/Openshift/" style="font-size: 10px;">Openshift</a> <a href="/tags/Python/" style="font-size: 12px;">Python</a> <a href="/tags/SSH/" style="font-size: 10px;">SSH</a> <a href="/tags/SSH-Tunnel/" style="font-size: 12px;">SSH Tunnel</a> <a href="/tags/SSL/" style="font-size: 10px;">SSL</a> <a href="/tags/Shadowsocks/" style="font-size: 10px;">Shadowsocks</a> <a href="/tags/Solr/" style="font-size: 10px;">Solr</a> <a href="/tags/Spring/" style="font-size: 10px;">Spring</a> <a href="/tags/Tomcat/" style="font-size: 10px;">Tomcat</a> <a href="/tags/WEB开发/" style="font-size: 12px;">WEB开发</a> <a href="/tags/WSL/" style="font-size: 12px;">WSL</a> <a href="/tags/dozer/" style="font-size: 10px;">dozer</a> <a href="/tags/plink/" style="font-size: 10px;">plink</a> <a href="/tags/tor/" style="font-size: 10px;">tor</a> <a href="/tags/其他/" style="font-size: 18px;">其他</a> <a href="/tags/内网穿透/" style="font-size: 10px;">内网穿透</a> <a href="/tags/大数据/" style="font-size: 10px;">大数据</a> <a href="/tags/工具/" style="font-size: 14px;">工具</a> <a href="/tags/影梭/" style="font-size: 10px;">影梭</a> <a href="/tags/日语/" style="font-size: 16px;">日语</a> <a href="/tags/科学上网/" style="font-size: 14px;">科学上网</a> <a href="/tags/蓝灯/" style="font-size: 10px;">蓝灯</a>
+    </div>
+  </div>
+
+
+  
+  <div class="archiveslist">
+    <p class="asidetitle"><a href="/archives">归档</a></p>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/11/">十一月 2020</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/10/">十月 2020</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/04/">四月 2019</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/02/">二月 2019</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/12/">十二月 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/11/">十一月 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/09/">九月 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/10/">十月 2017</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/09/">九月 2017</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/08/">八月 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/07/">七月 2017</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/06/">六月 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/05/">五月 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/04/">四月 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">三月 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/02/">二月 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/01/">一月 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/10/">十月 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/09/">九月 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/08/">八月 2016</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/07/">七月 2015</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/08/">八月 2014</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/11/">十一月 2013</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2011/05/">五月 2011</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2011/02/">二月 2011</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2011/01/">一月 2011</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2010/03/">三月 2010</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2009/10/">十月 2009</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2009/04/">四月 2009</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2009/01/">一月 2009</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2008/10/">十月 2008</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2008/09/">九月 2008</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2007/09/">九月 2007</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2007/06/">六月 2007</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2006/10/">十月 2006</a><span class="archive-list-count">4</span></li></ul>
+  </div>
+
+
+  <div class="linkslist">
+  <p class="asidetitle">友情链接</p>
+    <ul>
+        
+          <li>
+            
+            	<a href="https://ricardo-cheng.github.io" target="_blank" title="Cheng&#39;s Blog">Cheng&#39;s Blog</a>
+            
+          </li>
+        
+          <li>
+            
+            	<a href="http://wuchong.me" target="_blank" title="Jark&#39;s Blog">Jark&#39;s Blog</a>
+            
+          </li>
+        
+    </ul>
+</div>
+
+  
+
+
+</aside>
+</div>
+    </div>
+    <footer><div id="footer" >
+	
+	
+	<section class="info">
+		<p> Hello ,I&#39;m lvshifu. <br/>
+			</p>
+	</section>
+	 
+	<div class="social-font" class="clearfix">
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+	</div>
+			
+		
+
+		<p class="copyright">
+		Powered by <a href="http://hexo.io" target="_blank" title="hexo">hexo</a> and Theme by <a href="https://github.com/wuchong/jacman" target="_blank" title="Jacman">Jacman</a> © 2020 
+		
+		<a href="/about" target="_blank" title="lvshifu">lvshifu</a>
+		
+		
+		</p>
+</div>
+</footer>
+    <script src="/js/jquery-2.0.3.min.js"></script>
+<script src="/js/jquery.imagesloaded.min.js"></script>
+<script src="/js/gallery.js"></script>
+<script src="/js/jquery.qrcode-0.12.0.min.js"></script>
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  $('.navbar').click(function(){
+    $('header nav').toggleClass('shownav');
+  });
+  var myWidth = 0;
+  function getSize(){
+    if( typeof( window.innerWidth ) == 'number' ) {
+      myWidth = window.innerWidth;
+    } else if( document.documentElement && document.documentElement.clientWidth) {
+      myWidth = document.documentElement.clientWidth;
+    };
+  };
+  var m = $('#main'),
+      a = $('#asidepart'),
+      c = $('.closeaside'),
+      o = $('.openaside');
+  c.click(function(){
+    a.addClass('fadeOut').css('display', 'none');
+    o.css('display', 'block').addClass('fadeIn');
+    m.addClass('moveMain');
+  });
+  o.click(function(){
+    o.css('display', 'none').removeClass('beforeFadeIn');
+    a.css('display', 'block').removeClass('fadeOut').addClass('fadeIn');      
+    m.removeClass('moveMain');
+  });
+  $(window).scroll(function(){
+    o.css("top",Math.max(80,260-$(this).scrollTop()));
+  });
+  
+  $(window).resize(function(){
+    getSize(); 
+    if (myWidth >= 1024) {
+      $('header nav').removeClass('shownav');
+    }else{
+      m.removeClass('moveMain');
+      a.css('display', 'block').removeClass('fadeOut');
+      o.css('display', 'none');
+        
+    }
+  });
+});
+</script>
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var ai = $('.article-content>iframe'),
+      ae = $('.article-content>embed'),
+      t  = $('#toc'),
+      ta = $('#toc.toc-aside'),
+      o  = $('.openaside'),
+      c  = $('.closeaside');
+  if(ai.length>0){
+    ai.wrap('<div class="video-container" />');
+  };
+  if(ae.length>0){
+   ae.wrap('<div class="video-container" />');
+  };
+  c.click(function(){
+    ta.css('display', 'block').addClass('fadeIn');
+  });
+  o.click(function(){
+    ta.css('display', 'none');
+  });
+  $(window).scroll(function(){
+    ta.css("top",Math.max(140,320-$(this).scrollTop()));
+  });
+});
+</script>
+
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var $this = $('.share'),
+      url = $this.attr('data-url'),
+      encodedUrl = encodeURIComponent(url),
+      title = $this.attr('data-title'),
+      tsina = $this.attr('data-tsina'),
+      description = $this.attr('description');
+  var html = [
+  '<div class="hoverqrcode clearfix"></div>',
+  '<a class="overlay" id="qrcode"></a>',
+  '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="article-share-facebook" target="_blank" title="Facebook"></a>',
+  '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="article-share-twitter" target="_blank" title="Twitter"></a>',
+  '<a href="#qrcode" class="article-share-qrcode" title="微信"></a>',
+  '<a href="http://widget.renren.com/dialog/share?resourceUrl=' + encodedUrl + '&srcUrl=' + encodedUrl + '&title=' + title +'" class="article-share-renren" target="_blank" title="人人"></a>',
+  '<a href="http://service.weibo.com/share/share.php?title='+title+'&url='+encodedUrl +'&ralateUid='+ tsina +'&searchPic=true&style=number' +'" class="article-share-weibo" target="_blank" title="微博"></a>',
+  '<span title="Share to"></span>'
+  ].join('');
+  $this.append(html);
+
+  $('.hoverqrcode').hide();
+
+  var myWidth = 0;
+  function updatehoverqrcode(){
+    if( typeof( window.innerWidth ) == 'number' ) {
+      myWidth = window.innerWidth;
+    } else if( document.documentElement && document.documentElement.clientWidth) {
+      myWidth = document.documentElement.clientWidth;
+    };
+    var qrsize = myWidth > 1024 ? 200:100;
+    var options = {render: 'image', size: qrsize, fill: '#2ca6cb', text: url, radius: 0.5, quiet: 1};
+    var p = $('.article-share-qrcode').position();
+    $('.hoverqrcode').empty().css('width', qrsize).css('height', qrsize)
+                          .css('left', p.left-qrsize/2+20).css('top', p.top-qrsize-10)
+                          .qrcode(options);
+  };
+  $(window).resize(function(){
+    $('.hoverqrcode').hide();
+  });
+  $('.article-share-qrcode').click(function(){
+    updatehoverqrcode();
+    $('.hoverqrcode').toggle();
+  });
+  $('.article-share-qrcode').hover(function(){}, function(){
+      $('.hoverqrcode').hide();
+  });
+});   
+</script>
+
+
+
+
+<script type="text/javascript">
+
+var disqus_shortname = 'lvshifu-github-io';
+
+(function(){
+  var dsq = document.createElement('script');
+  dsq.type = 'text/javascript';
+  dsq.async = true;
+  dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+  (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+}());
+(function(){
+  var dsq = document.createElement('script');
+  dsq.type = 'text/javascript';
+  dsq.async = true;
+  dsq.src = '//' + disqus_shortname + '.disqus.com/count.js';
+  (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+}());
+</script>
+
+
+
+
+
+
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css" media="screen" type="text/css">
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+$(document).ready(function(){ 
+  $('.article-content').each(function(i){
+    $(this).find('img').each(function(){
+      if ($(this).parent().hasClass('fancybox')) return;
+      var alt = this.alt;
+      if (alt) $(this).after('<span class="caption">' + alt + '</span>');
+      $(this).wrap('<a href="' + this.src + '" title="' + alt + '" class="fancybox"></a>');
+    });
+    $(this).find('.fancybox').each(function(){
+      $(this).attr('rel', 'article' + i);
+    });
+  });
+  if($.fancybox){
+    $('.fancybox').fancybox();
+  }
+}); 
+</script>
+
+
+
+<!-- Analytics Begin -->
+
+
+
+
+
+<!-- Analytics End -->
+
+<!-- Totop Begin -->
+
+	<div id="totop">
+	<a title="返回顶部"><img src="/img/scrollup.png"/></a>
+	</div>
+	<script src="/js/totop.js"></script>
+
+<!-- Totop End -->
+
+<!-- MathJax Begin -->
+<!-- mathjax config similar to math.stackexchange -->
+
+
+<!-- MathJax End -->
+
+<!-- Tiny_search Begin -->
+
+<!-- Tiny_search End -->
+
+  </body>
+</html>
